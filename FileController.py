@@ -8,20 +8,24 @@ from FileReader import FileReader
 from FileWriter import FileWriter
 
 
-class FileController:
+def updateSheet():
+    cred = 'credentials.json'
+    sheet = 'sheets'
+    version = 'v4'
+    scope = ['https://www.googleapis.com/auth/spreadsheets']
 
-    def updateSheet(self):
-        cred = 'credentials.json'
-        sheet = 'sheets'
-        version = 'v4'
-        scope = ['https://www.googleapis.com/auth/spreadsheets']
+    df = FileReader()
 
-        df = FileReader()
+    data = df.readSheet()
 
-        data = df.readSheet()
+    # Do something with dateframe
+    # Write df back to sheet
+    # df.set_option("display.max_rows", None, "display.max_columns", None)
 
-        # Do something with dateframe
-        # Write df back to sheet
+    data.loc[0 if pd.isnull(data.index.max()) else data.index.max() + 1] = [1, 2, 3, 4, 5, 7]
 
-        fw = FileWriter()
-        fw.writeSheet(cred, sheet, version, scope, data)
+    fw = FileWriter()
+    fw.writeSheet(cred, sheet, version, scope, data)
+
+
+updateSheet()

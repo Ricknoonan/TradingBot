@@ -5,16 +5,15 @@ from urllib.request import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
+INPUT = '1JqTecTzlTI_MHaR6K2yBvasv-0r8lj8gU41eMN1RO1E'
+RANGE = 'A1:AA1000'
+
+
 class FileWriter(object):
 
-    def __inti__(self):
-        self.scope = ['https://www.googleapis.com/auth/spreadsheets']
-        self.input = '1JqTecTzlTI_MHaR6K2yBvasv-0r8lj8gU41eMN1RO1E'
-        self.range = 'A1:AA1000'
-
-    def writeSheet(self, client_secret_file, api_service_name, api_version, *scopes, df):
-        global service
-        SCOPES = [scope for scope in scopes[0]]
+    def writeSheet(self, client_secret_file, api_service_name, api_version, scopes, df):
+        #global service
+        # SCOPES = [scope for scope in scopes[0]]
         # print(SCOPES)
 
         cred = None
@@ -27,7 +26,7 @@ class FileWriter(object):
             if cred and cred.expired and cred.refresh_token:
                 cred.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, SCOPES)
+                flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, scopes)
                 cred = flow.run_local_server()
 
             with open('token_write.pickle', 'wb') as token:
@@ -37,9 +36,9 @@ class FileWriter(object):
             service = build(api_service_name, api_version, credentials=cred)
             print(api_service_name, 'service created successfully')
             response_date = service.spreadsheets().values().update(
-                spreadsheetId=self.input,
+                spreadsheetId=INPUT,
                 valueInputOption='RAW',
-                range=self.range,
+                range=RANGE,
                 body=dict(
                     majorDimension='ROWS',
                     values=df.T.reset_index().T.values.tolist())
