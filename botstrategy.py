@@ -39,12 +39,14 @@ class BotStrategy(object):
                 openTrades.append(trade)
 
         if len(openTrades) < MAXTRADESPERPAIR:
-            weight = 0
-            weight += self.checkRSI(self.prices)
-            weight += self.checkMACD(self.prices)
-            weight += self.checkMomentum(self.prices)
-            if weight >= 70:
+            if RSI(self.prices) > 60:
                 self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
+        # weight = 0
+        # weight += self.checkRSI(self.prices)
+        # weight += self.checkMACD(self.prices)
+        # weight += self.checkMomentum(self.prices)
+        # if weight >= 70:
+        #      self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
 
         # TODO: Refactor Clean up close/stoploss
         for trade in openTrades:
@@ -65,7 +67,15 @@ class BotStrategy(object):
             trade.showTrade()
 
     def checkRSI(self, prices):
-        pass
+        rsiVal = RSI(prices)
+        weightVal = 0
+        if rsiVal > 70 & rsiVal <= 79:
+            weightVal = 11
+        if rsiVal >= 80 & rsiVal <= 89:
+            weightVal = 22
+        if rsiVal >= 90 & rsiVal < 100:
+            weightVal = 33
+        return weightVal
 
     def checkMACD(self, prices):
         pass
@@ -73,7 +83,7 @@ class BotStrategy(object):
     def checkMomentum(self, prices):
         pass
 
-#If underlying prices make a new high or low that isn't
+# If underlying prices make a new high or low that isn't
 # confirmed by the RSI, this divergence can signal a price reversal.
 # If the RSI makes a lower high and then follows with a downside move below
 # a previous low, a Top Swing Failure has occurred. If the RSI makes a higher

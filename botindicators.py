@@ -20,11 +20,13 @@ def EMA(prices, period):
     a[:period] = a[period]
     return a
 
-
+#MACD
 def MACD(prices, nslow=26, nfast=12):
-    emaslow = EMA(prices, nslow)
-    emafast = EMA(prices, nfast)
-    return emaslow, emafast, emafast - emaslow
+    twentySixEMA = EMA(prices, nslow)
+    twentyFourEMA = EMA(prices, nfast)
+    MACDline = twentyFourEMA - twentySixEMA
+    #signalLine =
+    return twentySixEMA, twentyFourEMA, MACDline
 
 
 def RSI(prices, period=14):
