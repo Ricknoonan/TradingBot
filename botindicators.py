@@ -1,6 +1,11 @@
 import numpy as np
 
 
+class BotIndicators(object):
+    def __init__(self):
+        self.MACDLine = []
+
+
 def movingAverage(dataPoints, period):
     if (len(dataPoints) > 0):
         return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
@@ -15,18 +20,20 @@ def EMA(prices, period):
     x = np.asarray(prices)
     weights = np.exp(np.linspace(-1., 0., period))
     weights /= weights.sum()
-
     a = np.convolve(x, weights, mode='full')[:len(x)]
     a[:period] = a[period]
     return a
 
-#MACD
-def MACD(prices, nslow=26, nfast=12):
+
+# MACD
+def MACD(self, prices, nslow=26, nfast=12):
     twentySixEMA = EMA(prices, nslow)
     twentyFourEMA = EMA(prices, nfast)
     MACDline = twentyFourEMA - twentySixEMA
-    #signalLine =
-    return twentySixEMA, twentyFourEMA, MACDline
+    self.MACDLine.append(MACDline)
+    signalLine = EMA(MACDline, 9)
+    return signalLine
+    #return twentySixEMA, twentyFourEMA, MACDline
 
 
 def RSI(prices, period=14):

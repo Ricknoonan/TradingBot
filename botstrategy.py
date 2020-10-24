@@ -39,7 +39,7 @@ class BotStrategy(object):
                 openTrades.append(trade)
 
         if len(openTrades) < MAXTRADESPERPAIR:
-            if RSI(self.prices) > 60:
+            if MACD(self, self.prices) > 60:
                 self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
         # weight = 0
         # weight += self.checkRSI(self.prices)
