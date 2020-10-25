@@ -14,13 +14,15 @@ class BotIndicators(object):
         return signalLine
         # return twentySixEMA, twentyFourEMA, MACDline
 
-    def movingAverage(self, dataPoints, period):
-        if (len(dataPoints) > 0):
-            return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
 
-    def momentum(self, dataPoints, period=14):
-        if (len(dataPoints) > period - 1):
-            return dataPoints[-1] * 100 / dataPoints[-period]
+def movingAverage(self, dataPoints, period):
+    if (len(dataPoints) > 0):
+        return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
+
+
+def momentum(self, dataPoints, period=14):
+    if (len(dataPoints) > period - 1):
+        return dataPoints[-1] * 100 / dataPoints[-period]
 
 
 def EMA(prices, period):
