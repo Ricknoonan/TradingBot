@@ -5,15 +5,22 @@ class BotIndicators(object):
     def __init__(self):
         self.MACDLine = []
 
+    def MACD(self, prices, nslow=26, nfast=12):
+        twentySixEMA = EMA(prices, nslow)
+        twentyFourEMA = EMA(prices, nfast)
+        MACDline = twentyFourEMA - twentySixEMA
+        self.MACDLine.append(MACDline)
+        signalLine = EMA(MACDline, 9)
+        return signalLine
+        # return twentySixEMA, twentyFourEMA, MACDline
 
-def movingAverage(dataPoints, period):
-    if (len(dataPoints) > 0):
-        return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
+    def movingAverage(self, dataPoints, period):
+        if (len(dataPoints) > 0):
+            return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
 
-
-def momentum(dataPoints, period=14):
-    if (len(dataPoints) > period - 1):
-        return dataPoints[-1] * 100 / dataPoints[-period]
+    def momentum(self, dataPoints, period=14):
+        if (len(dataPoints) > period - 1):
+            return dataPoints[-1] * 100 / dataPoints[-period]
 
 
 def EMA(prices, period):
@@ -21,19 +28,8 @@ def EMA(prices, period):
     weights = np.exp(np.linspace(-1., 0., period))
     weights /= weights.sum()
     a = np.convolve(x, weights, mode='full')[:len(x)]
-    a[:period] = a[period]
+    a = a[:period]
     return a
-
-
-# MACD
-def MACD(self, prices, nslow=26, nfast=12):
-    twentySixEMA = EMA(prices, nslow)
-    twentyFourEMA = EMA(prices, nfast)
-    MACDline = twentyFourEMA - twentySixEMA
-    self.MACDLine.append(MACDline)
-    signalLine = EMA(MACDline, 9)
-    return signalLine
-    #return twentySixEMA, twentyFourEMA, MACDline
 
 
 def RSI(prices, period=14):
