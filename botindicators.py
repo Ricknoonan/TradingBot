@@ -10,7 +10,7 @@ class BotIndicators(object):
         twentyFourEMA = EMA(prices, nfast)
         MACDline = twentyFourEMA - twentySixEMA
         self.MACDLine.append(MACDline)
-        signalLine = EMA(MACDline, 9)
+        signalLine = EMA(self.MACDLine, 9)
         return signalLine
         # return twentySixEMA, twentyFourEMA, MACDline
 
@@ -30,7 +30,10 @@ def EMA(prices, period):
     weights = np.exp(np.linspace(-1., 0., period))
     weights /= weights.sum()
     a = np.convolve(x, weights, mode='full')[:len(x)]
-    a = a[:period]
+    if len(a) < period:
+        a = a[-1]
+    else:
+        a = a[period]
     return a
 
 

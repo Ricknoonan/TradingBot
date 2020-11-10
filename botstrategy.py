@@ -39,10 +39,11 @@ class BotStrategy(object):
                 openTrades.append(trade)
 
         if len(openTrades) < MAXTRADESPERPAIR:
-            indicator = BotIndicators()
-            macdVal = indicator.MACD(self.prices)
-            if macdVal > 60:
-                self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
+            if len(self.prices) > 35:
+                indicator = BotIndicators()
+                macdVal = indicator.MACD(self.prices)
+                if macdVal > 60:
+                    self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
         # weight = 0
         # weight += self.checkRSI(self.prices)
         # weight += self.checkMACD(self.prices)
