@@ -22,9 +22,9 @@ class BotStrategy(object):
         botindicator = BotIndicators()
         # self.currentClose = float(candlestick['close'])
         # self.closes.append(self.currentClose)
-        # if self.indicators.movingAverage(self.prices, 15) is not None:
-       # self.output.log("Price: " + str(candlestick.priceAverage) + "\tMoving Average: " +
-        #                str(botindicator.movingAverage(self.prices, 24) + "\n"))
+       # if self.indicators.movingAverage(self.prices, 15) is not None:
+        self.output.log("Price: " + str(candlestick.priceAverage) + "\tMoving Average: " +
+                        str(botindicator.movingAverage(self.prices, 24)) + "\n")
 
         self.evaluatePositions()
         self.showPositions()
@@ -42,7 +42,9 @@ class BotStrategy(object):
             if len(self.prices) > 35:
                 indicator = BotIndicators()
                 macdVal = indicator.MACD(self.prices)
-                if macdVal > 60:
+                rsi = indicator.RSI(self.prices)
+                self.output.log("Price: macdVal =" + str(macdVal))
+                if macdVal & rsi < 70:
                     self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
         # weight = 0
         # weight += self.checkRSI(self.prices)
