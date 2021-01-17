@@ -6,7 +6,7 @@ MAXTRADESPERPAIR = 1
 
 
 class BotStrategy(object):
-    def __init__(self):
+    def __init__(self, pair):
         self.output = BotLog()
         self.prices = []
         self.closes = []  # Needed for Momentum Indicator
@@ -15,55 +15,46 @@ class BotStrategy(object):
         self.currentClose = ""
         self.accumProfit = 0
         self.closedPosCounter = 0
+        self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
+        self.pair = pair
+#    def __init__(self, long_prd, short_prd, signal_long_length, signal_short_length = 0, column = "Open"):
 
     def tick(self, candlestick):
         self.currentPrice = float(candlestick.priceAverage)
         self.prices.append(self.currentPrice)
-        botindicator = BotIndicators()
-        # self.currentClose = float(candlestick['close'])
-        # self.closes.append(self.currentClose)
-       # if self.indicators.movingAverage(self.prices, 15) is not None:
-        self.output.log("Price: " + str(candlestick.priceAverage) + "\tMoving Average: " +
-                        str(botindicator.movingAverage(self.prices, 24)) + "\n")
-
         self.evaluatePositions()
         self.showPositions()
 
     def evaluatePositions(self):
-
-        # build for checking multiple pairs on each tick
-        openTrades = []
-
+        #dict key -> value
+        #key: pair string "BTCXMR"
+        #value: trade object
+        openTrades = {}
+        tradesByPair = 0
         for trade in self.trades:
             if trade.status == "OPEN":
-                openTrades.append(trade)
+                openTrades[self.pair] = trade
+        macd = self.indicator.MACD(self.prices)
+        rsi = self.indicator.RSI(self.prices)
+        for v in openTrades:
+            if v == self.pair:
+                tradesByPair = tradesByPair + 1
 
-        if len(openTrades) < MAXTRADESPERPAIR:
+        if tradesByPair < MAXTRADESPERPAIR:
             if len(self.prices) > 35:
-                indicator = BotIndicators()
-                macdVal = indicator.MACD(self.prices)
-                rsi = indicator.RSI(self.prices)
-                self.output.log("Price: macdVal =" + str(macdVal))
-                if macdVal & rsi < 70:
-                    self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
-        # weight = 0
-        # weight += self.checkRSI(self.prices)
-        # weight += self.checkMACD(self.prices)
-        # weight += self.checkMomentum(self.prices)
-        # if weight >= 70:
-        #      self.trades.append(BotTrade(self.currentPrice, stopLossPrice=.001))
+                self.output.log("Price: macdVal =" + str(macd))
+                self.output.log("Price: rsi =" + str(rsi))
+                if macd == 1 & rsi < 70:
+                    self.trades.append(BotTrade(self.currentPrice, 0.1))
 
         # TODO: Refactor Clean up close/stoploss
         for trade in openTrades:
-            if self.currentPrice >= (trade.entryPrice * 1.01):
+            if macd == -1 & rsi < 30:
                 trade.close(self.currentPrice)
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
                 self.output.log(
                     "Strategy Profit/Loss: " + str(self.accumProfit) + "\n" + str(self.closedPosCounter) + "\n")
-
-            # if float(self.currentPrice) > float(self.indicators.movingAverage(self.prices, 15)):
-            #	trade.close(self.currentPrice)
             if trade.status == "OPEN":
                 trade.stopLoss(self.currentPrice)
 
@@ -72,15 +63,15 @@ class BotStrategy(object):
             trade.showTrade()
 
     def checkRSI(self, prices):
-       # rsiVal = RSI(prices)
+        # rsiVal = RSI(prices)
         weightVal = 0
-        #if rsiVal > 70 & rsiVal <= 79:
-       #     weightVal = 11
-        #if rsiVal >= 80 & rsiVal <= 89:
-         #   weightVal = 22
-        #if rsiVal >= 90 & rsiVal < 100:
-         #   weightVal = 33
-#        return weightVal
+        # if rsiVal > 70 & rsiVal <= 79:
+        #     weightVal = 11
+        # if rsiVal >= 80 & rsiVal <= 89:
+        #   weightVal = 22
+        # if rsiVal >= 90 & rsiVal < 100:
+        #   weightVal = 33
+        #        return weightVal
         pass
 
     def checkMACD(self, prices):

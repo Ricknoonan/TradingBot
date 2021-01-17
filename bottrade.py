@@ -2,7 +2,7 @@ from botlog import BotLog
 
 
 class BotTrade(object):
-    def __init__(self, currentPrice, stopLossPrice=0):
+    def __init__(self, currentPrice, stopLoss):
         self.output = BotLog()
         self.status = "OPEN"
         self.entryPrice = currentPrice
@@ -10,9 +10,8 @@ class BotTrade(object):
         self.output.log("Trade opened")
         self.profit = 0
         self.tradeStatus = "Entry Price: " + str(self.entryPrice) + " Status: " + str(self.status)
-        if stopLossPrice:
-            self.stopLossPrice = currentPrice - stopLossPrice
-            # TODO: add in percentage stop losses
+        if stopLoss:
+            self.stopLossPrice = currentPrice - (stopLoss * currentPrice)
 
     # TODO: Refactor this output/ combine close and stopLoss
     def close(self, currentPrice):
