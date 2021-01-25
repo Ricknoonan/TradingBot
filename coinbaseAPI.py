@@ -5,6 +5,7 @@ import time
 
 from coinbase.wallet.client import Client
 
+
 # client = Client("ihZm0KXM467Qvc0a", "nO9SSuawChpf8MGvBWoq9JUdnDEm1AQw")
 
 # currencies = client.get_exchange_rates()
@@ -44,4 +45,4 @@ def run(prev_crypto):
 prevCrypto = []
 while True:
     prevCrypto = run(prevCrypto)
-    time.sleep(5)
+    time.sleep(300)
