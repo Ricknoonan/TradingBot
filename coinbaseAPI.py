@@ -1,18 +1,40 @@
-import json
+import getopt
+import sys
+import coinbaseCredentials
+
 import requests
-import schedule
 import time
 
 from coinbase.wallet.client import Client
 
+PRIVATE_KEY = coinbaseCredentials.private_key
+PUBLIC_KEY = coinbaseCredentials.public_key
 
-# client = Client("ihZm0KXM467Qvc0a", "nO9SSuawChpf8MGvBWoq9JUdnDEm1AQw")
 
-# currencies = client.get_exchange_rates()
-# json_string = json.dumps(currencies)
+def main(argv):
+    prevCrypto = []
+    purchaseAmount = 0
+    try:
+        opts, args = getopt.getopt(argv, "a:", ["amount="])
+    except getopt.GetoptError:
+        print('error')
+        sys.exit(2)
 
-# for curr in currencies:
-#    print(curr)
+    for opt, arg in opts:
+        if opt in ("-a", "--amount"):
+            purchaseAmount = float(arg)
+
+    while True:
+        currentCrypto = getCryptoList()
+        cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
+        fiat = 'EUR'
+        if len(cryptoList) > 0:
+            buyOrder(cryptoList, purchaseAmount, fiat)
+        prevCrypto = currentCrypto
+        print(purchaseAmount)
+        print(currentCrypto)
+        time.sleep(10)
+
 
 def getCryptoList():
     currentCrpyto = []
@@ -31,18 +53,32 @@ def diff(list1, list2):
     return list(c - d)
 
 
-def run(prev_crypto):
-    currentCrypto = getCryptoList()
-    cryptoDiff = diff(prev_crypto, currentCrypto)
-    if len(cryptoDiff) == 0:
+def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
+    cryptoDiffList = diff(prevCryptoList, currentCryptoList)
+    if len(cryptoDiffList) == 0:
         print("no new cryptos")
-    if len(cryptoDiff) >= 1 & len(prev_crypto) != 0:
-        for crypto in cryptoDiff:
-            print(crypto)
-    return currentCrypto
+    if len(cryptoDiffList) >= 1 & len(prevCryptoList) != 0:
+        return cryptoDiffList
+    else:
+        return []
 
 
-prevCrypto = []
-while True:
-    prevCrypto = run(prevCrypto)
-    time.sleep(300)
+def fiatConverter(crypto, client, buyAmount, fiat):
+    pair = crypto + "-" + fiat
+    price = client.get_spot_price(currency_pair=pair)
+    buyAmountCrypto = buyAmount / price
+    return buyAmountCrypto
+
+
+def buyOrder(addedCryptoList, amount, currency):
+    client = Client(PUBLIC_KEY, PRIVATE_KEY)
+    account = client.get_primary_account()
+    payment_method = client.get_payment_methods()[0]
+    for crypto in addedCryptoList:
+        buyAmountCrypto = fiatConverter(crypto, client, amount, currency)
+        buy = account.buy(amount=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
+        print(buy)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
