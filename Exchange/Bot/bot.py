@@ -4,10 +4,10 @@ import pprint
 
 from urllib.error import URLError
 
-from botchart import BotChart
-from botstrategy import BotStrategy
-from botlog import BotLog
-from botcandlestick import BotCandlestick
+from Exchange.Bot.botchart import BotChart
+from Exchange.Bot.botstrategy import BotStrategy
+from Exchange.Bot.botlog import BotLog
+from Exchange.Bot.botcandlestick import BotCandlestick
 
 
 def main(argv):
@@ -40,10 +40,15 @@ def main(argv):
         elif opt in ("-e"):
             endTime = arg
 
+    #if there is a start time, then we are using backtest data.
+    # A botchart object is created passing. getPoints() reutns the array of h
+    # historical data that has been populate on constructor call
+    #
+
     if (startTime):
         chart = BotChart("poloniex", pair, startTime, endTime, 300)
 
-        strategy = BotStrategy()
+        strategy = BotStrategy(pair)
 
         for candlestick in chart.getPoints():
             strategy.tick(candlestick)

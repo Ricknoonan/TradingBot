@@ -1,4 +1,4 @@
-from botlog import BotLog
+from Exchange.Bot.botlog import BotLog
 
 
 class BotTrade(object):

@@ -1,7 +1,8 @@
-from poloniex import poloniex
+from Exchange.Bot.poloniex import poloniex
+import pandas as pd
 import urllib, json
 import pprint
-from botcandlestick import BotCandlestick
+from Exchange.Bot.botcandlestick import BotCandlestick
 
 class BotChart(object):
 	startTime = 1491048000
@@ -18,7 +19,7 @@ class BotChart(object):
 		self.data = []
 
 		if (exchange == "poloniex"):
-			self.conn = poloniex('key goes here','Secret goes here')
+			self.conn = poloniex('', '')
 
 			if backtest:
 				poloData = self.conn.api_query("returnChartData",{"currencyPair":self.pair,"start":self.startTime,"end":self.endTime,"period":self.period})

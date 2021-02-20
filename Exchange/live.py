@@ -2,10 +2,10 @@ import sys, getopt
 import time
 from urllib.error import URLError
 
-from botchart import BotChart
-from botstrategy import BotStrategy
-from botlog import BotLog
-from botcandlestick import BotCandlestick
+from Exchange.Bot.botchart import BotChart
+from Exchange.Bot.botstrategy import BotStrategy
+from Exchange.Bot.botlog import BotLog
+from Exchange.Bot.botcandlestick import BotCandlestick
 
 def main(argv):
 	chart = BotChart("poloniex","BTC_XMR",300,False)

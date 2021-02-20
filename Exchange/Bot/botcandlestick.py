@@ -1,7 +1,7 @@
 import sys, getopt
 import time
 
-from botlog import BotLog
+from Exchange.Bot.botlog import BotLog
 
 class BotCandlestick(object):
 	def __init__(self, period=300,open=None,close=None,high=None,low=None,priceAverage=None):

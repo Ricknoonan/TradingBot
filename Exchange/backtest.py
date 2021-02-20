@@ -1,7 +1,7 @@
 import sys, getopt
 
-from botchart import BotChart
-from botstrategy import BotStrategy
+from Exchange.Bot.botstrategy import BotStrategy
+from Exchange.Bot.botchart import BotChart
 
 def main(argv):
 	chart = BotChart("poloniex","BTC_XMR",300)

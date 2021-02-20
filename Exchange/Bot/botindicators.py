@@ -1,6 +1,7 @@
 import datetime
 
 import numpy as np
+import pandas as pd
 
 
 class BotIndicators(object):
@@ -20,20 +21,22 @@ class BotIndicators(object):
     def MACD(self, prices):
         # use first <long/short> # of points to start the EMA
         # since it depends on previous EMA
-        long_sma_data = prices.loc[:self.long - 1]
-        short_sma_data = prices.loc[:self.short - 1]
+        # df = pd.DataFrame(values_input[1:], columns=values_input[0])
+        priceFrame = pd.DataFrame({'price': prices})
+        long_sma_data = priceFrame.loc[:self.long - 1]
+        short_sma_data = priceFrame.loc[:self.short - 1]
         long_sma_value = self.movingAverage(long_sma_data, self.long)
         short_sma_value = self.movingAverage(short_sma_data, self.short)
         long_ema = [long_sma_value]
         short_ema = [short_sma_value]
         # need to remove these values at the end
         # 'use up' the remainder of the data for the EMAs
-        for index, v in prices[self.long:].iterrows():
+        for index, v in priceFrame[self.long:].iterrows():
             long_ema.append(self.ema(self.long, v, long_ema[-1]))
-        for index, v in prices[self.short:].iterrows():
+        for index, v in priceFrame[self.short:].iterrows():
             short_ema.append(self.ema(self.short, v, short_ema[-1]))
 
-        self.short_ema = self.short_ema[(self.long - self.short):]
+        self.short_ema = short_ema[(self.long - self.short):]
 
         # create numpy arrays to easily difference EMAs
         self.long_ema = np.asarray(self.long_ema)
@@ -59,7 +62,11 @@ class BotIndicators(object):
 
     def movingAverage(self, dataPoints, period):
         if (len(dataPoints) > 0):
-            return float(sum(dataPoints[-period:]) / float(len(dataPoints[-period:])))
+            sizy = dataPoints['price'].loc[-period:]
+            sum = dataPoints['price'].loc[-period:].sum()
+
+            length = dataPoints['price'].loc[-period:].size
+            return float(sum) / float(length)
 
     def RSI(self, prices, period=14):
         deltas = np.diff(prices)

@@ -1,6 +1,6 @@
-from botlog import BotLog
-from botindicators import BotIndicators
-from bottrade import BotTrade
+from Exchange.Bot.botlog import BotLog
+from Exchange.Bot.botindicators import BotIndicators
+from Exchange.Bot.bottrade import BotTrade
 
 MAXTRADESPERPAIR = 1
 

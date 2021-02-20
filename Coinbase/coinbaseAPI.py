@@ -1,14 +1,14 @@
 import getopt
 import sys
-import coinbaseCredentials
+import Coinbase.coinbaseCredentials
 
 import requests
 import time
 
 from coinbase.wallet.client import Client
 
-PRIVATE_KEY = coinbaseCredentials.private_key
-PUBLIC_KEY = coinbaseCredentials.public_key
+PRIVATE_KEY = Coinbase.coinbaseCredentials.private_key
+PUBLIC_KEY = Coinbase.coinbaseCredentials.public_key
 
 
 def main(argv):
