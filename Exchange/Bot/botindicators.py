@@ -6,7 +6,7 @@ import pandas as pd
 
 class BotIndicators(object):
     def __init__(self, long_prd, short_prd, signal_long_length, signal_short_length=0):
-        self.macd = 0
+        self.macd = []
         self.long = long_prd  # long EMA
         self.short = short_prd  # short EMA
         self.signal_long_length = signal_long_length  # signal line EMA
@@ -15,16 +15,17 @@ class BotIndicators(object):
         self.signal_short_length = signal_short_length  # for future post
         self.long_signal = []
         self.long_ema = 0
-        self.short_ema = 0
+        self.short_ema = []
         self.diffs = 0
 
     def MACD(self, prices):
         # use first <long/short> # of points to start the EMA
         # since it depends on previous EMA
         # df = pd.DataFrame(values_input[1:], columns=values_input[0])
+        #elf.long_sma_data = self.ema_data.loc[:self.long-1][self.column]
         priceFrame = pd.DataFrame({'price': prices})
-        long_sma_data = priceFrame.loc[:self.long - 1]
-        short_sma_data = priceFrame.loc[:self.short - 1]
+        long_sma_data = priceFrame.loc[:self.long - 1]['price']
+        short_sma_data = priceFrame.loc[:self.short - 1]['price']
         long_sma_value = self.movingAverage(long_sma_data, self.long)
         short_sma_value = self.movingAverage(short_sma_data, self.short)
         long_ema = [long_sma_value]
@@ -43,7 +44,7 @@ class BotIndicators(object):
         self.short_ema = np.asarray(self.short_ema)
         self.macd = self.short_ema - self.long_ema
 
-        signal_line_sma = self.movingAverage(self.signal_long_length, self.macd[-self.signal_long_length:])
+        signal_line_sma = self.movingAverage(self.macd[-self.signal_long_length:], self.signal_long_length)
         self.long_signal = [signal_line_sma]
         # calculate the signal line for the actual (non-EMA) data
         for m in self.macd[self.signal_long_length + 1:]:
@@ -62,11 +63,7 @@ class BotIndicators(object):
 
     def movingAverage(self, dataPoints, period):
         if (len(dataPoints) > 0):
-            sizy = dataPoints['price'].loc[-period:]
-            sum = dataPoints['price'].loc[-period:].sum()
-
-            length = dataPoints['price'].loc[-period:].size
-            return float(sum) / float(length)
+            return sum(dataPoints)/period
 
     def RSI(self, prices, period=14):
         deltas = np.diff(prices)
