@@ -16,13 +16,11 @@ class BotIndicators(object):
         self.long_signal = []
         self.long_ema = 0
         self.short_ema = []
-        self.diffs = 0
+        self.diffs = []
 
     def MACD(self, prices):
         # use first <long/short> # of points to start the EMA
         # since it depends on previous EMA
-        # df = pd.DataFrame(values_input[1:], columns=values_input[0])
-        #elf.long_sma_data = self.ema_data.loc[:self.long-1][self.column]
         priceFrame = pd.DataFrame({'price': prices})
         long_sma_data = priceFrame.loc[:self.long - 1]['price']
         short_sma_data = priceFrame.loc[:self.short - 1]['price']
@@ -30,36 +28,30 @@ class BotIndicators(object):
         short_sma_value = self.movingAverage(short_sma_data, self.short)
         long_ema = [long_sma_value]
         short_ema = [short_sma_value]
-        # need to remove these values at the end
-        # 'use up' the remainder of the data for the EMAs
-        for index, v in priceFrame[self.long:].iterrows():
-            long_ema.append(self.ema(self.long, v, long_ema[-1]))
-        for index, v in priceFrame[self.short:].iterrows():
-            short_ema.append(self.ema(self.short, v, short_ema[-1]))
 
-        self.short_ema = short_ema[(self.long - self.short):]
+        for index, v in priceFrame[-self.long:].iterrows():
+            long_ema.append(self.ema(self.long, v['price'], long_ema[-1]))
+        for index, v in priceFrame[-self.short:].iterrows():
+            short_ema.append(self.ema(self.short, v['price'], short_ema[-1]))
 
-        # create numpy arrays to easily difference EMAs
-        self.long_ema = np.asarray(self.long_ema)
-        self.short_ema = np.asarray(self.short_ema)
-        self.macd = self.short_ema - self.long_ema
+        self.macd.append(short_ema[-1] - long_ema[-1])
 
-        signal_line_sma = self.movingAverage(self.macd[-self.signal_long_length:], self.signal_long_length)
-        self.long_signal = [signal_line_sma]
-        # calculate the signal line for the actual (non-EMA) data
-        for m in self.macd[self.signal_long_length + 1:]:
-            self.long_signal.append(self.ema(self.signal_long_length, m, self.long_signal[-1]))
-        # remove first entry in signal since it was only used to start calc
-        self.long_signal = self.long_signal[1:]
-        self.diffs = self.macd - self.long_signal
-
-        for i in range(1, len(self.diffs)):
-            # previous MACD was < signal and current is greater so  buy
-            if self.diffs[i - 1] < 0 and self.diffs[i] > 0:
-                return 1
-            # previous MACD was > signal and current is less so  sell
-            if self.diffs[i - 1] > 0 and self.diffs[i] < 0:
-                return -1
+        if len(self.macd) > self.signal_long_length:
+            signal_line_sma = self.movingAverage(self.macd[-self.signal_long_length:], self.signal_long_length)
+            self.long_signal = [signal_line_sma]
+            ls = self.long_signal[-1]
+            for m in self.macd[-(self.signal_long_length + 1):]:
+                self.long_signal.append(self.ema(self.signal_long_length, m, self.long_signal[-1]))
+            self.long_signal = self.long_signal[1:]
+            self.diffs.append(self.macd[-1] - self.long_signal[-1])
+            if len(self.diffs) > 2:
+                for i in range(1, len(self.diffs)):
+                    # previous MACD was < signal and current is greater so  buy
+                    if self.diffs[i - 1] < 0 and self.diffs[i] > 0:
+                        return 1
+                    # previous MACD was > signal and current is less so  sell
+                    if self.diffs[i - 1] > 0 and self.diffs[i] < 0:
+                        return -1
 
     def movingAverage(self, dataPoints, period):
         if (len(dataPoints) > 0):

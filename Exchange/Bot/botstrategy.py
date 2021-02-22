@@ -34,8 +34,9 @@ class BotStrategy(object):
         for trade in self.trades:
             if trade.status == "OPEN":
                 openTrades[self.pair] = trade
-        macd = self.indicator.MACD(self.prices)
-        rsi = self.indicator.RSI(self.prices)
+        if len(self.prices) > 24:
+            macd = self.indicator.MACD(self.prices)
+            rsi = self.indicator.RSI(self.prices)
         for v in openTrades:
             if v == self.pair:
                 tradesByPair = tradesByPair + 1
@@ -44,7 +45,7 @@ class BotStrategy(object):
             if len(self.prices) > 35:
                 self.output.log("Price: macdVal =" + str(macd))
                 self.output.log("Price: rsi =" + str(rsi))
-                if macd == 1 & rsi < 70:
+                if (macd == 1) & (rsi < 70):
                     self.trades.append(BotTrade(self.currentPrice, 0.1))
 
         # TODO: Refactor Clean up close/stoploss
