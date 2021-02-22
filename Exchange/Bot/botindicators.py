@@ -39,7 +39,6 @@ class BotIndicators(object):
         if len(self.macd) > self.signal_long_length:
             signal_line_sma = self.movingAverage(self.macd[-self.signal_long_length:], self.signal_long_length)
             self.long_signal = [signal_line_sma]
-            ls = self.long_signal[-1]
             for m in self.macd[-(self.signal_long_length + 1):]:
                 self.long_signal.append(self.ema(self.signal_long_length, m, self.long_signal[-1]))
             self.long_signal = self.long_signal[1:]
