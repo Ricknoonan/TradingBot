@@ -14,6 +14,9 @@ PUBLIC_KEY = Coinbase.coinbaseCredentials.public_key
 def main(argv):
     prevCrypto = []
     purchaseAmount = 0
+
+    fiat = 'EUR'
+
     try:
         opts, args = getopt.getopt(argv, "a:", ["amount="])
     except getopt.GetoptError:
@@ -27,13 +30,12 @@ def main(argv):
     while True:
         currentCrypto = getCryptoList()
         cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
-        fiat = 'EUR'
         if len(cryptoList) > 0:
             buyOrder(cryptoList, purchaseAmount, fiat)
         prevCrypto = currentCrypto
         print(purchaseAmount)
         print(currentCrypto)
-        time.sleep(10)
+        time.sleep(15)
 
 
 def getCryptoList():
@@ -47,12 +49,6 @@ def getCryptoList():
     return currentCrpyto
 
 
-def diff(list1, list2):
-    c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
-    d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
-    return list(c - d)
-
-
 def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
     cryptoDiffList = diff(prevCryptoList, currentCryptoList)
     if len(cryptoDiffList) == 0:
@@ -63,11 +59,11 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
         return []
 
 
-def fiatConverter(crypto, client, buyAmount, fiat):
-    pair = crypto + "-" + fiat
-    price = client.get_spot_price(currency_pair=pair)
-    buyAmountCrypto = buyAmount / price
-    return buyAmountCrypto
+def diff(list1, list2):
+    c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
+    d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
+    return ['DNT']
+    #return list(c - d)
 
 
 def buyOrder(addedCryptoList, amount, currency):
@@ -77,7 +73,16 @@ def buyOrder(addedCryptoList, amount, currency):
     for crypto in addedCryptoList:
         buyAmountCrypto = fiatConverter(crypto, client, amount, currency)
         buy = account.buy(amount=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
+        boii = buy.bu
         print(buy)
+
+
+def fiatConverter(crypto, client, buyAmount, fiat):
+    pair = crypto + "-" + fiat
+    price = client.get_spot_price(currency_pair=pair)
+    coinbaseAmount = float(price.__getitem__('amount'))
+    buyAmountCrypto = buyAmount / coinbaseAmount
+    return buyAmountCrypto
 
 
 if __name__ == "__main__":
