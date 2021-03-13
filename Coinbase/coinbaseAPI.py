@@ -35,7 +35,7 @@ def main(argv):
         prevCrypto = currentCrypto
         print(purchaseAmount)
         print(currentCrypto)
-        time.sleep(15)
+        time.sleep(5)
 
 
 def getCryptoList():
@@ -53,7 +53,7 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
     cryptoDiffList = diff(prevCryptoList, currentCryptoList)
     if len(cryptoDiffList) == 0:
         print("no new cryptos")
-    if len(cryptoDiffList) >= 1 & len(prevCryptoList) != 0:
+    if len(cryptoDiffList) >= 1:
         return cryptoDiffList
     else:
         return []
@@ -72,9 +72,9 @@ def buyOrder(addedCryptoList, amount, currency):
     payment_method = client.get_payment_methods()[0]
     for crypto in addedCryptoList:
         buyAmountCrypto = fiatConverter(crypto, client, amount, currency)
-        buy = account.buy(amount=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
-        boii = buy.bu
-        print(buy)
+        #buy = account.buy(amount=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
+        boii = account.buy()
+        print("this is a buy")
 
 
 def fiatConverter(crypto, client, buyAmount, fiat):
