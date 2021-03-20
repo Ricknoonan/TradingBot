@@ -3,10 +3,13 @@ import datetime
 import numpy as np
 import pandas as pd
 
+from Exchange.Bot.botlog import BotLog
+
 
 class BotIndicators(object):
     def __init__(self, long_prd, short_prd, signal_long_length, signal_short_length=0):
         self.macd = []
+        self.output = BotLog()
         self.long = long_prd  # long EMA
         self.short = short_prd  # short EMA
         self.signal_long_length = signal_long_length  # signal line EMA
@@ -39,18 +42,27 @@ class BotIndicators(object):
         if len(self.macd) > self.signal_long_length:
             signal_line_sma = self.movingAverage(self.macd[-self.signal_long_length:], self.signal_long_length)
             self.long_signal = [signal_line_sma]
-            for m in self.macd[-(self.signal_long_length + 1):]:
+            for m in self.macd[-self.signal_long_length:]:
                 self.long_signal.append(self.ema(self.signal_long_length, m, self.long_signal[-1]))
             self.long_signal = self.long_signal[1:]
             self.diffs.append(self.macd[-1] - self.long_signal[-1])
             if len(self.diffs) > 2:
-                for i in range(1, len(self.diffs)):
+                # previous MACD was < signal and current is greater so  buy
+                if self.diffs[-2] < 0 and self.diffs[-1] > 0:
+                    return 1
+                # previous MACD was > signal and current is less so  sell
+                if self.diffs[-2] > 0 and self.diffs[-1] < 0:
+                    return -1
+                else:
+                    self.output.log("No buy/sell")
+
+                #for i in range(1, len(self.diffs)):
                     # previous MACD was < signal and current is greater so  buy
-                    if self.diffs[i - 1] < 0 and self.diffs[i] > 0:
-                        return 1
+                 #   if self.diffs[i - 1] < 0 and self.diffs[i] > 0:
+                  #      return 1
                     # previous MACD was > signal and current is less so  sell
-                    if self.diffs[i - 1] > 0 and self.diffs[i] < 0:
-                        return -1
+                   # if self.diffs[i - 1] > 0 and self.diffs[i] < 0:
+                    #    return -1
 
     def movingAverage(self, dataPoints, period):
         if (len(dataPoints) > 0):

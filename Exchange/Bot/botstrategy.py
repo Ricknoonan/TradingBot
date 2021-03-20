@@ -38,10 +38,14 @@ class BotStrategy(object):
             if v == self.pair:
                 self.tradeByPair = self.tradeByPair + 1
 
-        if (macd != 0) & (rsi != 0):
-            self.openTrade(macd, rsi)
-        if len(self.openTrades) > 0:
-            self.closeTrade(self.openTrades, macd, rsi)
+        self.output.log("Price: macdVal =" + str(macd))
+        self.output.log("Price: rsi =" + str(rsi))
+
+        if (macd is not None) & (rsi != 0):
+            if self.tradeByPair < self.maxTradesPerPair:
+                self.openTrade(macd, rsi)
+            if len(self.openTrades) > 0:
+                self.closeTrade(self.openTrades, macd, rsi)
 
     def showPositions(self):
         for trade in self.trades:
@@ -59,12 +63,9 @@ class BotStrategy(object):
                 trade.stopLoss(self.currentPrice)
 
     def openTrade(self, macd, rsi):
-        if self.tradeByPair < self.maxTradesPerPair:
-            if len(self.prices) > 35:
-                self.output.log("Price: macdVal =" + str(macd))
-                self.output.log("Price: rsi =" + str(rsi))
-                if (macd == 1) & (rsi < 70):
-                    self.trades.append(BotTrade(self.currentPrice, 0.1))
+        if len(self.prices) > 35:
+            if (macd == 1) & (rsi > 80):
+                self.trades.append(BotTrade(self.currentPrice, 0.1))
 
 # NOTES
 # If underlying prices make a new high or low that isn't
