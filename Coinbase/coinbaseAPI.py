@@ -6,9 +6,12 @@ import requests
 import time
 
 from coinbase.wallet.client import Client
+import cbpro
+import json
 
 PRIVATE_KEY = Coinbase.coinbaseCredentials.private_key
 PUBLIC_KEY = Coinbase.coinbaseCredentials.public_key
+PASSPHRASE = Coinbase.coinbaseCredentials.passphrase
 
 
 def main(argv):
@@ -28,14 +31,17 @@ def main(argv):
             purchaseAmount = float(arg)
 
     while True:
-        currentCrypto = getCryptoList()
-        cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
-        if len(cryptoList) > 0:
-            buyOrder(cryptoList, purchaseAmount, fiat)
-        prevCrypto = currentCrypto
-        print(purchaseAmount)
-        print(currentCrypto)
-        time.sleep(5)
+        auth_client = cbpro.AuthenticatedClient(PUBLIC_KEY, PRIVATE_KEY, PASSPHRASE)
+        accounts = auth_client.get_accounts()
+        
+        # currentCrypto = getCryptoList()
+        # cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
+        # if len(cryptoList) > 0:
+        #     buyOrder(cryptoList, purchaseAmount, fiat)
+        # prevCrypto = currentCrypto
+        # print(purchaseAmount)
+        # print(currentCrypto)
+        time.sleep(15)
 
 
 def getCryptoList():
@@ -62,18 +68,19 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
 def diff(list1, list2):
     c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
     d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
-    return ['DNT']
-    #return list(c - d)
+    #return ['DNT']
+    return list(c - d)
 
 
 def buyOrder(addedCryptoList, amount, currency):
+    auth_client = cbpro.AuthenticatedClient(PUBLIC_KEY, PRIVATE_KEY, PASSPHRASE)
+    accounts = auth_client.get_accounts()
     client = Client(PUBLIC_KEY, PRIVATE_KEY)
     account = client.get_primary_account()
     payment_method = client.get_payment_methods()[0]
     for crypto in addedCryptoList:
         buyAmountCrypto = fiatConverter(crypto, client, amount, currency)
-        #buy = account.buy(amount=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
-        boii = account.buy()
+        buy = account.buy(product_=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
         print("this is a buy")
 
 
