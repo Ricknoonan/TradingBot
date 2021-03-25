@@ -31,16 +31,13 @@ def main(argv):
             purchaseAmount = float(arg)
 
     while True:
-        auth_client = cbpro.AuthenticatedClient(PUBLIC_KEY, PRIVATE_KEY, PASSPHRASE)
-        accounts = auth_client.get_accounts()
-        
-        # currentCrypto = getCryptoList()
-        # cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
-        # if len(cryptoList) > 0:
-        #     buyOrder(cryptoList, purchaseAmount, fiat)
-        # prevCrypto = currentCrypto
-        # print(purchaseAmount)
-        # print(currentCrypto)
+        currentCrypto = getCryptoList()
+        cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
+        if len(cryptoList) > 0:
+            buyOrder(cryptoList, purchaseAmount, fiat)
+        prevCrypto = currentCrypto
+        print(purchaseAmount)
+        print(currentCrypto)
         time.sleep(15)
 
 
@@ -68,25 +65,22 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
 def diff(list1, list2):
     c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
     d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
-    #return ['DNT']
     return list(c - d)
 
 
-def buyOrder(addedCryptoList, amount, currency):
+def buyOrder(addedCryptoList, amount, fiat):
     auth_client = cbpro.AuthenticatedClient(PUBLIC_KEY, PRIVATE_KEY, PASSPHRASE)
-    accounts = auth_client.get_accounts()
     client = Client(PUBLIC_KEY, PRIVATE_KEY)
-    account = client.get_primary_account()
-    payment_method = client.get_payment_methods()[0]
     for crypto in addedCryptoList:
-        buyAmountCrypto = fiatConverter(crypto, client, amount, currency)
-        buy = account.buy(product_=str(buyAmountCrypto), currency=str(crypto), payment_method=payment_method.id)
-        print("this is a buy")
+        buyAmountCrypto = fiatConverter(crypto, client, amount, fiat)
+        pair = crypto + "-" + fiat
+        buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
+        print(str(buy) + ". This is a buy of: " + str(pair) + " of " + str(amount))
 
 
-def fiatConverter(crypto, client, buyAmount, fiat):
+def fiatConverter(crypto, auth_client, buyAmount, fiat):
     pair = crypto + "-" + fiat
-    price = client.get_spot_price(currency_pair=pair)
+    price = auth_client.get_spot_price(currency_pair=pair)
     coinbaseAmount = float(price.__getitem__('amount'))
     buyAmountCrypto = buyAmount / coinbaseAmount
     return buyAmountCrypto
