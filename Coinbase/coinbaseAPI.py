@@ -1,6 +1,8 @@
 import getopt
 import sys
 import Coinbase.coinbaseCredentials
+from Coinbase.emailAlert import EmailAlert
+from Exchange.Bot import botlog
 
 import requests
 import time
@@ -8,6 +10,8 @@ import time
 from coinbase.wallet.client import Client
 import cbpro
 import json
+
+from Exchange.Bot.botlog import BotLog
 
 PRIVATE_KEY = Coinbase.coinbaseCredentials.private_key
 PUBLIC_KEY = Coinbase.coinbaseCredentials.public_key
@@ -17,6 +21,9 @@ PASSPHRASE = Coinbase.coinbaseCredentials.passphrase
 def main(argv):
     prevCrypto = []
     purchaseAmount = 0
+
+    botLog = BotLog()
+    email = EmailAlert()
 
     fiat = 'EUR'
 
@@ -34,7 +41,7 @@ def main(argv):
         currentCrypto = getCryptoList()
         cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
         if len(cryptoList) > 0:
-            buyOrder(cryptoList, purchaseAmount, fiat)
+            buyOrder(cryptoList, purchaseAmount, fiat, botLog, email)
         prevCrypto = currentCrypto
         print(purchaseAmount)
         print(currentCrypto)
@@ -65,17 +72,20 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
 def diff(list1, list2):
     c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
     d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
-    return list(c - d)
+    return ['DNT']
+    #return list(c - d)
 
 
-def buyOrder(addedCryptoList, amount, fiat):
+def buyOrder(addedCryptoList, amount, fiat, log, email):
     auth_client = cbpro.AuthenticatedClient(PUBLIC_KEY, PRIVATE_KEY, PASSPHRASE)
     client = Client(PUBLIC_KEY, PRIVATE_KEY)
     for crypto in addedCryptoList:
         buyAmountCrypto = fiatConverter(crypto, client, amount, fiat)
         pair = crypto + "-" + fiat
-        buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
-        print(str(buy) + ". This is a buy of: " + str(pair) + " of " + str(amount))
+        #buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
+        log.log("buy")
+        email.sendEmail()
+        print(str("buy") + ". This is a buy of: " + str(pair) + " of " + str(amount))
 
 
 def fiatConverter(crypto, auth_client, buyAmount, fiat):

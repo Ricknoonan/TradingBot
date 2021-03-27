@@ -1,6 +1,13 @@
-class BotLog(object):
-	def __init__(self):
-		pass
+from datetime import datetime
 
-	def log(self, message):
-		print(message)
+
+class BotLog(object):
+    def __init__(self):
+        pass
+
+    def log(self, message):
+        date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+        f = open("trade-log.txt", "a+")
+        s = date + " New trade opened: " + " " + message + "\n"
+        f.write(s)
+        print(message)
