@@ -8,7 +8,7 @@ class BotStrategy(object):
         self.output = BotLog()
         self.prices = []
         self.closes = []  # Needed for Momentum Indicator
-        self.trades = []
+        self.trades = {}
         self.maxTradesPerPair = 1
         self.tradeByPair = 0
         self.openTrades = {}
@@ -25,39 +25,30 @@ class BotStrategy(object):
         self.evaluatePositions()
 
     def evaluatePositions(self):
-        macd = 0
-        rsi = 0
-        for trade in self.trades:
-            if trade.status == "OPEN":
-                self.openTrades[self.pair] = trade
         if len(self.prices) > 24:
             macd = self.indicator.MACD(self.prices)
             rsi = self.indicator.RSI(self.prices)
-        for v in self.openTrades:
-            if v == self.pair:
-                self.tradeByPair = self.tradeByPair + 1
+            for tradePairKey, trade in self.trades.items():
+                if trade.status == "OPEN":
+                    self.closeTrade(macd, rsi, trade)
+            for v in self.trades:
+                if v == self.pair:
+                    self.tradeByPair = self.tradeByPair + 1
 
-        if (macd is not None) & (rsi != 0):
-            if self.tradeByPair < self.maxTradesPerPair:
-                self.openTrade(macd, rsi)
-            if len(self.openTrades) > 0:
-                self.closeTrade(macd, rsi)
+            if (macd is not None) & (rsi != 0):
+                if self.tradeByPair < self.maxTradesPerPair:
+                    self.openTrade(macd, rsi)
 
-    def closeTrade(self, macd, rsi):
-        for tradePairKey, trade in self.openTrades.items():
-            if (macd == -1) & (rsi > 65):
-                trade.close(self.currentPrice)
-                self.accumProfit += trade.profit
-                self.closedPosCounter += 1
-
-            if trade.status == "OPEN":
-                trade.stopLoss(self.currentPrice)
+    def closeTrade(self, macd, rsi, trade):
+        if (macd == -1) & (rsi > 65):
+            trade.close(self.currentPrice)
+            self.accumProfit += trade.profit
+            self.closedPosCounter += 1
 
     def openTrade(self, macd, rsi):
         if len(self.prices) > 35:
             if (macd == 1) & (rsi < 25):
-                self.trades.append(BotTrade(self.currentPrice, 0.1))
-                
+                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
 
 # NOTES
 # If underlying prices make a new high or low that isn't
