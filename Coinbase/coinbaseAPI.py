@@ -83,7 +83,7 @@ def buyOrder(addedCryptoList, amount, fiat, log, email):
         buyAmountCrypto = fiatConverter(crypto, client, amount, fiat)
         pair = crypto + "-" + fiat
         #buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
-        log.log("buy")
+        log.logOpen("buy")
         email.sendEmail()
         print(str("buy") + ". This is a buy of: " + str(pair) + " of " + str(amount))
 

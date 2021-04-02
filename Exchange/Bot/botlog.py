@@ -5,9 +5,14 @@ class BotLog(object):
     def __init__(self):
         pass
 
-    def log(self, message):
+    def logOpen(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
         f = open("trade-log.txt", "a+")
         s = date + " New trade opened: " + " " + message + "\n"
         f.write(s)
-        print(message)
+
+    def logClose(self, message):
+        date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+        f = open("trade-log.txt", "a+")
+        s = date + " Trade closed " + " " + message + "\n"
+        f.write(s)

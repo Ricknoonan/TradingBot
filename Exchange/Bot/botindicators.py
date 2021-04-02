@@ -53,8 +53,6 @@ class BotIndicators(object):
                 # previous MACD was > signal and current is less so  sell
                 if self.diffs[-2] > 0 and self.diffs[-1] < 0:
                     return -1
-                else:
-                    self.output.log("No buy/sell")
 
                 #for i in range(1, len(self.diffs)):
                     # previous MACD was < signal and current is greater so  buy

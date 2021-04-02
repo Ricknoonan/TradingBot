@@ -46,16 +46,15 @@ def main(argv):
     #
 
     if (startTime):
-        chart = BotChart("poloniex", pair, startTime, endTime, 86400)
+        chart = BotChart("poloniex", pair, startTime, endTime, 300)
 
         strategy = BotStrategy(pair)
 
         for candlestick in chart.getPoints():
             strategy.tick(candlestick)
-            candlestick.tick(chart.getCurrentPrice())
 
     else:
-        chart = BotChart("poloniex", "BTC_XMR", startTime, endTime, 86400, False)
+        chart = BotChart("poloniex", "BTC_XMR", startTime, endTime, 3600, False)
 
         strategy = BotStrategy("BTC_XMR")
 
