@@ -7,4 +7,4 @@ token.pickle
 token_write.pickle
 coinbaseCredentials.py
 .gitignore
-
+__pycache__/
