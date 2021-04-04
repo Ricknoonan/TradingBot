@@ -1,5 +1,8 @@
 import getopt
 import sys
+
+from coinbase.wallet.client import Client
+
 import Coinbase.coinbaseCredentials
 from Coinbase.emailAlert import EmailAlert
 from Exchange.Bot import botlog
@@ -7,9 +10,7 @@ from Exchange.Bot import botlog
 import requests
 import time
 
-from coinbase.wallet.client import Client
 import cbpro
-import json
 
 from Exchange.Bot.botlog import BotLog
 
@@ -39,9 +40,10 @@ def main(argv):
 
     while True:
         currentCrypto = getCryptoList()
-        cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
-        if len(cryptoList) > 0:
-            buyOrder(cryptoList, purchaseAmount, fiat, botLog, email)
+        if prevCrypto:
+            cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
+            if len(cryptoList) > 0:
+                buyOrder(cryptoList, purchaseAmount, fiat, botLog, email)
         prevCrypto = currentCrypto
         print(purchaseAmount)
         print(currentCrypto)
@@ -72,8 +74,7 @@ def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
 def diff(list1, list2):
     c = set(list1).union(set(list2))  # or c = set(list1) | set(list2)
     d = set(list1).intersection(set(list2))  # or d = set(list1) & set(list2)
-    return ['DNT']
-    #return list(c - d)
+    return list(c - d)
 
 
 def buyOrder(addedCryptoList, amount, fiat, log, email):
@@ -82,10 +83,10 @@ def buyOrder(addedCryptoList, amount, fiat, log, email):
     for crypto in addedCryptoList:
         buyAmountCrypto = fiatConverter(crypto, client, amount, fiat)
         pair = crypto + "-" + fiat
-        #buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
+        buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
         log.logOpen("buy")
         email.sendEmail()
-        print(str("buy") + ". This is a buy of: " + str(pair) + " of " + str(amount))
+        print(str(buy) + ". This is a buy of: " + str(pair) + " of " + str(amount))
 
 
 def fiatConverter(crypto, auth_client, buyAmount, fiat):
