@@ -4,15 +4,14 @@ import sys
 from coinbase.wallet.client import Client
 
 import Coinbase.coinbaseCredentials
-from Coinbase.emailAlert import EmailAlert
-from Exchange.Bot import botlog
+from Utils.botlog import BotLog
+from Utils.emailAlert import EmailAlert
 
 import requests
 import time
 
 import cbpro
 
-from Exchange.Bot.botlog import BotLog
 
 PRIVATE_KEY = Coinbase.coinbaseCredentials.private_key
 PUBLIC_KEY = Coinbase.coinbaseCredentials.public_key
