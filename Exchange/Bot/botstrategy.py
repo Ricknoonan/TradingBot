@@ -1,4 +1,4 @@
-from Exchange.Bot.botlog import BotLog
+from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 
@@ -7,7 +7,7 @@ class BotStrategy(object):
     def __init__(self, pair):
         self.output = BotLog()
         self.prices = []
-        self.closes = []  # Needed for Momentum Indicator
+        self.closes = []
         self.trades = {}
         self.maxTradesPerPair = 1
         self.tradeByPair = 0
@@ -18,6 +18,9 @@ class BotStrategy(object):
         self.closedPosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
+        self.RSIBuy = False
+        self.RSIBuyCounter = 0
+        self.MACDBuy = False
 
     def tick(self, candlestick):
         self.currentPrice = float(candlestick.priceAverage)
@@ -28,6 +31,12 @@ class BotStrategy(object):
         if len(self.prices) > 24:
             macd = self.indicator.MACD(self.prices)
             rsi = self.indicator.RSI(self.prices)
+            if rsi < 30:
+                self.RSIBuy = True
+                self.RSIBuyCounter += 1
+            if rsi > 70:
+                self.RSIBuy = False
+                self.RSIBuyCounter = 0
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(macd, rsi, trade)
@@ -40,15 +49,20 @@ class BotStrategy(object):
                     self.openTrade(macd, rsi)
 
     def closeTrade(self, macd, rsi, trade):
-        if (macd == -1) & (rsi > 65):
+        if (macd == -1) & (rsi > 70):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
     def openTrade(self, macd, rsi):
         if len(self.prices) > 35:
-            if (macd == 1) & (rsi < 25):
+            if (macd == 1) & self.buyRSI():
                 self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
+
+    def buyRSI(self):
+        if self.RSIBuy & self.RSIBuyCounter < 10:
+            return True
+
 
 # NOTES
 # If underlying prices make a new high or low that isn't
