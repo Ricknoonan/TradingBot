@@ -8,6 +8,7 @@ from Exchange.Bot.botchart import BotChart
 from Exchange.Bot.botstrategy import BotStrategy
 from Exchange.Bot.botlog import BotLog
 from Exchange.Bot.botcandlestick import BotCandlestick
+from Exchange.Bot.botstrategy1 import BotStrategy1
 
 
 def main(argv):
@@ -48,7 +49,8 @@ def main(argv):
     if (startTime):
         chart = BotChart("poloniex", pair, startTime, endTime, 300)
 
-        strategy = BotStrategy(pair)
+        #strategy = BotStrategy(pair)
+        strategy = BotStrategy1(pair)
 
         for candlestick in chart.getPoints():
             strategy.tick(candlestick)
@@ -56,7 +58,8 @@ def main(argv):
     else:
         chart = BotChart("poloniex", "BTC_XMR", startTime, endTime, 3600, False)
 
-        strategy = BotStrategy("BTC_XMR")
+        #strategy = BotStrategy("BTC_XMR")
+        strategy = BotStrategy1("BTC_XMR")
 
         candlesticks = []
         developingCandlestick = BotCandlestick()
