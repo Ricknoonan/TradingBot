@@ -3,7 +3,7 @@ from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 
 
-class BotStrategy2(object):
+class BotStrategy3(object):
     def __init__(self, pair):
         self.output = BotLog()
         self.prices = []
@@ -18,7 +18,6 @@ class BotStrategy2(object):
         self.closedPosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
-        self.strategyPnL = 0
 
     def tick(self, candlestick):
         self.currentPrice = float(candlestick.priceAverage)
@@ -29,31 +28,27 @@ class BotStrategy2(object):
         if len(self.prices) > 24:
             macd = self.indicator.MACD(self.prices)
             rsi = self.indicator.RSI(self.prices)
-            print(macd)
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
-                    self.closeTrade(macd, trade)
+                    self.closeTrade(macd, rsi, trade)
             for v in self.trades:
                 if v == self.pair:
                     self.tradeByPair = self.tradeByPair + 1
+
             if (macd is not None) & (rsi != 0):
                 if self.tradeByPair < self.maxTradesPerPair:
                     self.openTrade(macd, rsi)
-            self.tradeByPair = 0
 
-    def closeTrade(self, macd, trade):
-        if macd == -1:
-            tradeProfit = trade.close(self.currentPrice)
-            self.strategyPnL += tradeProfit
-            self.output.logClose("Strategy running PnL: " + str(self.strategyPnL))
+    def closeTrade(self, macd, rsi, trade):
+        if (macd == -1) & (rsi > 60):
+            trade.close(self.currentPrice)
+            self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
     def openTrade(self, macd, rsi):
         if len(self.prices) > 35:
-            if macd == 1:
-                trade = (BotTrade(self.currentPrice, 0.1))
-                self.trades[self.pair] = trade
-                trade.showTrade()
+            if (macd == 1) & (rsi < 40):
+                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
 
 
 # NOTES

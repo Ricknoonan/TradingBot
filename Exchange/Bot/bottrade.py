@@ -21,6 +21,7 @@ class BotTrade(object):
         self.output.logClose("Entry Price: " + str(self.entryPrice) + " Status: " + self.status + " Exit Price: " + str(
             self.exitPrice) + " P/L: " + str(self.profit) + "\n")
         print("CLOSED " + self.tradeStatus)
+        return self.profit
 
     def stopLoss(self, currentPrice):
         if self.stopLossPrice:

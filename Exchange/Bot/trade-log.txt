@@ -1,8 +1,0 @@
-2021-04-08-20:02:04 New trade opened:  Trade opened
-2021-04-08-20:02:04 New trade opened:  Entry Price: 0.00425389 Status: OPEN
-2021-04-08-20:02:04 Trade closed  Entry Price: 0.00425389 Status: CLOSED Exit Price: 0.00424481 P/L: -9.079999999999852e-06
-
-2021-04-08-20:02:49 New trade opened:  Trade opened
-2021-04-08-20:02:49 New trade opened:  Entry Price: 0.00425389 Status: OPEN
-2021-04-08-20:02:49 Trade closed  Entry Price: 0.00425389 Status: CLOSED Exit Price: 0.00424481 P/L: -9.079999999999852e-06
-
