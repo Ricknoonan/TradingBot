@@ -3,13 +3,13 @@ from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 
 
-class BotStrategy1(object):
+class BotStrategy2(object):
     def __init__(self, pair):
         self.output = BotLog()
         self.prices = []
         self.closes = []
         self.trades = {}
-        self.maxTradesPerPair = 1
+        self.maxTradesPerPair = 10
         self.tradeByPair = 0
         self.openTrades = {}
         self.currentPrice = ""
@@ -18,10 +18,6 @@ class BotStrategy1(object):
         self.closedPosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
-        self.RSIBuy = False
-        self.RSIBuyCounter = 0
-        self.MACDBuy = False
-        self.RSITimeSlice = 5
 
     def tick(self, candlestick):
         self.currentPrice = float(candlestick.priceAverage)
@@ -32,15 +28,7 @@ class BotStrategy1(object):
         if len(self.prices) > 24:
             macd = self.indicator.MACD(self.prices)
             rsi = self.indicator.RSI(self.prices)
-            print(rsi)
             print(macd)
-            if rsi < 30:
-                self.RSIBuy = True
-                self.RSIBuyCounter = 0
-            if self.buyRSI():
-                self.RSIBuyCounter += 1
-            if self.RSIBuy & (self.RSIBuyCounter == self.RSITimeSlice):
-                self.RSIBuy = False
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(macd, rsi, trade)
@@ -50,24 +38,21 @@ class BotStrategy1(object):
 
             if (macd is not None) & (rsi != 0):
                 if self.tradeByPair < self.maxTradesPerPair:
-                    self.openTrade(macd)
+                    self.openTrade(macd, rsi)
 
     def closeTrade(self, macd, rsi, trade):
-        if (macd == -1) & (rsi > 70):
+        if macd == -1:
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
-    def openTrade(self, macd):
+    def openTrade(self, macd, rsi):
         if len(self.prices) > 35:
-            if (macd == 1) & self.buyRSI():
+            if macd == 1:
                 trade = (BotTrade(self.currentPrice, 0.1))
                 self.trades[self.pair] = trade
                 trade.showTrade()
 
-    def buyRSI(self):
-        if self.RSIBuy & self.RSIBuyCounter < self.RSITimeSlice:
-            return True
 
 # NOTES
 # If underlying prices make a new high or low that isn't

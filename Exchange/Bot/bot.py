@@ -9,6 +9,7 @@ from Exchange.Bot.botstrategy import BotStrategy
 from Exchange.Bot.botlog import BotLog
 from Exchange.Bot.botcandlestick import BotCandlestick
 from Exchange.Bot.botstrategy1 import BotStrategy1
+from Exchange.Bot.botstrategy2 import BotStrategy2
 
 
 def main(argv):
@@ -50,7 +51,9 @@ def main(argv):
         chart = BotChart("poloniex", pair, startTime, endTime, 300)
 
         #strategy = BotStrategy(pair)
-        strategy = BotStrategy1(pair)
+        #strategy = BotStrategy1(pair)
+        strategy = BotStrategy2(pair)
+
 
         for candlestick in chart.getPoints():
             strategy.tick(candlestick)
