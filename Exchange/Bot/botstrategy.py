@@ -1,6 +1,8 @@
 from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
+import numpy as np
+import pandas as pd
 
 
 class BotStrategy(object):
@@ -18,6 +20,7 @@ class BotStrategy(object):
         self.closedPosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
+        self.MACDIndicator = False
 
     def tick(self, candlestick):
         self.currentPrice = float(candlestick.priceAverage)
@@ -25,32 +28,44 @@ class BotStrategy(object):
         self.evaluatePositions()
 
     def evaluatePositions(self):
-        if len(self.prices) > 24:
-            macd = self.indicator.MACD(self.prices)
-            rsi = self.indicator.RSI(self.prices)
+        priceFrame = pd.DataFrame({'price': self.prices})
+        if len(priceFrame) > 24:
+            macd = self.indicator.MACD(priceFrame)
+            rsi = self.indicator.RSI(priceFrame)
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(macd, rsi, trade)
             for v in self.trades:
                 if v == self.pair:
                     self.tradeByPair = self.tradeByPair + 1
-
-            if (macd is not None) & (rsi != 0):
-                if self.tradeByPair < self.maxTradesPerPair:
-                    self.openTrade(macd, rsi)
+            if macd is not None:
+                self.setMACD(macd)
+                if rsi != 0 & self.tradeByPair < self.maxTradesPerPair:
+                    self.openTrade(rsi)
 
     def closeTrade(self, macd, rsi, trade):
         if (macd == -1) & (rsi > 60):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
+            self.output.logClose(
+                "Entry Price: " + str(trade.entryPrice) + " Status: " + trade.status + " Exit Price: " + str(
+                    trade.exitPrice) + " P/L: " + str(trade.profit) + "\n" + "Strategy P/L: " + str(self.accumProfit))
 
-    def openTrade(self, macd, rsi):
+    def openTrade(self, rsi):
         if len(self.prices) > 35:
-            if (macd == 1) & (rsi < 40):
+            if self.MACDIndicator & (rsi < 40):
                 self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
 
+    def isMacd(self):
+        self.MACDIndicator = True
+        return self.MACDIndicator
 
+    def setMACD(self, macd):
+        if macd > 0:
+            self.MACDIndicator = True
+        if macd < 0:
+            self.MACDIndicator = False
 # NOTES
 # If underlying prices make a new high or low that isn't
 # confirmed by the RSI, this divergence can signal a price reversal.

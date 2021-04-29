@@ -21,10 +21,9 @@ class BotIndicators(object):
         self.short_ema = []
         self.diffs = []
 
-    def MACD(self, prices):
+    def MACD(self, priceFrame):
         # use first <long/short> # of points to start the EMA
         # since it depends on previous EMA
-        priceFrame = pd.DataFrame({'price': prices})
         long_sma_data = priceFrame.loc[:self.long - 1]['price']
         short_sma_data = priceFrame.loc[:self.short - 1]['price']
         long_sma_value = self.movingAverage(long_sma_data, self.long)

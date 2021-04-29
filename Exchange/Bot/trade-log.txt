@@ -1,0 +1,100 @@
+2021-04-26-20:36:12 New trade opened:  Trade opened
+2021-04-26-20:36:13 New trade opened:  Trade opened
+2021-04-26-20:36:13 New trade opened:  Trade opened
+2021-04-26-20:36:13 New trade opened:  Trade opened
+2021-04-26-20:36:14 Trade closed  Entry Price: 0.00399187 Status: CLOSED Exit Price: 0.00397508 P/L: -1.6790000000000034e-05
+Strategy P/L: -1.6790000000000034e-05
+2021-04-26-20:36:14 New trade opened:  Trade opened
+2021-04-26-20:36:15 New trade opened:  Trade opened
+2021-04-26-20:36:15 Trade closed  Entry Price: 0.00381407 Status: CLOSED Exit Price: 0.00387264 P/L: 5.8569999999999976e-05
+Strategy P/L: 4.177999999999994e-05
+2021-04-26-20:36:16 New trade opened:  Trade opened
+2021-04-26-20:36:17 Trade closed  Entry Price: 0.00385984 Status: CLOSED Exit Price: 0.00391773 P/L: 5.7890000000000545e-05
+Strategy P/L: 9.967000000000049e-05
+2021-04-26-20:36:17 New trade opened:  Trade opened
+2021-04-26-20:36:18 Trade closed  Entry Price: 0.00384425 Status: CLOSED Exit Price: 0.00393896 P/L: 9.471000000000002e-05
+Strategy P/L: 0.0001943800000000005
+2021-04-26-20:36:20 New trade opened:  Trade opened
+2021-04-26-20:36:20 New trade opened:  Trade opened
+2021-04-26-20:36:20 New trade opened:  Trade opened
+2021-04-26-20:36:20 Trade closed  Entry Price: 0.00388888 Status: CLOSED Exit Price: 0.00393854 P/L: 4.965999999999998e-05
+Strategy P/L: 0.0002440400000000005
+2021-04-26-20:36:25 New trade opened:  Trade opened
+2021-04-26-20:36:26 New trade opened:  Trade opened
+2021-04-26-20:36:26 New trade opened:  Trade opened
+2021-04-26-20:36:26 New trade opened:  Trade opened
+2021-04-26-20:36:26 New trade opened:  Trade opened
+2021-04-26-20:36:27 Trade closed  Entry Price: 0.00397904 Status: CLOSED Exit Price: 0.00406247 P/L: 8.343000000000066e-05
+Strategy P/L: 0.00032747000000000115
+2021-04-26-20:36:28 New trade opened:  Trade opened
+2021-04-26-20:36:29 New trade opened:  Trade opened
+2021-04-26-20:36:32 Trade closed  Entry Price: 0.00393744 Status: CLOSED Exit Price: 0.004 P/L: 6.25599999999997e-05
+Strategy P/L: 0.00039003000000000084
+2021-04-26-20:36:34 New trade opened:  Trade opened
+2021-04-26-20:36:35 Trade closed  Entry Price: 0.0039561 Status: CLOSED Exit Price: 0.00406391 P/L: 0.00010780999999999985
+Strategy P/L: 0.0004978400000000007
+2021-04-26-20:36:36 New trade opened:  Trade opened
+2021-04-26-20:36:37 Trade closed  Entry Price: 0.00404649 Status: CLOSED Exit Price: 0.00408647 P/L: 3.9980000000000224e-05
+Strategy P/L: 0.0005378200000000009
+2021-04-26-20:36:41 New trade opened:  Trade opened
+2021-04-26-20:36:44 New trade opened:  Trade opened
+2021-04-26-20:36:45 New trade opened:  Trade opened
+2021-04-26-20:36:46 New trade opened:  Trade opened
+2021-04-26-20:36:47 Trade closed  Entry Price: 0.00392608 Status: CLOSED Exit Price: 0.00407126 P/L: 0.00014517999999999996
+Strategy P/L: 0.0006830000000000009
+2021-04-26-20:36:54 New trade opened:  Trade opened
+2021-04-26-20:36:55 New trade opened:  Trade opened
+2021-04-26-20:36:55 New trade opened:  Trade opened
+2021-04-26-20:36:56 New trade opened:  Trade opened
+2021-04-26-20:36:56 New trade opened:  Trade opened
+2021-04-26-20:36:56 New trade opened:  Trade opened
+2021-04-26-20:36:59 Trade closed  Entry Price: 0.00407693 Status: CLOSED Exit Price: 0.00403786 P/L: -3.9070000000000424e-05
+Strategy P/L: 0.0006439300000000005
+2021-04-26-20:37:00 New trade opened:  Trade opened
+2021-04-26-20:37:00 New trade opened:  Trade opened
+2021-04-26-20:37:01 Trade closed  Entry Price: 0.00395609 Status: CLOSED Exit Price: 0.00397669 P/L: 2.059999999999996e-05
+Strategy P/L: 0.0006645300000000004
+2021-04-26-20:37:02 New trade opened:  Trade opened
+2021-04-26-20:37:05 Trade closed  Entry Price: 0.00391527 Status: CLOSED Exit Price: 0.0041019 P/L: 0.00018663000000000013
+Strategy P/L: 0.0008511600000000005
+2021-04-26-20:37:06 New trade opened:  Trade opened
+2021-04-26-20:37:07 Trade closed  Entry Price: 0.00411237 Status: CLOSED Exit Price: 0.0042445 P/L: 0.00013213000000000027
+Strategy P/L: 0.0009832900000000008
+2021-04-26-20:37:08 New trade opened:  Trade opened
+2021-04-26-20:37:08 New trade opened:  Trade opened
+2021-04-26-20:37:08 New trade opened:  Trade opened
+2021-04-26-20:37:14 Trade closed  Entry Price: 0.00408735 Status: CLOSED Exit Price: 0.00418 P/L: 9.264999999999968e-05
+Strategy P/L: 0.0010759400000000005
+2021-04-26-20:37:19 New trade opened:  Trade opened
+2021-04-26-20:37:20 New trade opened:  Trade opened
+2021-04-26-20:37:21 New trade opened:  Trade opened
+2021-04-26-20:37:23 Trade closed  Entry Price: 0.00416705 Status: CLOSED Exit Price: 0.0042472 P/L: 8.014999999999932e-05
+Strategy P/L: 0.0011560899999999998
+2021-04-26-20:37:25 New trade opened:  Trade opened
+2021-04-26-20:37:27 New trade opened:  Trade opened
+2021-04-26-20:37:28 Trade closed  Entry Price: 0.00420823 Status: CLOSED Exit Price: 0.00438337 P/L: 0.00017513999999999984
+Strategy P/L: 0.0013312299999999997
+2021-04-26-20:37:28 New trade opened:  Trade opened
+2021-04-26-20:37:36 Trade closed  Entry Price: 0.00424118 Status: CLOSED Exit Price: 0.0044973 P/L: 0.0002561200000000003
+Strategy P/L: 0.00158735
+2021-04-26-20:37:37 New trade opened:  Trade opened
+2021-04-26-20:37:40 New trade opened:  Trade opened
+2021-04-26-20:37:41 Trade closed  Entry Price: 0.00435925 Status: CLOSED Exit Price: 0.00439306 P/L: 3.380999999999957e-05
+Strategy P/L: 0.0016211599999999995
+2021-04-26-20:37:43 New trade opened:  Trade opened
+2021-04-26-20:37:44 New trade opened:  Trade opened
+2021-04-26-20:37:45 Trade closed  Entry Price: 0.00448666 Status: CLOSED Exit Price: 0.004638 P/L: 0.0001513399999999998
+Strategy P/L: 0.0017724999999999993
+2021-04-26-20:37:48 New trade opened:  Trade opened
+2021-04-26-20:37:52 Trade closed  Entry Price: 0.00451046 Status: CLOSED Exit Price: 0.00451311 P/L: 2.6499999999998747e-06
+Strategy P/L: 0.0017751499999999992
+2021-04-26-20:37:56 New trade opened:  Trade opened
+2021-04-26-20:37:56 Trade closed  Entry Price: 0.00458987 Status: CLOSED Exit Price: 0.00467418 P/L: 8.430999999999977e-05
+Strategy P/L: 0.001859459999999999
+2021-04-26-20:38:01 New trade opened:  Trade opened
+2021-04-26-20:38:02 New trade opened:  Trade opened
+2021-04-26-20:38:02 Trade closed  Entry Price: 0.00456544 Status: CLOSED Exit Price: 0.00469207 P/L: 0.00012662999999999997
+Strategy P/L: 0.001986089999999999
+2021-04-26-20:38:06 New trade opened:  Trade opened
+2021-04-26-20:38:08 Trade closed  Entry Price: 0.00453742 Status: CLOSED Exit Price: 0.00458668 P/L: 4.9259999999999755e-05
+Strategy P/L: 0.0020353499999999987

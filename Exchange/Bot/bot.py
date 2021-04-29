@@ -47,12 +47,12 @@ def main(argv):
     # historical data that has been populate on constructor call
     #
 
-    if (startTime):
+    if startTime:
         chart = BotChart("poloniex", pair, startTime, endTime, 300)
 
         #strategy = BotStrategy(pair)
         #strategy = BotStrategy1(pair)
-        strategy = BotStrategy2(pair)
+        strategy = BotStrategy(pair)
 
 
         for candlestick in chart.getPoints():
