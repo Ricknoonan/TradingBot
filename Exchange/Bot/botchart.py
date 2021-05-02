@@ -9,7 +9,7 @@ class BotChart(object):
     startTime = 1491048000
     endTime = 1491591200
 
-    def __init__(self, exchange, pair, startTime, endTime, period, backtest=True):
+    def __init__(self, exchange, pair=None, startTime=None, endTime=None, period=None, backtest=True):
         self.pair = pair
         self.period = period
         self.startTime = startTime
@@ -17,7 +17,7 @@ class BotChart(object):
 
         self.data = []
 
-        if (exchange == "poloniex"):
+        if exchange == "poloniex":
             self.conn = poloniex('', '')
 
             if backtest:
@@ -30,7 +30,7 @@ class BotChart(object):
                             BotCandlestick(self.period, datum['open'], datum['close'], datum['high'], datum['low'],
                                            datum['weightedAverage'], datum['date']))
 
-        if (exchange == "bittrex"):
+        if exchange == "bittrex":
             if backtest:
                 url = "https://bittrex.com/Api/v2.0/pub/market/GetTicks?marketName=" + self.pair + "&tickInterval=" + self.period + "&_=" + str(
                     self.startTime)

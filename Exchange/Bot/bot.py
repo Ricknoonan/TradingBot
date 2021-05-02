@@ -48,7 +48,7 @@ def main(argv):
     #
 
     if startTime:
-        chart = BotChart("poloniex", pair, startTime, endTime, 300)
+        chart = BotChart("poloniex", pair, startTime, endTime, 300, True)
 
         #strategy = BotStrategy(pair)
         #strategy = BotStrategy1(pair)

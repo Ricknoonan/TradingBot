@@ -8,7 +8,7 @@ from Exchange.Bot.botlog import BotLog
 from Exchange.Bot.botcandlestick import BotCandlestick
 
 def main(argv):
-	chart = BotChart("poloniex","BTC_XMR",300,False)
+	chart = BotChart("poloniex", "BTC_XMR", 300, False,, True
 
 	strategy = BotStrategy()
 
