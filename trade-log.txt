@@ -1,71 +1,7 @@
-2021-05-24-21:19:05no new cryptos 
-2021-05-24-21:19:45 no new cryptos 
-2021-05-24-21:20:05 no new cryptos 
-2021-05-24-21:20:25 no new cryptos 
-2021-05-24-21:20:45 no new cryptos 
-2021-05-24-21:21:05 no new cryptos 
-2021-05-24-21:21:25 no new cryptos 
-2021-05-24-21:21:45 no new cryptos 
-2021-05-24-21:22:05 no new cryptos 
-2021-05-24-21:22:26 no new cryptos 
-2021-05-24-21:22:46 no new cryptos 
-2021-05-24-21:23:06 no new cryptos 
-2021-05-24-21:23:26 no new cryptos 
-2021-05-24-21:23:46 no new cryptos 
-2021-05-24-21:24:06 no new cryptos 
-2021-05-24-21:24:26 no new cryptos 
-2021-05-24-21:24:47 no new cryptos 
-2021-05-24-21:25:07 no new cryptos 
-2021-05-24-21:25:27 no new cryptos 
-2021-05-24-21:25:47 no new cryptos 
-2021-05-24-21:26:07 no new cryptos 
-2021-05-24-21:26:27 no new cryptos 
-2021-05-24-21:26:47 no new cryptos 
-2021-05-24-21:27:07 no new cryptos 
-2021-05-24-21:27:28 no new cryptos 
-2021-05-24-21:27:48 no new cryptos 
-2021-05-24-21:28:08 no new cryptos 
-2021-05-24-21:28:28 no new cryptos 
-2021-05-24-21:28:48 no new cryptos 
-2021-05-24-21:29:08 no new cryptos 
-2021-05-24-21:29:28 no new cryptos 
-2021-05-24-21:29:49 no new cryptos 
-2021-05-24-21:30:09 no new cryptos 
-2021-05-24-21:30:29 no new cryptos 
-2021-05-24-21:30:49 no new cryptos 
-2021-05-24-21:31:09 no new cryptos 
-2021-05-24-21:31:29 no new cryptos 
-2021-05-24-21:31:49 no new cryptos 
-2021-05-24-21:32:10 no new cryptos 
-2021-05-24-21:32:30 no new cryptos 
-2021-05-24-21:32:50 no new cryptos 
-2021-05-24-21:33:10 no new cryptos 
-2021-05-24-21:33:30 no new cryptos 
-2021-05-24-21:33:50 no new cryptos 
-2021-05-24-21:34:10 no new cryptos 
-2021-05-24-21:34:31 no new cryptos 
-2021-05-24-21:34:51 no new cryptos 
-2021-05-24-21:35:11 no new cryptos 
-2021-05-24-21:35:31 no new cryptos 
-2021-05-24-21:35:51 no new cryptos 
-2021-05-24-21:36:11 no new cryptos 
-2021-05-24-21:36:31 no new cryptos 
-2021-05-24-21:36:51 no new cryptos 
-2021-05-24-21:37:12 no new cryptos 
-2021-05-24-21:37:32 no new cryptos 
-2021-05-24-21:37:52 no new cryptos 
-2021-05-24-21:38:12 no new cryptos 
-2021-05-24-21:38:32 no new cryptos 
-2021-05-24-21:38:52 no new cryptos 
-2021-05-24-21:39:12 no new cryptos 
-2021-05-24-21:39:33 no new cryptos 
-2021-05-24-21:39:53 no new cryptos 
-2021-05-24-21:40:13 no new cryptos 
-2021-05-24-21:40:33 no new cryptos 
-2021-05-24-21:40:53 no new cryptos 
-2021-05-24-21:41:13 no new cryptos 
-2021-05-24-21:41:33 no new cryptos 
-2021-05-24-21:41:54 no new cryptos 
-2021-05-24-21:42:14 no new cryptos 
-2021-05-24-21:42:34 no new cryptos 
-2021-05-24-21:42:55 no new cryptos 
+2021-06-11-19:27:03Product not found
+ICz-EUR
+2021-06-11 19:27:03.342271
+2021-06-11-19:28:49Product not found Pair: ICz-EUR
+2021-06-11-19:30:07 Product not found ICz-EUR
+2021-06-11-19:32:16 {'id': 'a1cae5b8-374b-4aae-98de-1e6edcfa7936', 'product_id': 'ADA-EUR', 'side': 'buy', 'stp': 'dc', 'funds': '4.975124', 'specified_funds': '5', 'type': 'market', 'post_only': False, 'created_at': '2021-06-11T18:32:17.611794Z', 'fill_fees': '0', 'filled_size': '0', 'executed_value': '0', 'status': 'pending', 'settled': False}. This is a buy of: ADA-EUR of 5
+2021-06-11-19:32:18 {'id': 'ddce7134-3a66-40f9-8bad-d7fde0f4da60', 'product_id': 'DOGE-EUR', 'side': 'buy', 'stp': 'dc', 'funds': '4.97512', 'specified_funds': '5', 'type': 'market', 'post_only': False, 'created_at': '2021-06-11T18:32:18.886978Z', 'fill_fees': '0', 'filled_size': '0', 'executed_value': '0', 'status': 'pending', 'settled': False}. This is a buy of: DOGE-EUR of 5
