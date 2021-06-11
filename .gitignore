@@ -8,4 +8,5 @@ token_write.pickle
 coinbaseCredentials.py
 .gitignore
 binanceCredentials.py
+coinbasescan.py
 __pycache__/

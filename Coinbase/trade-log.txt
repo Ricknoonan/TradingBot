@@ -1,9 +1,0 @@
-2021-04-04-15:47:53 New trade opened:  buy
-2021-04-04-15:47:54 New trade opened:  buy
-2021-04-04-15:47:56 New trade opened:  buy
-2021-04-04-15:47:59 New trade opened:  buy
-2021-04-04-15:48:01 New trade opened:  buy
-2021-04-04-15:48:04 New trade opened:  buy
-2021-04-04-15:48:05 New trade opened:  buy
-2021-04-04-15:48:07 New trade opened:  buy
-2021-04-04-15:48:08 New trade opened:  buy

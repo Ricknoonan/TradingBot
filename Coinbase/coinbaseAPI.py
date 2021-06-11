@@ -28,7 +28,7 @@ def main(argv):
     fiat = 'EUR'
 
     try:
-        opts, args = getopt.getopt(argv, "a:", ["amount="])
+        opts, args = getopt.getopt(argv, "a:t:", ["amount=", "time="])
     except getopt.GetoptError:
         print('error')
         sys.exit(2)
@@ -36,17 +36,19 @@ def main(argv):
     for opt, arg in opts:
         if opt in ("-a", "--amount"):
             purchaseAmount = float(arg)
+        if opt in ("-t", "--time"):
+            sleepy = float(arg)
 
     while True:
         currentCrypto = getCryptoList()
         if prevCrypto:
-            cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto)
+            cryptoList = getNewCryptoAddedList(prevCrypto, currentCrypto, botLog)
             if len(cryptoList) > 0:
                 buyOrder(cryptoList, purchaseAmount, fiat, botLog, email)
         prevCrypto = currentCrypto
         print(purchaseAmount)
         print(currentCrypto)
-        time.sleep(15)
+        time.sleep(sleepy)
 
 
 def getCryptoList():
@@ -60,10 +62,12 @@ def getCryptoList():
     return currentCrpyto
 
 
-def getNewCryptoAddedList(prevCryptoList, currentCryptoList):
+def getNewCryptoAddedList(prevCryptoList, currentCryptoList, log):
     cryptoDiffList = diff(prevCryptoList, currentCryptoList)
     if len(cryptoDiffList) == 0:
-        print("no new cryptos")
+        message = "no new cryptos"
+        print(message)
+        log.log(message)
     if len(cryptoDiffList) >= 1:
         return cryptoDiffList
     else:
@@ -83,7 +87,7 @@ def buyOrder(addedCryptoList, amount, fiat, log, email):
         buyAmountCrypto = fiatConverter(crypto, client, amount, fiat)
         pair = crypto + "-" + fiat
         buy = auth_client.place_market_order(product_id=pair, side='buy', funds=amount)
-        log.logOpen("buy")
+        log.logOpen()
         email.sendEmail()
         print(str(buy) + ". This is a buy of: " + str(pair) + " of " + str(amount))
 

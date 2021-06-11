@@ -1,6 +1,5 @@
 import sys
 from pythonic_binance.client import Client
-from ScannerBot import binanceCredential
 
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -11,7 +10,7 @@ import json
 # 0 get markets from binance
 # 1. Get 10 small cap coins
 # 1.1. need to get list of all coins traded and sort by market cap. then pick the smallest 10 caps that have a BTC market on binance
-# 2. Check for momentum, developer activity,
+# 2. Check for momentum, developer activity, news?
 # 2.1. this will involve pulling candlesticks for each small cap coin and running various analysis. Check for computational load.
 # 3. Buy and sell short term, or buy and hold.
 # 3.1.
@@ -53,7 +52,7 @@ def Main(argv):
         data = json.loads(response.text)
         datum = data.get('data')
         for coin in datum:
-            print (coin)
+            print(coin)
         #print(datum)
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
