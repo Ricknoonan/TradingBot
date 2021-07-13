@@ -10,3 +10,4 @@ coinbaseCredentials.py
 binanceCredentials.py
 coinbasescan.py
 __pycache__/
+/ScannerBot/binanceCredential.py
