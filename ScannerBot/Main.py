@@ -1,4 +1,8 @@
 import sys
+import time
+
+from urllib.error import URLError
+
 from pythonic_binance.client import Client
 
 from requests import Request, Session
@@ -13,6 +17,10 @@ import json
 # 2.1. this will involve pulling candlesticks for each small cap coin and running various analysis.
 # 3. Buy and sell short term, or buy and hold.
 # 3.1.
+from Exchange.Bot.botcandlestick import BotCandlestick
+from Exchange.Bot.botchart import BotChart
+from Exchange.Bot.botstrategy import BotStrategy
+from Exchange.Bot.botstrategy1 import BotStrategy1
 from ScannerBot import binanceCredential
 
 
@@ -71,10 +79,22 @@ def compare(baseBTC, marketCapDict):
     return "No Match"
 
 
+def strategyFeed(smallCapCoin):
+    startTime = 1615226099
+    endTime = 1617900899
+    coin = "BTC_" + smallCapCoin
+    chart = BotChart("poloniex", coin, startTime, endTime, 300, True)
+
+    strategy = BotStrategy1(coin)
+
+    for candlestick in chart.getPoints():
+        strategy.tick(candlestick)
+
 def Main():
     bastBTC = binanceData()
     marketCapDict = marketCapData()
     result = compare(bastBTC, marketCapDict)
+    strategyFeed(result)
     print(result)
 
 
