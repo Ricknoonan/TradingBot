@@ -68,30 +68,34 @@ def binanceData():
         if 'BTC' in coin.get('symbol')[3:]:
             market = coin.get('symbol')
             base = market[:-3]
-            baseBTC.append(base)
+            baseBTC.append("BTC" + base)
     return baseBTC
 
 
 def compare(baseBTC, marketCapDict):
+    quotes = []
     for key, value in marketCapDict.items():
         for quote in baseBTC:
-            if quote == key:
-                return quote
+            if (quote == key) & len(quotes) < 5:
+                quotes.append(quote)
     return "No Match"
 
 
-def strategyFeed(smallCapCoin):
+def strategyFeed(smallCapCoins):
     startTime = 1615226099
     endTime = 1617900899
-    coin = "BTC" + smallCapCoin
     api_key = binanceCredential.public_key
     api_secret = binanceCredential.private_key
     client = Client(api_key, api_secret)
 
-    while True:
-        currret_price = client.get_symbol_ticker(params=coin)
+    for coin in smallCapCoins:
         strategy = BotStrategy(coin)
-        strategy.tick(currret_price)
+        nextCoin = False
+        while nextCoin is False:
+            current_price = client.get_symbol_ticker(params=coin)
+            trade = strategy.tick(current_price)
+            if trade.status == 'CLOSED':
+                nextCoin = True
 
 
     # chart = BotChart("poloniex", coin, startTime, endTime, 300, True)

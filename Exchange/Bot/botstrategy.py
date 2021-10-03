@@ -25,7 +25,7 @@ class BotStrategy(object):
     def tick(self, price):
         self.currentPrice = float(price)
         self.prices.append(self.currentPrice)
-        self.evaluatePositions()
+        return self.evaluatePositions()
 
     def evaluatePositions(self):
         priceFrame = pd.DataFrame({'price': self.prices})
@@ -35,6 +35,7 @@ class BotStrategy(object):
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(macd, rsi, trade)
+                    return trade
             for v in self.trades:
                 if v == self.pair:
                     self.tradeByPair = self.tradeByPair + 1
