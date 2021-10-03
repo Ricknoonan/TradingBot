@@ -39,6 +39,9 @@ class BotChart(object):
 
                 self.data = rawdata["result"]
 
+        if exchange == 'binance':
+            binance
+
     def getPoints(self):
         return self.data
 

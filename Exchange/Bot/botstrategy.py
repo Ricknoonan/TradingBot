@@ -11,7 +11,7 @@ class BotStrategy(object):
         self.prices = []
         self.closes = []
         self.trades = {}
-        self.maxTradesPerPair = 10
+        self.maxTradesPerPair = 1
         self.tradeByPair = 0
         self.openTrades = {}
         self.currentPrice = ""
@@ -22,8 +22,8 @@ class BotStrategy(object):
         self.pair = pair
         self.MACDIndicator = False
 
-    def tick(self, candlestick):
-        self.currentPrice = float(candlestick.priceAverage)
+    def tick(self, price):
+        self.currentPrice = float(price)
         self.prices.append(self.currentPrice)
         self.evaluatePositions()
 
@@ -40,7 +40,7 @@ class BotStrategy(object):
                     self.tradeByPair = self.tradeByPair + 1
             if macd is not None:
                 self.setMACD(macd)
-                if rsi != 0 & self.tradeByPair < self.maxTradesPerPair:
+                if rsi != 0 & self.tradeByPair <= self.maxTradesPerPair:
                     self.openTrade(rsi)
 
     def closeTrade(self, macd, rsi, trade):
@@ -56,10 +56,6 @@ class BotStrategy(object):
         if len(self.prices) > 35:
             if self.MACDIndicator & (rsi < 40):
                 self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
-
-    def isMacd(self):
-        self.MACDIndicator = True
-        return self.MACDIndicator
 
     def setMACD(self, macd):
         if macd > 0:

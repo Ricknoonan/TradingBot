@@ -1,0 +1,11 @@
+pandas~=1.1.0
+coinbase~=2.1.0
+requests~=2.13.0
+cbpro~=1.1.4
+json-extensions~=0.2.1
+cffi~=1.14.1
+numpy~=1.19.1
+yfinance~=0.1.55
+setuptools~=47.1.0
+Flask~=1.1.2
+binance~=0.3

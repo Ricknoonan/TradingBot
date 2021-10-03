@@ -2,7 +2,8 @@ import sys
 import time
 
 from urllib.error import URLError
-
+import os
+from time import sleep
 from pythonic_binance.client import Client
 
 from requests import Request, Session
@@ -82,13 +83,24 @@ def compare(baseBTC, marketCapDict):
 def strategyFeed(smallCapCoin):
     startTime = 1615226099
     endTime = 1617900899
-    coin = "BTC_" + smallCapCoin
-    chart = BotChart("poloniex", coin, startTime, endTime, 300, True)
+    coin = "BTC" + smallCapCoin
+    api_key = binanceCredential.public_key
+    api_secret = binanceCredential.private_key
+    client = Client(api_key, api_secret)
 
-    strategy = BotStrategy1(coin)
+    while True:
+        currret_price = client.get_symbol_ticker(params=coin)
+        strategy = BotStrategy(coin)
+        strategy.tick(currret_price)
 
-    for candlestick in chart.getPoints():
-        strategy.tick(candlestick)
+
+    # chart = BotChart("poloniex", coin, startTime, endTime, 300, True)
+    #
+    # strategy = BotStrategy1(coin)
+    #
+    # for candlestick in chart.getPoints():
+    #     strategy.tick(candlestick)
+
 
 def Main():
     bastBTC = binanceData()
