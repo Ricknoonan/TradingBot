@@ -82,8 +82,6 @@ def compare(baseBTC, marketCapDict):
 
 
 def strategyFeed(smallCapCoins):
-    startTime = 1615226099
-    endTime = 1617900899
     api_key = binanceCredential.public_key
     api_secret = binanceCredential.private_key
     client = Client(api_key, api_secret)
@@ -96,22 +94,19 @@ def strategyFeed(smallCapCoins):
             trade = strategy.tick(current_price)
             if trade.status == 'CLOSED':
                 nextCoin = True
+            sleep(100)
 
-
-    # chart = BotChart("poloniex", coin, startTime, endTime, 300, True)
-    #
-    # strategy = BotStrategy1(coin)
-    #
-    # for candlestick in chart.getPoints():
-    #     strategy.tick(candlestick)
 
 
 def Main():
-    bastBTC = binanceData()
-    marketCapDict = marketCapData()
-    result = compare(bastBTC, marketCapDict)
-    strategyFeed(result)
-    print(result)
+    while True:
+        bastBTC = binanceData()
+        marketCapDict = marketCapData()
+        result = compare(bastBTC, marketCapDict)
+        if result is not "No Match":
+            strategyFeed(result)
+            print(result)
+        sleep(1000)
 
 
 if __name__ == "__main__":

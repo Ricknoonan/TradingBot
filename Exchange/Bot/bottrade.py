@@ -34,6 +34,14 @@ class BotTrade(object):
             self.output.logOpen(self.tradeStatus)
             print(self.tradeStatus)
 
+    def isClosed(self):
+        if self.status == "CLOSED":
+            return True
+        else:
+            return False
+
+
+
 
 # def get_extrema(isMin):
 #   return [x for x in range(len(mom))

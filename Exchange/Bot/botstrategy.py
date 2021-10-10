@@ -35,13 +35,11 @@ class BotStrategy(object):
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(macd, rsi, trade)
-                    return trade
-            for v in self.trades:
-                if v == self.pair:
-                    self.tradeByPair = self.tradeByPair + 1
+                    if trade.isClosed():
+                        return trade
             if macd is not None:
                 self.setMACD(macd)
-                if rsi != 0 & self.tradeByPair <= self.maxTradesPerPair:
+                if rsi != 0:
                     self.openTrade(rsi)
 
     def closeTrade(self, macd, rsi, trade):
