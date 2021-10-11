@@ -18,7 +18,7 @@ class BotStrategy(object):
         self.currentClose = ""
         self.accumProfit = 0
         self.closedPosCounter = 0
-        self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
+        self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9)
         self.pair = pair
         self.MACDIndicator = False
 
@@ -29,7 +29,7 @@ class BotStrategy(object):
 
     def evaluatePositions(self):
         priceFrame = pd.DataFrame({'price': self.prices})
-        if len(priceFrame) > 24:
+        if len(priceFrame) > 26:
             macd = self.indicator.MACD(priceFrame)
             rsi = self.indicator.RSI(priceFrame)
             for tradePairKey, trade in self.trades.items():

@@ -22,6 +22,7 @@ from Exchange.Bot.botcandlestick import BotCandlestick
 from Exchange.Bot.botchart import BotChart
 from Exchange.Bot.botstrategy import BotStrategy
 from Exchange.Bot.botstrategy1 import BotStrategy1
+from Exchange.Bot.botstrategy3 import BotStrategy3
 from ScannerBot import binanceCredential
 
 
@@ -87,22 +88,24 @@ def strategyFeed(smallCapCoins):
     client = Client(api_key, api_secret)
 
     for coin in smallCapCoins:
-        strategy = BotStrategy(coin)
+        strategy = BotStrategy3(coin)
         nextCoin = False
         while nextCoin is False:
-            current_price = client.get_symbol_ticker(params=coin)
-            trade = strategy.tick(current_price)
-            if trade.status == 'CLOSED':
-                nextCoin = True
-            sleep(100)
-
+            currentPriceDict = client.get_symbol_ticker(symbol=coin)
+            currentPrice = currentPriceDict.get('price')
+            trade = strategy.tick(currentPrice)
+            if trade is not None:
+                if trade.status == 'CLOSED':
+                    nextCoin = True
+            sleep(2)
 
 
 def Main():
     while True:
-        bastBTC = binanceData()
-        marketCapDict = marketCapData()
-        result = compare(bastBTC, marketCapDict)
+        # bastBTC = binanceData()
+        # marketCapDict = marketCapData()
+        # result = compare(bastBTC, marketCapDict)
+        result = ["LTCBTC"]
         if result is not "No Match":
             strategyFeed(result)
             print(result)

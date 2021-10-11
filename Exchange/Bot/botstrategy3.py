@@ -1,6 +1,8 @@
 from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
+import pandas as pd
+
 
 
 class BotStrategy3(object):
@@ -19,28 +21,26 @@ class BotStrategy3(object):
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
 
-    def tick(self, candlestick):
-        self.currentPrice = float(candlestick.priceAverage)
+    def tick(self, price):
+        self.currentPrice = float(price)
         self.prices.append(self.currentPrice)
         self.evaluatePositions()
 
     def evaluatePositions(self):
-        if len(self.prices) > 24:
-            macd = self.indicator.MACD(self.prices)
-            rsi = self.indicator.RSI(self.prices)
+        priceFrame = pd.DataFrame({'price': self.prices})
+        if len(priceFrame) > 12:
+            momentum = self.indicator.momentumROC(self.prices)
+            rsi = self.indicator.RSI(priceFrame) > 60
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
-                    self.closeTrade(macd, rsi, trade)
-            for v in self.trades:
-                if v == self.pair:
-                    self.tradeByPair = self.tradeByPair + 1
+                    self.closeTrade(momentum, rsi, trade)
+                    if trade.isClosed():
+                        return trade
+            if momentum > 20 & (rsi < 40):
+                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
 
-            if (macd is not None) & (rsi != 0):
-                if self.tradeByPair < self.maxTradesPerPair:
-                    self.openTrade(macd, rsi)
-
-    def closeTrade(self, macd, rsi, trade):
-        if (macd == -1) & (rsi > 60):
+    def closeTrade(self, momentum, rsi, trade):
+        if (momentum < 0) & (rsi > 60):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1

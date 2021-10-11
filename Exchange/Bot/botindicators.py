@@ -53,19 +53,11 @@ class BotIndicators(object):
                 if self.diffs[-2] > 0 and self.diffs[-1] < 0:
                     return -1
 
-                #for i in range(1, len(self.diffs)):
-                    # previous MACD was < signal and current is greater so  buy
-                 #   if self.diffs[i - 1] < 0 and self.diffs[i] > 0:
-                  #      return 1
-                    # previous MACD was > signal and current is less so  sell
-                   # if self.diffs[i - 1] > 0 and self.diffs[i] < 0:
-                    #    return -1
-
     def movingAverage(self, dataPoints, period):
         if (len(dataPoints) > 0):
-            return sum(dataPoints)/period
+            return sum(dataPoints) / period
 
-    def RSI(self, prices, period=14):
+    def RSI(self, prices, period=12):
         deltas = np.diff(prices)
         seed = deltas[:period + 1]
         up = seed[seed >= 0].sum() / period
@@ -92,8 +84,8 @@ class BotIndicators(object):
         else:
             return 50  # output a neutral amount until enough prices in list to calculate RSI
 
-    def momentum(self, dataPoints, period=14):
-        if (len(dataPoints) > period - 1):
+    def momentumROC(self, dataPoints, period=12):
+        if len(dataPoints) > period - 1:
             return dataPoints[-1] * 100 / dataPoints[-period]
 
     def ema(self, N, curr_price, past_ema):
