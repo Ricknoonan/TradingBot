@@ -29,7 +29,7 @@ class BotStrategy3(object):
 
     def evaluatePositions(self):
         priceFrame = pd.DataFrame({'price': self.prices})
-        if len(priceFrame) > 12:
+        if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame) > 60
             for tradePairKey, trade in self.trades.items():
@@ -37,9 +37,9 @@ class BotStrategy3(object):
                     self.closeTrade(momentum, trade)
                     if trade.isClosed():
                         return trade
-            if momentum > 0:
+            if momentum > 100:
                 self.momentumCounter += 1
-            if momentum < 0:
+            if momentum < 100:
                 self.momentumCounter = 0
             self.openTrade(rsi)
 
@@ -56,5 +56,5 @@ class BotStrategy3(object):
             base = self.pair[3]
             base = base + "USD"
             priceUSD = client.get_symbol_ticker(base)
-            amount = 10/priceUSD
+            amount = 10 / priceUSD
             client.create_order(symbol=self.pair, type="MARKET", quantity=amount)

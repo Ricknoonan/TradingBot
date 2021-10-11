@@ -88,11 +88,11 @@ def strategyFeed(smallCapCoins):
         while nextCoin is False:
             currentPriceDict = client.get_symbol_ticker(symbol=coin)
             currentPrice = currentPriceDict.get('price')
-            trade = strategy.tick(currentPrice, )
+            trade = strategy.tick(currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
                     nextCoin = True
-            sleep(2)
+            sleep(1)
 
 
 def Main():

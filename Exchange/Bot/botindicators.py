@@ -57,8 +57,9 @@ class BotIndicators(object):
         if (len(dataPoints) > 0):
             return sum(dataPoints) / period
 
-    def RSI(self, prices, period=12):
-        deltas = np.diff(prices)
+    def RSI(self, prices, period=24):
+        array = np.array(prices)
+        deltas = np.diff(array)
         seed = deltas[:period + 1]
         up = seed[seed >= 0].sum() / period
         down = -seed[seed < 0].sum() / period
