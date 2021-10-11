@@ -1,8 +1,8 @@
+from ScannerBot.BinanceUtil import getClient
 from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
-
 
 
 class BotStrategy3(object):
@@ -20,6 +20,7 @@ class BotStrategy3(object):
         self.closedPosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
+        self.momentumCounter = 0
 
     def tick(self, price):
         self.currentPrice = float(price)
@@ -33,28 +34,27 @@ class BotStrategy3(object):
             rsi = self.indicator.RSI(priceFrame) > 60
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
-                    self.closeTrade(momentum, rsi, trade)
+                    self.closeTrade(momentum, trade)
                     if trade.isClosed():
                         return trade
-            if momentum > 20 & (rsi < 40):
-                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
+            if momentum > 0:
+                self.momentumCounter += 1
+            if momentum < 0:
+                self.momentumCounter = 0
+            self.openTrade(rsi)
 
-    def closeTrade(self, momentum, rsi, trade):
-        if (momentum < 0) & (rsi > 60):
+    def closeTrade(self, rsi, trade):
+        if rsi > 60:
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
-    def openTrade(self, macd, rsi):
-        if len(self.prices) > 35:
-            if (macd == 1) & (rsi < 40):
-                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
-
-
-# NOTES
-# If underlying prices make a new high or low that isn't
-# confirmed by the RSI, this divergence can signal a price reversal.
-# If the RSI makes a lower high and then follows with a downside move below
-# a previous low, a Top Swing Failure has occurred. If the RSI makes a higher
-# low and then follows with an upside move above a previous high, a Bottom
-# Swing Failure has occurred.
+    def openTrade(self, rsi):
+        if self.momentumCounter > 5 & (rsi < 40):
+            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
+            client = getClient()
+            base = self.pair[3]
+            base = base + "USD"
+            priceUSD = client.get_symbol_ticker(base)
+            amount = 10/priceUSD
+            client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
