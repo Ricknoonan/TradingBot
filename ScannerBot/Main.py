@@ -92,7 +92,7 @@ def strategyFeed(smallCapCoins):
             if trade is not None:
                 if trade.status == 'CLOSED':
                     nextCoin = True
-            sleep(1)
+            sleep(60)
 
 
 def Main():

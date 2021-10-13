@@ -58,30 +58,29 @@ class BotIndicators(object):
             return sum(dataPoints) / period
 
     def RSI(self, prices, period=24):
-        array = np.array(prices)
+        array = prices['price'].to_numpy()
         deltas = np.diff(array)
         seed = deltas[:period + 1]
         up = seed[seed >= 0].sum() / period
         down = -seed[seed < 0].sum() / period
         rs = up / down
-        rsi = np.zeros_like(prices)
-        rsi[:period] = 100. - 100. / (1. + rs)
-
-        for i in range(period, len(prices)):
-            delta = deltas[i - 1]  # cause the diff is 1 shorter
-            if delta > 0:
-                upval = delta
-                downval = 0.
-            else:
-                upval = 0.
-                downval = -delta
-
-            up = (up * (period - 1) + upval) / period
-            down = (down * (period - 1) + downval) / period
-            rs = up / down
-            rsi[i] = 100. - 100. / (1. + rs)
+        rsi = 100. - (100. / (1. + rs))
+        #
+        # for i in range(period, len(prices)):
+        #     delta = deltas[i - 1]  # cause the diff is 1 shorter
+        #     if delta > 0:
+        #         upval = delta
+        #         downval = 0.
+        #     else:
+        #         upval = 0.
+        #         downval = -delta
+        #
+        #     up = (up * (period - 1) + upval) / period
+        #     down = (down * (period - 1) + downval) / period
+        #     rs = up / down
+        #     rsi[i] = 100. - 100. / (1. + rs)
         if len(prices) > period:
-            return rsi[-1]
+            return rsi
         else:
             return 50  # output a neutral amount until enough prices in list to calculate RSI
 

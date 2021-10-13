@@ -31,7 +31,7 @@ class BotStrategy3(object):
         priceFrame = pd.DataFrame({'price': self.prices})
         if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
-            rsi = self.indicator.RSI(priceFrame) > 60
+            rsi = self.indicator.RSI(priceFrame)
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(momentum, trade)
@@ -44,13 +44,13 @@ class BotStrategy3(object):
             self.openTrade(rsi)
 
     def closeTrade(self, rsi, trade):
-        if rsi > 60:
+        if (rsi > 60) or (self.momentumCounter < -5):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
     def openTrade(self, rsi):
-        if self.momentumCounter > 5 & (rsi < 40):
+        if (self.momentumCounter > 5) or (rsi < 40 & rsi is not 0):
             self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
             client = getClient()
             base = self.pair[3]
