@@ -92,19 +92,20 @@ def strategyFeed(smallCapCoins):
             if trade is not None:
                 if trade.status == 'CLOSED':
                     nextCoin = True
-            sleep(60)
+            sleep(1800)
 
 
 def Main():
     while True:
-        # bastBTC = binanceData()
-        # marketCapDict = marketCapData()
-        # result = compare(bastBTC, marketCapDict)
-        result = ["LTCBTC"]
+        bastBTC = binanceData()
+        marketCapDict = marketCapData()
+        result = compare(bastBTC, marketCapDict)
+        print(result)
         if result is not "No Match":
             strategyFeed(result)
             print(result)
-        sleep(1000)
+        else:
+            sleep(1800)
 
 
 if __name__ == "__main__":

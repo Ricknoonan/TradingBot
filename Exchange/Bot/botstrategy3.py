@@ -32,6 +32,8 @@ class BotStrategy3(object):
         if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
+            print("This is RSI: " + rsi + "and this is momentum: "
+                  + momentum + " at this iteration: " + str(len(self.prices)))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(momentum, trade)
@@ -44,17 +46,19 @@ class BotStrategy3(object):
             self.openTrade(rsi)
 
     def closeTrade(self, rsi, trade):
-        if (rsi > 60) or (self.momentumCounter < -5):
+        if ((rsi > 60) & (rsi < 100)) or (self.momentumCounter < -5):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
+            print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
 
     def openTrade(self, rsi):
-        if (self.momentumCounter > 5) or (rsi < 40 & rsi is not 0):
+        if (self.momentumCounter > 5) or ((rsi < 40) & (rsi > 0)):
             self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
             client = getClient()
-            base = self.pair[3]
-            base = base + "USD"
-            priceUSD = client.get_symbol_ticker(base)
-            amount = 10 / priceUSD
-            client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
+            base = self.pair[3:]
+            base = base + "USDT"
+            priceUSD = client.get_symbol_ticker(symbol=base)
+            amount = 10 / float(priceUSD.get('price'))
+            print("Trade Opened for this amount: " + str(amount))
+            #client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
