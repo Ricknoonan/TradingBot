@@ -7,7 +7,6 @@ class BotTrade(object):
         self.status = "OPEN"
         self.entryPrice = currentPrice
         self.exitPrice = 0.0
-        self.output.logOpen("Trade opened")
         self.profit = 0
         self.tradeStatus = "Entry Price: " + str(self.entryPrice) + " Status: " + str(self.status)
         if stopLoss:

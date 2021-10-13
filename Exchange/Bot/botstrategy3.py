@@ -62,3 +62,5 @@ class BotStrategy3(object):
             amount = 10 / float(priceUSD.get('price'))
             print("Trade Opened for this amount: " + str(amount))
             #client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
+            self.output.logOpen("Trade opened")
+
