@@ -30,8 +30,10 @@ from ScannerBot.BinanceUtil import getClient
 def sortByMarketCap(datum):
     marketCap = {}
     for coin in datum:
-        if coin.get('quote').get('USD').get('market_cap') != 0:
-            marketCap[coin.get('symbol')] = (coin.get('quote').get('USD').get('market_cap'))
+        marketCapAmn = coin.get('quote').get('USD').get('market_cap')
+        percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
+        if (marketCapAmn != 0) & (percentChange24h > 3):
+            marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
 
@@ -70,14 +72,17 @@ def binanceData():
             baseBTC.append("BTC" + base)
     return baseBTC
 
-
+#TODO this needs to be fixed!!!
 def compare(baseBTC, marketCapDict):
     quotes = []
     for key, value in marketCapDict.items():
         for quote in baseBTC:
             if (quote == key) & len(quotes) < 5:
                 quotes.append(quote)
-    return "No Match"
+    if len(quotes) > 0:
+        return quotes
+    else:
+        return "No Match"
 
 
 def strategyFeed(smallCapCoins):
