@@ -32,7 +32,7 @@ def sortByMarketCap(datum):
     for coin in datum:
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
-        if (marketCapAmn != 0) & (percentChange24h > 3):
+        if (marketCapAmn > 100000) & (percentChange24h > 3):
             marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
@@ -62,22 +62,25 @@ def marketCapData():
 
 
 def binanceData():
-    baseBTC = []
+    baseBTC = {}
     client = getClient()
     info = client.get_all_tickers()
     for coin in info:
-        if 'BTC' in coin.get('symbol')[3:]:
+        if 'BTC' in coin.get('symbol')[-3:]:
             market = coin.get('symbol')
+            price = coin.get('price')
             base = market[:-3]
-            baseBTC.append("BTC" + base)
+            baseBTC[base] = price
     return baseBTC
 
-#TODO this needs to be fixed!!!
+
 def compare(baseBTC, marketCapDict):
     quotes = []
-    for key, value in marketCapDict.items():
-        for quote in baseBTC:
-            if (quote == key) & len(quotes) < 5:
+    for key, marketCapValue in marketCapDict.items():
+        for quote, price in baseBTC.items():
+            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
+                # diff = getDiff(marketCapValue, price)
+                # if diff < 5:
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -85,30 +88,59 @@ def compare(baseBTC, marketCapDict):
         return "No Match"
 
 
+def getDiff(value, price):
+    if value > price:
+        percentDiff = (price / value) * 100
+    elif price > value:
+        percentDiff = (value / price) * 100
+    else:
+        percentDiff = 0
+    return percentDiff
+
+
 def strategyFeed(smallCapCoins):
     client = getClient()
     for coin in smallCapCoins:
-        strategy = BotStrategy3(coin)
+        pair = coin + "BTC"
+        strategy = BotStrategy3(pair)
         nextCoin = False
         while nextCoin is False:
-            currentPriceDict = client.get_symbol_ticker(symbol=coin)
+            currentPriceDict = client.get_symbol_ticker(symbol=pair)
             currentPrice = currentPriceDict.get('price')
             trade = strategy.tick(currentPrice)
+            print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
                     nextCoin = True
-            sleep(1800)
+            sleep(150)
+
+
+def backTestFeed(smallCapCoins):
+    client = getClient()
+    for coin in smallCapCoins:
+        pair = coin + "BTC"
+        strategy = BotStrategy3(pair)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval='1h', start_str=1633927022)
+        for kline in historicalOutput:
+            currentPrice = kline[4]
+            trade = strategy.tick(currentPrice)
+            print(pair + "\n" + currentPrice)
+            if trade is not None:
+                if trade.status == 'CLOSED':
+                    nextCoin = True
+            #sleep(150)
 
 
 def Main():
     while True:
-        bastBTC = binanceData()
+        baseBTC = binanceData()
         marketCapDict = marketCapData()
-        result = compare(bastBTC, marketCapDict)
-        print(result)
-        if result is not "No Match":
-            strategyFeed(result)
-            print(result)
+        smallCapCoins = compare(baseBTC, marketCapDict)
+        print(smallCapCoins)
+        if smallCapCoins is not "No Match":
+            #strategyFeed(smallCapCoins)
+            backTestFeed(smallCapCoins)
+            print(smallCapCoins)
         else:
             sleep(1800)
 

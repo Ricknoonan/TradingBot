@@ -13,3 +13,4 @@
 2021-10-13-15:31:05 New trade opened:  Trade opened
 2021-10-13-15:33:04 New trade opened:  Trade opened
 2021-10-13-15:35:33 New trade opened:  Trade opened
+2021-10-25-07:24:01 New trade opened:  Trade opened
