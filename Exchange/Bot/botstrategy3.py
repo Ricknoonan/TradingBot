@@ -5,8 +5,6 @@ from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
 
 
-
-
 class BotStrategy3(object):
     def __init__(self, pair):
         self.output = BotLog()
@@ -24,10 +22,13 @@ class BotStrategy3(object):
         self.pair = pair
         self.momentumCounter = 0
 
-    def tick(self, price):
+    def tick(self, price, nextCoin):
         self.currentPrice = float(price)
-        self.prices.append(self.currentPrice*1000)
-        self.evaluatePositions()
+        if nextCoin:
+            self.prices = []
+        else:
+            self.prices.append(self.currentPrice * 1000)
+        return self.evaluatePositions()
 
     def evaluatePositions(self):
         priceFrame = pd.DataFrame({'price': self.prices})
@@ -35,7 +36,7 @@ class BotStrategy3(object):
         if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
-            print("This is RSI: " + str(rsi) + "and this is momentum: "+ str(momentum))
+            print("This is RSI: " + str(rsi) + "and this is momentum: " + str(momentum))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(momentum, trade)
@@ -48,23 +49,25 @@ class BotStrategy3(object):
             self.openTrade(rsi)
 
     def closeTrade(self, rsi, trade):
-        if ((rsi > 60) & (rsi < 100)) or (self.momentumCounter < -5):
+        if ((rsi > 65) & (rsi < 100)) or (self.momentumCounter < -5):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
+            self.output.logClose("Profit: " + str(self.accumProfit))
             print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
 
-    #TODO: Find way of getting price quoted in a fiat currency
+    # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi):
-        if ((self.momentumCounter > 5) or ((rsi < 40) & (rsi > 0))) and (self.isOpen()):
-            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
+        if ((self.momentumCounter > 5) or ((rsi < 35) & (rsi > 0))) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
-            amount = 10 / float(priceUSD.get('price'))
-            print("Trade Opened for this amount: " + str(amount))
-            #client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
+            positionSize = 10 / float(priceUSD.get('price'))
+            quantity = float(self.currentPrice)/positionSize
+            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize))
+            print("Trade Opened for this amount: " + str(positionSize))
+            # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
             self.output.logOpen("Trade opened")
 
     def isOpen(self):
@@ -74,7 +77,5 @@ class BotStrategy3(object):
                     return False
                 else:
                     return True
-
-
-
-
+        else:
+            return True

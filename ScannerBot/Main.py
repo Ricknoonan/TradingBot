@@ -118,17 +118,19 @@ def strategyFeed(smallCapCoins):
 def backTestFeed(smallCapCoins):
     client = getClient()
     for coin in smallCapCoins:
+        nextCoin = False
         pair = coin + "BTC"
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval='1h', start_str=1633927022)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval='2h', start_str=1633080201)
         for kline in historicalOutput:
             currentPrice = kline[4]
-            trade = strategy.tick(currentPrice)
+            trade = strategy.tick(currentPrice, nextCoin)
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
                     nextCoin = True
             #sleep(150)
+        nextCoin = True
 
 
 def Main():

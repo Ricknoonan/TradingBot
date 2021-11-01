@@ -60,7 +60,7 @@ class BotIndicators(object):
     def RSI(self, prices, period=24):
         array = prices['price'].to_numpy()
         deltas = np.diff(array)
-        seed = deltas[:period + 1]
+        seed = deltas[-period:]
         up = seed[seed >= 0].sum() / period
         down = -seed[seed < 0].sum() / period
         rs = up / down
