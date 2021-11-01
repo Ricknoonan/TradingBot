@@ -121,7 +121,7 @@ def backTestFeed(smallCapCoins):
         nextCoin = False
         pair = coin + "BTC"
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval='2h', start_str=1633080201)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval='2h', start_str=int(1633080201))
         for kline in historicalOutput:
             currentPrice = kline[4]
             trade = strategy.tick(currentPrice, nextCoin)
