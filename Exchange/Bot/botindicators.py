@@ -84,7 +84,7 @@ class BotIndicators(object):
         else:
             return 50  # output a neutral amount until enough prices in list to calculate RSI
 
-    def momentumROC(self, dataPoints, period=12):
+    def momentumROC(self, dataPoints, period=4):
         if len(dataPoints) > period - 1:
             return dataPoints[-1] * 100 / dataPoints[-period]
 

@@ -121,30 +121,32 @@ def backTestFeed(smallCapCoins):
         nextCoin = False
         pair = coin + "BTC"
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval='2h', start_str=int(1633080201))
+        historicalOutput = client.get_klines(symbol=pair, interval="2h", limit=3000, startTime=1623058188, endTime=None)
         for kline in historicalOutput:
             currentPrice = kline[4]
             trade = strategy.tick(currentPrice, nextCoin)
             print(pair + "\n" + currentPrice)
-            if trade is not None:
-                if trade.status == 'CLOSED':
-                    nextCoin = True
+            # if trade is not None:
+            #     if trade.status == 'CLOSED':
+            #         nextCoin = True
+            #         break
             #sleep(150)
         nextCoin = True
 
 
 def Main():
-    while True:
-        baseBTC = binanceData()
-        marketCapDict = marketCapData()
-        smallCapCoins = compare(baseBTC, marketCapDict)
-        print(smallCapCoins)
-        if smallCapCoins is not "No Match":
-            #strategyFeed(smallCapCoins)
-            backTestFeed(smallCapCoins)
-            print(smallCapCoins)
-        else:
-            sleep(1800)
+    #while True:
+       # baseBTC = binanceData()
+        #marketCapDict = marketCapData()
+        #smallCapCoins = compare(baseBTC, marketCapDict)
+        #print(smallCapCoins)
+        #if smallCapCoins is not "No Match":
+        #    #strategyFeed(smallCapCoins)
+
+        backTestFeed(["SUPER"])
+       #     print(smallCapCoins)
+       # else:
+       #     sleep(1800)
 
 
 if __name__ == "__main__":
