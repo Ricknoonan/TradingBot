@@ -9,6 +9,7 @@ from pythonic_binance.client import Client
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+from Utils.botlog import BotLog
 
 # binance
 # 0 get markets from binance -> Done
@@ -107,7 +108,7 @@ def strategyFeed(smallCapCoins):
         while nextCoin is False:
             currentPriceDict = client.get_symbol_ticker(symbol=pair)
             currentPrice = currentPriceDict.get('price')
-            trade = strategy.tick(currentPrice)
+            trade = strategy.tick(currentPrice, nextCoin)
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
@@ -120,10 +121,13 @@ def backTestFeed(smallCapCoins):
     for coin in smallCapCoins:
         nextCoin = False
         pair = coin + "BTC"
+        output = BotLog()
         strategy = BotStrategy3(pair)
         historicalOutput = client.get_klines(symbol=pair, interval="2h", limit=3000, startTime=1623058188, endTime=None)
         for kline in historicalOutput:
             currentPrice = kline[4]
+            timestamp = kline[0]
+            #output.logPrices(price=currentPrice, timestamp=timestamp)
             trade = strategy.tick(currentPrice, nextCoin)
             print(pair + "\n" + currentPrice)
             # if trade is not None:

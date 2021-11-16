@@ -48,16 +48,14 @@ class BotStrategy3(object):
                 self.momentumCounter = 0
             self.openTrade(rsi)
 
-    # or (self.momentumCounter < -3)
     def closeTrade(self, rsi, trade):
-        if (rsi > 65) & (rsi < 100):
+        if ((rsi > 80) and (rsi < 100)) or (self.stopLoss(trade)) or (self.stopProfit(trade)):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
             self.output.logClose("Profit: " + str(self.accumProfit))
             print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
 
- #   (self.momentumCounter > 3) or
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi):
         if (40 > rsi > 0) and (self.isOpen()):
@@ -65,7 +63,7 @@ class BotStrategy3(object):
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
-            positionSize = 10 / float(priceUSD.get('price'))
+            positionSize = 100 / float(priceUSD.get('price'))
             quantity = float(self.currentPrice) / positionSize
             self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize))
             print("Trade Opened for this amount: " + str(positionSize))
@@ -81,3 +79,19 @@ class BotStrategy3(object):
                     return True
         else:
             return True
+
+    def stopLoss(self, trade):
+        difference = self.currentPrice - trade.getEntryPrice()
+        percentDiff = (difference / self.currentPrice) * 100
+        if percentDiff < -80:
+            return True
+        else:
+            return False
+
+    def stopProfit(self, trade):
+        difference = self.currentPrice - trade.getEntryPrice()
+        percentDiff = (difference / self.currentPrice) * 100
+        if percentDiff > 70:
+            return True
+        else:
+            return False

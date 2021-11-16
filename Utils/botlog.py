@@ -1,3 +1,4 @@
+import csv
 from datetime import datetime
 
 
@@ -22,3 +23,11 @@ class BotLog(object):
         f = open("trade-log.txt", "a+")
         s = date + message + "\n"
         f.write(s)
+
+    def logPrices(self, price, timestamp):
+        with open('prices.csv', 'w', encoding='UTF8', newline='') as f:
+            writer = csv.writer(f)
+
+            # write the data
+            writer.writerow([str(price), str(timestamp)])
+

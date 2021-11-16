@@ -40,3 +40,6 @@ class BotTrade(object):
             return True
         else:
             return False
+
+    def getEntryPrice(self):
+        return self.entryPrice

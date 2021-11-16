@@ -54,7 +54,7 @@ class BotStrategy(object):
     def openTrade(self, rsi):
         if len(self.prices) > 35:
             if self.MACDIndicator & (rsi < 40):
-                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1))
+                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, ))
 
     def setMACD(self, macd):
         if macd > 0:
