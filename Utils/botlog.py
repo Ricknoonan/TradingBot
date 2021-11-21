@@ -25,7 +25,7 @@ class BotLog(object):
         f.write(s)
 
     def logPrices(self, price, timestamp):
-        with open('prices.csv', 'w', encoding='UTF8', newline='') as f:
+        with open('prices.csv', 'w', encoding='UTF8', newline=' ') as f:
             writer = csv.writer(f)
 
             # write the data

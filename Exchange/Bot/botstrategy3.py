@@ -39,7 +39,7 @@ class BotStrategy3(object):
             print("This is RSI: " + str(rsi) + "and this is momentum: " + str(momentum))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
-                    self.closeTrade(momentum, trade)
+                    self.closeTrade(trade)
                     if trade.isClosed():
                         return trade
             if momentum > 100:
@@ -48,8 +48,8 @@ class BotStrategy3(object):
                 self.momentumCounter = 0
             self.openTrade(rsi)
 
-    def closeTrade(self, rsi, trade):
-        if ((rsi > 80) and (rsi < 100)) or (self.stopLoss(trade)) or (self.stopProfit(trade)):
+    def closeTrade(self, trade):
+        if self.stopLoss(trade) or self.stopProfit(trade):
             trade.close(self.currentPrice)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
@@ -58,13 +58,13 @@ class BotStrategy3(object):
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi):
-        if (40 > rsi > 0) and (self.isOpen()):
+        if (45 > rsi > 0) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
             positionSize = 100 / float(priceUSD.get('price'))
-            quantity = float(self.currentPrice) / positionSize
+            quantity = positionSize / float(self.currentPrice)
             self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize))
             print("Trade Opened for this amount: " + str(positionSize))
             # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
@@ -82,8 +82,9 @@ class BotStrategy3(object):
 
     def stopLoss(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
+        print("Diff: " + str(difference))
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff < -80:
+        if percentDiff < -60:
             return True
         else:
             return False
@@ -91,7 +92,7 @@ class BotStrategy3(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 70:
+        if percentDiff > 10:
             return True
         else:
             return False

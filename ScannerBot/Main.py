@@ -116,6 +116,7 @@ def strategyFeed(smallCapCoins):
             sleep(150)
 
 
+# TODO:fix the next coin setter
 def backTestFeed(smallCapCoins):
     client = getClient()
     for coin in smallCapCoins:
@@ -123,34 +124,32 @@ def backTestFeed(smallCapCoins):
         pair = coin + "BTC"
         output = BotLog()
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_klines(symbol=pair, interval="2h", limit=3000, startTime=1623058188, endTime=None)
+        historicalOutput = client.get_klines(symbol=pair, interval="1h", limit=3000, startTime=1628942428000,
+                                             endTime=None)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
-            #output.logPrices(price=currentPrice, timestamp=timestamp)
+            # output.logPrices(price=currentPrice, timestamp=timestamp)
             trade = strategy.tick(currentPrice, nextCoin)
             print(pair + "\n" + currentPrice)
-            # if trade is not None:
-            #     if trade.status == 'CLOSED':
-            #         nextCoin = True
-            #         break
-            #sleep(150)
+            if trade is not None:
+                if trade.status == 'CLOSED':
+                    nextCoin = True
+                    break
+            # sleep(150)
         nextCoin = True
 
 
 def Main():
-    #while True:
-       # baseBTC = binanceData()
-        #marketCapDict = marketCapData()
-        #smallCapCoins = compare(baseBTC, marketCapDict)
-        #print(smallCapCoins)
-        #if smallCapCoins is not "No Match":
-        #    #strategyFeed(smallCapCoins)
-
-        backTestFeed(["SUPER"])
-       #     print(smallCapCoins)
-       # else:
-       #     sleep(1800)
+    while True:
+        baseBTC = binanceData()
+        marketCapDict = marketCapData()
+        smallCapCoins = compare(baseBTC, marketCapDict)
+        print(smallCapCoins)
+        if smallCapCoins is not "No Match":
+            backTestFeed(smallCapCoins)
+        else:
+            sleep(1800)
 
 
 if __name__ == "__main__":
