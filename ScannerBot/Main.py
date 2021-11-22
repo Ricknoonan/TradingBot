@@ -124,7 +124,7 @@ def backTestFeed(smallCapCoins):
         pair = coin + "BTC"
         output = BotLog()
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_klines(symbol=pair, interval="1h", limit=3000, startTime=1628942428000,
+        historicalOutput = client.get_klines(symbol=pair, interval="1h", limit=100, startTime=1628942428000,
                                              endTime=None)
         for kline in historicalOutput:
             currentPrice = kline[4]
@@ -148,6 +148,7 @@ def Main():
         print(smallCapCoins)
         if smallCapCoins is not "No Match":
             backTestFeed(smallCapCoins)
+            sleep(1800)
         else:
             sleep(1800)
 

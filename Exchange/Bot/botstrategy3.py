@@ -36,7 +36,8 @@ class BotStrategy3(object):
         if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
-            print("This is RSI: " + str(rsi) + "and this is momentum: " + str(momentum))
+            macd = self.indicator.MACD(priceFrame)
+            print("This is RSI: " + str(rsi) + "and this is MACD: " + str(macd))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(trade)
@@ -46,7 +47,7 @@ class BotStrategy3(object):
                 self.momentumCounter += 1
             if momentum < 100:
                 self.momentumCounter = 0
-            self.openTrade(rsi)
+            self.openTrade(rsi, macd)
 
     def closeTrade(self, trade):
         if self.stopLoss(trade) or self.stopProfit(trade):
@@ -57,8 +58,8 @@ class BotStrategy3(object):
             print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
 
     # TODO: Find way of getting price quoted in a fiat currency
-    def openTrade(self, rsi):
-        if (45 > rsi > 0) and (self.isOpen()):
+    def openTrade(self, rsi, macd):
+        if ((45 > rsi > 0) or (macd == 1)) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"

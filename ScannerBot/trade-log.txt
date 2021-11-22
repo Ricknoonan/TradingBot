@@ -58,3 +58,48 @@
 2021-11-21-12:55:08 Trade closed  Profit: 0.0001940811276519008
 2021-11-21-12:55:09 New trade opened:  Trade opened
 2021-11-21-12:55:09 Trade closed  Profit: 0.00033527371439227524
+2021-11-22-17:33:44 New trade opened:  Trade opened
+2021-11-22-17:33:45 Trade closed  Profit: 0.00020218984642864134
+2021-11-22-17:33:46 New trade opened:  Trade opened
+2021-11-22-17:33:46 Trade closed  Profit: 0.00020788480327117546
+2021-11-22-17:33:51 New trade opened:  Trade opened
+2021-11-22-17:33:52 Trade closed  Profit: 0.00020218597110945318
+2021-11-22-17:33:53 New trade opened:  Trade opened
+2021-11-22-17:33:53 Trade closed  Profit: 0.00020790005160989974
+2021-11-22-17:33:58 New trade opened:  Trade opened
+2021-11-22-17:33:59 Trade closed  Profit: 0.00020211187540718277
+2021-11-22-17:34:00 New trade opened:  Trade opened
+2021-11-22-17:34:00 Trade closed  Profit: 0.00020780837797620163
+2021-11-22-17:34:05 New trade opened:  Trade opened
+2021-11-22-17:34:06 Trade closed  Profit: 0.00020219125567245175
+2021-11-22-17:34:07 New trade opened:  Trade opened
+2021-11-22-17:34:07 Trade closed  Profit: 0.00020798205430187485
+2021-11-22-17:34:12 New trade opened:  Trade opened
+2021-11-22-17:34:13 Trade closed  Profit: 0.00020231453479064784
+2021-11-22-17:34:14 New trade opened:  Trade opened
+2021-11-22-17:34:14 Trade closed  Profit: 0.00020802164745854106
+2021-11-22-17:34:20 New trade opened:  Trade opened
+2021-11-22-17:34:21 Trade closed  Profit: 0.00020211022084764543
+2021-11-22-17:34:23 New trade opened:  Trade opened
+2021-11-22-17:34:23 Trade closed  Profit: 0.0002078580425933607
+2021-11-22-17:34:29 New trade opened:  Trade opened
+2021-11-22-17:34:30 Trade closed  Profit: 0.0002022387234297562
+2021-11-22-17:34:31 New trade opened:  Trade opened
+2021-11-22-17:34:31 Trade closed  Profit: 0.00020788230435061237
+2021-11-22-17:34:36 New trade opened:  Trade opened
+2021-11-22-17:34:37 Trade closed  Profit: 0.00020215113513790848
+2021-11-22-17:34:38 New trade opened:  Trade opened
+2021-11-22-17:34:39 Trade closed  Profit: 0.00020788230435061237
+2021-11-22-17:34:43 New trade opened:  Trade opened
+2021-11-22-17:34:44 Trade closed  Profit: 0.00020213447869898223
+2021-11-22-17:34:46 New trade opened:  Trade opened
+2021-11-22-17:34:46 Trade closed  Profit: 0.0002078823405664231
+2021-11-22-17:34:51 New trade opened:  Trade opened
+2021-11-22-17:34:52 Trade closed  Profit: 0.000202131380129458
+2021-11-22-17:34:53 New trade opened:  Trade opened
+2021-11-22-17:34:53 Trade closed  Profit: 0.00020786202547837186
+2021-11-22-17:34:57 New trade opened:  Trade opened
+2021-11-22-17:34:58 Trade closed  Profit: 0.00020211057287932094
+2021-11-22-17:34:59 New trade opened:  Trade opened
+2021-11-22-17:35:00 Trade closed  Profit: 0.00020777378604621257
+2021-11-22-17:35:04 New trade opened:  Trade opened
