@@ -119,8 +119,8 @@ def strategyFeed(smallCapCoins):
 # TODO:fix the next coin setter
 def backTestFeed(smallCapCoins):
     client = getClient()
+    nextCoin = False
     for coin in smallCapCoins:
-        nextCoin = False
         pair = coin + "BTC"
         output = BotLog()
         strategy = BotStrategy3(pair)
@@ -131,12 +131,11 @@ def backTestFeed(smallCapCoins):
             timestamp = kline[0]
             # output.logPrices(price=currentPrice, timestamp=timestamp)
             trade = strategy.tick(currentPrice, nextCoin)
+            nextCoin = False
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
-                    nextCoin = True
                     break
-            # sleep(150)
         nextCoin = True
 
 
