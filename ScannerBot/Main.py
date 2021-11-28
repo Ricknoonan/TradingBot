@@ -11,6 +11,13 @@ from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 from Utils.botlog import BotLog
 
+import calendar
+import time
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+# gmt stores current gmtime
+
 # binance
 # 0 get markets from binance -> Done
 # 1. Get small cap coins -> Done
@@ -33,7 +40,7 @@ def sortByMarketCap(datum):
     for coin in datum:
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
-        if (marketCapAmn > 100000) & (percentChange24h > 3):
+        if (marketCapAmn > 100000) & (percentChange24h > 5):
             marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
@@ -43,7 +50,7 @@ def marketCapData():
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     parameters = {
         'start': '1',
-        'limit': '5000',
+        'limit': '6000',
         'convert': 'USD'
     }
     headers = {
@@ -79,7 +86,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 10) & (quote not in quotes):
                 # diff = getDiff(marketCapValue, price)
                 # if diff < 5:
                 quotes.append(quote)
@@ -108,7 +115,7 @@ def strategyFeed(smallCapCoins):
         while nextCoin is False:
             currentPriceDict = client.get_symbol_ticker(symbol=pair)
             currentPrice = currentPriceDict.get('price')
-            trade = strategy.tick(currentPrice, nextCoin)
+            trade = strategy.tick(currentPrice, nextCoin, 0)
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
@@ -116,40 +123,54 @@ def strategyFeed(smallCapCoins):
             sleep(150)
 
 
-# TODO:fix the next coin setter
+def getHistoricalStart(months):
+    now = datetime.now()
+    now.strftime("%Y-%m-%d")
+
+    pastdate = now - relativedelta(months)
+    time.mktime(datetime.strptime(now, "%d/%m/%Y").timetuple())
+
+    return pastdate
+
+
 def backTestFeed(smallCapCoins):
     client = getClient()
     nextCoin = False
+    newCoinList = []
+    backTestStartTS = getHistoricalStart(months=3)
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_klines(symbol=pair, interval="1h", limit=100, startTime=1628942428000,
-                                             endTime=None)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=1628942428000)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
-            # output.logPrices(price=currentPrice, timestamp=timestamp)
-            trade = strategy.tick(currentPrice, nextCoin)
+            trade = strategy.tick(currentPrice, nextCoin, timestamp)
             nextCoin = False
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
-                    break
+                    if trade.getProfit() > 0:
+                        newCoinList.append(coin)
+                        break
         nextCoin = True
 
 
 def Main():
-    while True:
-        baseBTC = binanceData()
-        marketCapDict = marketCapData()
-        smallCapCoins = compare(baseBTC, marketCapDict)
-        print(smallCapCoins)
-        if smallCapCoins is not "No Match":
-            backTestFeed(smallCapCoins)
-            sleep(1800)
-        else:
-            sleep(1800)
+    start = getHistoricalStart(3)
+    print(start)
+    # while True:
+    #     baseBTC = binanceData()
+    #     marketCapDict = marketCapData()
+    #     smallCapCoins = compare(baseBTC, marketCapDict)
+    #     print(smallCapCoins)
+    #     if smallCapCoins is not "No Match":
+    #         backTestFeed(smallCapCoins)
+    #         #sleep(1800)
+    #         break
+    #     else:
+    #         sleep(1800)
 
 
 if __name__ == "__main__":

@@ -54,14 +54,14 @@ class BotStrategy1(object):
 
     def closeTrade(self, macd, rsi, trade):
         if (macd == -1) & (rsi > 70):
-            trade.close(self.currentPrice)
+            trade.close(self.currentPrice, 0)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
 
     def openTrade(self, macd):
         if len(self.prices) > 35:
             if (macd == 1) & self.buyRSI():
-                trade = (BotTrade(self.currentPrice, 0.1))
+                trade = (BotTrade(self.currentPrice, 0.1, self.pair))
                 self.trades[self.pair] = trade
                 trade.showTrade()
 

@@ -44,7 +44,7 @@ class BotStrategy(object):
 
     def closeTrade(self, macd, rsi, trade):
         if (macd == -1) & (rsi > 60):
-            trade.close(self.currentPrice)
+            trade.close(self.currentPrice, 0)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
             self.output.logClose(
@@ -54,7 +54,7 @@ class BotStrategy(object):
     def openTrade(self, rsi):
         if len(self.prices) > 35:
             if self.MACDIndicator & (rsi < 40):
-                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, ))
+                self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, self.pair))
 
     def setMACD(self, macd):
         if macd > 0:

@@ -9,7 +9,7 @@ def main(argv):
 	strategy = BotStrategy()
 
 	for candlestick in chart.getPoints():
-		strategy.tick(candlestick)
+        strategy.tick(candlestick,, 0
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

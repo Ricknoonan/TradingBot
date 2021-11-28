@@ -2,7 +2,7 @@ from Exchange.Bot.botlog import BotLog
 
 
 class BotTrade(object):
-    def __init__(self, currentPrice, stopLoss, quantity, positionSize):
+    def __init__(self, currentPrice, stopLoss, quantity, positionSize, pair, openTimeStamp):
         self.output = BotLog()
         self.status = "OPEN"
         self.entryPrice = currentPrice
@@ -10,14 +10,18 @@ class BotTrade(object):
         self.profit = 0
         self.quantity = quantity
         self.positionSize = positionSize
-        self.tradeStatus = "Entry Price: " + str(self.entryPrice) + " Status: " + str(self.status)
+        self.tradePair = pair
+        self.tradeOpenedStatus = "Entry Price: " + str(self.entryPrice) + " Status: " + str(self.status)
+        self.openTimeStamp = openTimeStamp
+        self.closeTimeStamp = 0
         if stopLoss:
             self.stopLossPrice = currentPrice - (stopLoss * currentPrice)
 
     # TODO: Refactor this output/ combine close and stopLoss
-    def close(self, currentPrice):
+    def close(self, currentPrice, closeTimeStamp):
         self.status = "CLOSED"
         self.exitPrice = currentPrice
+        self.closeTimeStamp = closeTimeStamp
         self.profit = (self.exitPrice * self.quantity) - (self.entryPrice * self.quantity)
         print("CLOSED " + str(self.profit))
         return self.profit
@@ -25,15 +29,18 @@ class BotTrade(object):
     def stopLoss(self, currentPrice):
         if self.stopLossPrice:
             if currentPrice < self.stopLossPrice:
-                self.close(currentPrice)
+                self.close(currentPrice, 0)
                 self.output.logOpen(
                     "Stop loss hit! Status: " + self.status + " Exit Price: " + str(self.exitPrice) + "Loss: " + str(
                         self.profit))
 
+    def getProfit(self):
+        return self.profit
+
     def showTrade(self):
         if self.status == "OPEN":
-            self.output.logOpen(self.tradeStatus)
-            print(self.tradeStatus)
+            self.output.logOpen(self.tradeOpenedStatus)
+            print(self.tradeOpenedStatus)
 
     def isClosed(self):
         if self.status == "CLOSED":

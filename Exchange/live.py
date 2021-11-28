@@ -24,7 +24,7 @@ def main(argv):
 
 		if (developingCandlestick.isClosed()):
 			candlesticks.append(developingCandlestick)
-			strategy.tick(developingCandlestick)
+            strategy.tick(developingCandlestick,, 0
 			developingCandlestick = BotCandlestick()
 		
 		time.sleep(int(30))

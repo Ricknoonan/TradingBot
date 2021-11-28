@@ -43,7 +43,7 @@ class BotStrategy2(object):
 
     def closeTrade(self, macd, trade):
         if macd == -1:
-            tradeProfit = trade.close(self.currentPrice)
+            tradeProfit = trade.close(self.currentPrice, 0)
             self.strategyPnL += tradeProfit
             self.output.logClose("Strategy running PnL: " + str(self.strategyPnL))
             self.closedPosCounter += 1
@@ -51,7 +51,7 @@ class BotStrategy2(object):
     def openTrade(self, macd, rsi):
         if len(self.prices) > 35:
             if macd == 1:
-                trade = (BotTrade(self.currentPrice, 0.1))
+                trade = (BotTrade(self.currentPrice, 0.1,,,,)
                 self.trades[self.pair] = trade
                 trade.showTrade()
 

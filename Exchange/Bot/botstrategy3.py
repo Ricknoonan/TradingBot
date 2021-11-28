@@ -22,15 +22,15 @@ class BotStrategy3(object):
         self.pair = pair
         self.momentumCounter = 0
 
-    def tick(self, price, nextCoin):
+    def tick(self, price, nextCoin, currentTimeStamp):
         self.currentPrice = float(price)
         if nextCoin:
             self.prices = []
         else:
             self.prices.append(self.currentPrice * 1000)
-        return self.evaluatePositions()
+        return self.evaluatePositions(currentTimeStamp)
 
-    def evaluatePositions(self):
+    def evaluatePositions(self, currentTimeStamp):
         priceFrame = pd.DataFrame({'price': self.prices})
         print("Number of prices: " + str(len(priceFrame)))
         if len(priceFrame) > 24:
@@ -40,7 +40,7 @@ class BotStrategy3(object):
             print("This is RSI: " + str(rsi) + "and this is MACD: " + str(macd))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
-                    self.closeTrade(trade)
+                    self.closeTrade(trade, currentTimeStamp)
                     if trade.isClosed():
                         return trade
             if momentum > 100:
@@ -49,9 +49,9 @@ class BotStrategy3(object):
                 self.momentumCounter = 0
             self.openTrade(rsi, macd)
 
-    def closeTrade(self, trade):
+    def closeTrade(self, trade, currentTimeStamp):
         if self.stopLoss(trade) or self.stopProfit(trade):
-            trade.close(self.currentPrice)
+            trade.close(self.currentPrice, currentTimeStamp)
             self.accumProfit += trade.profit
             self.closedPosCounter += 1
             self.output.logClose("Profit: " + str(self.accumProfit))
@@ -59,14 +59,14 @@ class BotStrategy3(object):
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi, macd):
-        if ((45 > rsi > 0) or (macd == 1)) and (self.isOpen()):
+        if ((40 > rsi > 0) or (macd == 1)) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
             positionSize = 100 / float(priceUSD.get('price'))
             quantity = positionSize / float(self.currentPrice)
-            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize))
+            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0))
             print("Trade Opened for this amount: " + str(positionSize))
             # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
             self.output.logOpen("Trade opened")
@@ -85,7 +85,7 @@ class BotStrategy3(object):
         difference = self.currentPrice - trade.getEntryPrice()
         print("Diff: " + str(difference))
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff < -60:
+        if percentDiff < -75:
             return True
         else:
             return False
@@ -93,7 +93,7 @@ class BotStrategy3(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 10:
+        if percentDiff > 20:
             return True
         else:
             return False
