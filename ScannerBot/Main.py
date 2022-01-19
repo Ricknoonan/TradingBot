@@ -5,6 +5,7 @@ from urllib.error import URLError
 import os
 from time import sleep
 from pythonic_binance.client import Client
+from datetime import date, timedelta
 
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -123,21 +124,18 @@ def strategyFeed(smallCapCoins):
             sleep(150)
 
 
-def getHistoricalStart(months):
-    now = datetime.now()
-    now.strftime("%Y-%m-%d")
-
-    pastdate = now - relativedelta(months)
-    time.mktime(datetime.strptime(now, "%d/%m/%Y").timetuple())
-
-    return pastdate
+def getHistoricalStart(days):
+    historicalDate = date.today() - timedelta(days)
+    dt = datetime.combine(historicalDate, datetime.min.time())
+    ts = datetime.timestamp(dt)
+    return ts.__int__()
 
 
 def backTestFeed(smallCapCoins):
     client = getClient()
     nextCoin = False
     newCoinList = []
-    backTestStartTS = getHistoricalStart(months=3)
+    backTestStartTS = getHistoricalStart(days=90)
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
@@ -158,7 +156,7 @@ def backTestFeed(smallCapCoins):
 
 
 def Main():
-    start = getHistoricalStart(3)
+    start = getHistoricalStart(90)
     print(start)
     # while True:
     #     baseBTC = binanceData()
