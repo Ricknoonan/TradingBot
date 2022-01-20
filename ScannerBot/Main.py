@@ -109,6 +109,7 @@ def getDiff(value, price):
 
 def strategyFeed(smallCapCoins):
     client = getClient()
+    smallCapCoins = backTestFeed(smallCapCoins)
     for coin in smallCapCoins:
         pair = coin + "BTC"
         strategy = BotStrategy3(pair)
@@ -140,7 +141,7 @@ def backTestFeed(smallCapCoins):
         pair = coin + "BTC"
         output = BotLog()
         strategy = BotStrategy3(pair)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=1628942428000)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=backTestStartTS)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
@@ -153,22 +154,21 @@ def backTestFeed(smallCapCoins):
                         newCoinList.append(coin)
                         break
         nextCoin = True
+    return newCoinList
 
 
 def Main():
-    start = getHistoricalStart(90)
-    print(start)
-    # while True:
-    #     baseBTC = binanceData()
-    #     marketCapDict = marketCapData()
-    #     smallCapCoins = compare(baseBTC, marketCapDict)
-    #     print(smallCapCoins)
-    #     if smallCapCoins is not "No Match":
-    #         backTestFeed(smallCapCoins)
-    #         #sleep(1800)
-    #         break
-    #     else:
-    #         sleep(1800)
+    while True:
+        baseBTC = binanceData()
+        marketCapDict = marketCapData()
+        smallCapCoins = compare(baseBTC, marketCapDict)
+        print(smallCapCoins)
+        if smallCapCoins is not "No Match":
+            backTestFeed(smallCapCoins)
+            sleep(1800)
+            break
+        else:
+            sleep(1800)
 
 
 if __name__ == "__main__":
