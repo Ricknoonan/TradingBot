@@ -107,6 +107,12 @@ def getDiff(value, price):
     return percentDiff
 
 
+def getCurrentTS():
+    gmt = time.gmtime()
+    ts = calendar.timegm(gmt)
+    return ts
+
+
 def strategyFeed(smallCapCoins):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins)
@@ -117,7 +123,8 @@ def strategyFeed(smallCapCoins):
         while nextCoin is False:
             currentPriceDict = client.get_symbol_ticker(symbol=pair)
             currentPrice = currentPriceDict.get('price')
-            trade = strategy.tick(currentPrice, nextCoin, 0)
+            currentTS = getCurrentTS()
+            trade = strategy.tick(currentPrice, nextCoin, currentTS)
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
