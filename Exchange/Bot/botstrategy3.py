@@ -6,7 +6,7 @@ import pandas as pd
 
 
 class BotStrategy3(object):
-    def __init__(self, pair):
+    def __init__(self, pair, liveFeed):
         self.output = BotLog()
         self.prices = []
         self.closes = []
@@ -16,11 +16,15 @@ class BotStrategy3(object):
         self.openTrades = {}
         self.currentPrice = ""
         self.currentClose = ""
-        self.accumProfit = 0
-        self.closedPosCounter = 0
+        self.accumLiveProfit = 0
+        self.closedLivePosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
+        self.liveFeed= liveFeed
         self.momentumCounter = 0
+        self.accumProfit = 0
+        self.closedPosCounter = 0
+
 
     def tick(self, price, nextCoin, currentTimeStamp):
         self.currentPrice = float(price)
@@ -52,10 +56,17 @@ class BotStrategy3(object):
     def closeTrade(self, trade, currentTimeStamp):
         if self.stopLoss(trade) or self.stopProfit(trade):
             trade.close(self.currentPrice, currentTimeStamp)
-            self.accumProfit += trade.profit
-            self.closedPosCounter += 1
-            self.output.logClose("Profit: " + str(self.accumProfit))
-            print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
+            if self.liveFeed:
+                self.accumLiveProfit += trade.profit
+                self.closedLivePosCounter += 1
+                self.output.logClose("Profit: " + str(self.accumLiveProfit))
+                print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
+            else:
+                self.accumProfit += trade.profit
+                self.closedPosCounter += 1
+                self.output.logClose("Profit: " + str(self.accumProfit))
+                print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
+
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi, macd):
@@ -66,10 +77,18 @@ class BotStrategy3(object):
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
             positionSize = 100 / float(priceUSD.get('price'))
             quantity = positionSize / float(self.currentPrice)
-            self.trades[self.pair] = (BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0))
-            print("Trade Opened for this amount: " + str(positionSize))
-            # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
-            self.output.logOpen("Trade opened")
+            if self.liveFeed:
+                self.trades[self.pair] = (
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0, liveTrade=True))
+                print("Live Trade Opened for this amount: " + str(positionSize))
+                # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
+                self.output.logOpen("Live Trade opened")
+            else:
+                self.trades[self.pair] = (
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0, liveTrade=False))
+                print("Test Trade Opened for this amount: " + str(positionSize))
+                # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
+                self.output.logOpen("Test Trade opened")
 
     def isOpen(self):
         if len(self.trades) > 0:

@@ -2,7 +2,7 @@ from Exchange.Bot.botlog import BotLog
 
 
 class BotTrade(object):
-    def __init__(self, currentPrice, stopLoss, quantity, positionSize, pair, openTimeStamp):
+    def __init__(self, currentPrice, stopLoss, quantity, positionSize, pair, openTimeStamp, liveTrade):
         self.output = BotLog()
         self.status = "OPEN"
         self.entryPrice = currentPrice
@@ -14,6 +14,7 @@ class BotTrade(object):
         self.tradeOpenedStatus = "Entry Price: " + str(self.entryPrice) + " Status: " + str(self.status)
         self.openTimeStamp = openTimeStamp
         self.closeTimeStamp = 0
+        self.liveTrade = liveTrade
         if stopLoss:
             self.stopLossPrice = currentPrice - (stopLoss * currentPrice)
 

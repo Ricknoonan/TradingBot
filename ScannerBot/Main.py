@@ -51,7 +51,7 @@ def marketCapData():
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
     parameters = {
         'start': '1',
-        'limit': '6000',
+        'limit': '5000',
         'convert': 'USD'
     }
     headers = {
@@ -118,7 +118,7 @@ def strategyFeed(smallCapCoins):
     smallCapCoins = backTestFeed(smallCapCoins)
     for coin in smallCapCoins:
         pair = coin + "BTC"
-        strategy = BotStrategy3(pair)
+        strategy = BotStrategy3(pair, liveFeed=True)
         nextCoin = False
         while nextCoin is False:
             currentPriceDict = client.get_symbol_ticker(symbol=pair)
@@ -147,7 +147,7 @@ def backTestFeed(smallCapCoins):
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
-        strategy = BotStrategy3(pair)
+        strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=backTestStartTS)
         for kline in historicalOutput:
             currentPrice = kline[4]
@@ -171,7 +171,7 @@ def Main():
         smallCapCoins = compare(baseBTC, marketCapDict)
         print(smallCapCoins)
         if smallCapCoins is not "No Match":
-            backTestFeed(smallCapCoins)
+            strategyFeed(smallCapCoins)
             sleep(1800)
             break
         else:
