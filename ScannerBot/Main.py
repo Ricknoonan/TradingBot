@@ -87,7 +87,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 10) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
                 # diff = getDiff(marketCapValue, price)
                 # if diff < 5:
                 quotes.append(quote)

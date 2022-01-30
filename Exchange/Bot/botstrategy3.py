@@ -41,7 +41,6 @@ class BotStrategy3(object):
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
             macd = self.indicator.MACD(priceFrame)
-            print("This is RSI: " + str(rsi) + "and this is MACD: " + str(macd))
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(trade, currentTimeStamp)
@@ -65,8 +64,6 @@ class BotStrategy3(object):
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
                 self.output.logClose("Profit: " + str(self.accumProfit))
-                print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
-
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi, macd):
@@ -112,7 +109,7 @@ class BotStrategy3(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 20:
+        if percentDiff > 10:
             return True
         else:
             return False
