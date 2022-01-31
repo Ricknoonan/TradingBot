@@ -87,7 +87,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 7) & (quote not in quotes):
                 # diff = getDiff(marketCapValue, price)
                 # if diff < 5:
                 quotes.append(quote)
@@ -116,20 +116,22 @@ def getCurrentTS():
 def strategyFeed(smallCapCoins):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins)
-    for coin in smallCapCoins:
-        pair = coin + "BTC"
-        strategy = BotStrategy3(pair, liveFeed=True)
-        nextCoin = False
-        while nextCoin is False:
-            currentPriceDict = client.get_symbol_ticker(symbol=pair)
-            currentPrice = currentPriceDict.get('price')
-            currentTS = getCurrentTS()
-            trade = strategy.tick(currentPrice, nextCoin, currentTS)
-            print(pair + "\n" + currentPrice)
-            if trade is not None:
-                if trade.status == 'CLOSED':
-                    nextCoin = True
-            sleep(150)
+    print(smallCapCoins)
+
+    # for coin in smallCapCoins:
+    #     pair = coin + "BTC"
+    #     strategy = BotStrategy3(pair, liveFeed=True)
+    #     nextCoin = False
+    #     while nextCoin is False:
+    #         currentPriceDict = client.get_symbol_ticker(symbol=pair)
+    #         currentPrice = currentPriceDict.get('price')
+    #         currentTS = getCurrentTS()
+    #         trade = strategy.tick(currentPrice, nextCoin, currentTS)
+    #         print(pair + "\n" + currentPrice)
+    #         if trade is not None:
+    #             if trade.status == 'CLOSED':
+    #                 nextCoin = True
+    #         sleep(150)
 
 
 def getHistoricalStart(days):

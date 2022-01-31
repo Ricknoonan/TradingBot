@@ -1,31 +1,19 @@
-2022-01-27-22:27:17 New trade opened:  Test Trade opened
-2022-01-27-22:27:20 Trade closed  Profit: -0.0012062155541846613
-2022-01-27-22:27:20 New trade opened:  Test Trade opened
-2022-01-27-22:27:21 Trade closed  Profit: -0.00047755937644594973
-2022-01-27-22:28:22 New trade opened:  Test Trade opened
-2022-01-27-22:28:22 Trade closed  Profit: -0.0012080596308661259
-2022-01-27-22:28:23 New trade opened:  Test Trade opened
-2022-01-27-22:28:23 Trade closed  Profit: -0.0004819727538526897
-2022-01-27-22:28:57 New trade opened:  Test Trade opened
-2022-01-27-22:28:57 Trade closed  Profit: -0.001200408933169443
-2022-01-27-22:28:58 New trade opened:  Test Trade opened
-2022-01-27-22:28:58 Trade closed  Profit: -0.00047653167757655333
-2022-01-27-22:30:07 New trade opened:  Test Trade opened
-2022-01-27-22:30:08 Trade closed  Profit: -0.0012100251435021698
-2022-01-27-22:30:09 New trade opened:  Test Trade opened
-2022-01-27-22:30:11 Trade closed  Profit: -0.00046509161781547364
-2022-01-27-22:30:29 New trade opened:  Test Trade opened
-2022-01-27-22:30:33 Trade closed  Profit: -0.0012048994098667663
-2022-01-27-22:30:33 New trade opened:  Test Trade opened
-2022-01-27-22:30:36 Trade closed  Profit: -0.002392153751343074
-2022-01-27-22:30:37 New trade opened:  Test Trade opened
-2022-01-27-22:30:37 Trade closed  Profit: -0.0012933736850464146
-2022-01-27-22:31:07 New trade opened:  Test Trade opened
-2022-01-27-22:31:08 Trade closed  Profit: 0.0007009588823305006
-2022-01-27-22:31:09 New trade opened:  Test Trade opened
-2022-01-27-22:31:29 New trade opened:  Test Trade opened
-2022-01-27-22:31:30 Trade closed  Profit: 0.0008446055681191641
-2022-01-27-22:33:00 New trade opened:  Test Trade opened
-2022-01-27-22:33:01 Trade closed  Profit: 0.0006983097417121542
-2022-01-27-22:34:29 New trade opened:  Test Trade opened
-2022-01-27-22:34:29 Trade closed  Profit: 0.0007499944257171065
+2022-01-31-18:04:29 New trade opened:  Test Trade opened
+2022-01-31-18:05:49 New trade opened:  Test Trade opened
+2022-01-31-18:05:49 Trade closed  Profit: -0.0011304983651718456
+2022-01-31-18:05:50 New trade opened:  Test Trade opened
+2022-01-31-18:05:50 Trade closed  Profit: -0.0007684090829847257
+2022-01-31-18:05:55 New trade opened:  Test Trade opened
+2022-01-31-18:05:56 Trade closed  Profit: -0.0011343221085096961
+2022-01-31-18:05:57 New trade opened:  Test Trade opened
+2022-01-31-18:05:57 Trade closed  Profit: -0.0008443669324732488
+2022-01-31-18:07:35 New trade opened:  Test Trade opened
+2022-01-31-18:07:36 Trade closed  Profit: 0.000293909433735493
+2022-01-31-18:08:01 New trade opened:  Test Trade opened
+2022-01-31-18:08:01 Trade closed  Profit: 0.0002976186885380247
+2022-01-31-18:09:36 New trade opened:  Test Trade opened
+2022-01-31-18:09:36 Trade closed  Profit: 0.00030421363431452995
+2022-01-31-18:11:10 New trade opened:  Test Trade opened
+2022-01-31-18:11:11 Trade closed  Profit: -0.0011490704011373127
+2022-01-31-18:11:11 New trade opened:  Test Trade opened
+2022-01-31-18:11:12 Trade closed  Profit: -0.000737941641902931
