@@ -1,19 +1,12 @@
-2022-01-31-18:04:29 New trade opened:  Test Trade opened
-2022-01-31-18:05:49 New trade opened:  Test Trade opened
-2022-01-31-18:05:49 Trade closed  Profit: -0.0011304983651718456
-2022-01-31-18:05:50 New trade opened:  Test Trade opened
-2022-01-31-18:05:50 Trade closed  Profit: -0.0007684090829847257
-2022-01-31-18:05:55 New trade opened:  Test Trade opened
-2022-01-31-18:05:56 Trade closed  Profit: -0.0011343221085096961
-2022-01-31-18:05:57 New trade opened:  Test Trade opened
-2022-01-31-18:05:57 Trade closed  Profit: -0.0008443669324732488
-2022-01-31-18:07:35 New trade opened:  Test Trade opened
-2022-01-31-18:07:36 Trade closed  Profit: 0.000293909433735493
-2022-01-31-18:08:01 New trade opened:  Test Trade opened
-2022-01-31-18:08:01 Trade closed  Profit: 0.0002976186885380247
-2022-01-31-18:09:36 New trade opened:  Test Trade opened
-2022-01-31-18:09:36 Trade closed  Profit: 0.00030421363431452995
-2022-01-31-18:11:10 New trade opened:  Test Trade opened
-2022-01-31-18:11:11 Trade closed  Profit: -0.0011490704011373127
-2022-01-31-18:11:11 New trade opened:  Test Trade opened
-2022-01-31-18:11:12 Trade closed  Profit: -0.000737941641902931
+2022-02-01-16:43:28 New trade opened:  Test Trade opened
+2022-02-01-16:43:30 Trade closed  Total Profit: -0.0011559170236523741 Trade Profit: -0.0011559170236523741 Coin pair: POEBTC
+2022-02-01-16:43:31 New trade opened:  Test Trade opened
+2022-02-01-16:43:31 Trade closed  Total Profit: -0.0004914637659589817 Trade Profit: 0.0006644532576933924 Coin pair: POEBTC
+2022-02-01-16:44:00 New trade opened:  Test Trade opened
+2022-02-01-16:44:01 Trade closed  Total Profit: -0.0011140269889143577 Trade Profit: -0.0011140269889143577 Coin pair: SUBBTC
+2022-02-01-16:44:01 New trade opened:  Test Trade opened
+2022-02-01-16:44:02 Trade closed  Total Profit: -0.0007836421466293122 Trade Profit: 0.0003303848422850455 Coin pair: SUBBTC
+2022-02-01-16:45:10 New trade opened:  Test Trade opened
+2022-02-01-16:45:18 Trade closed  Total Profit: 0.0031770743093612877 Trade Profit: 0.0031770743093612877 Coin pair: VIABTC
+2022-02-01-16:46:25 New trade opened:  Test Trade opened
+2022-02-01-16:46:30 Trade closed  Total Profit: 0.0002992544013022129 Trade Profit: 0.0002992544013022129 Coin pair: WPRBTC

@@ -63,7 +63,7 @@ class BotStrategy3(object):
             else:
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
-                self.output.logClose("Profit: " + str(self.accumProfit))
+                self.output.logClose("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(trade.profit) + " Coin pair: " + str(self.pair))
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi, macd):
