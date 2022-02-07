@@ -10,3 +10,13 @@
 2022-02-01-16:45:18 Trade closed  Total Profit: 0.0031770743093612877 Trade Profit: 0.0031770743093612877 Coin pair: VIABTC
 2022-02-01-16:46:25 New trade opened:  Test Trade opened
 2022-02-01-16:46:30 Trade closed  Total Profit: 0.0002992544013022129 Trade Profit: 0.0002992544013022129 Coin pair: WPRBTC
+2022-02-01-16:47:32 New trade opened:  Test Trade opened
+2022-02-01-16:47:32 Trade closed  Total Profit: 0.0003484003911864812 Trade Profit: 0.0003484003911864812 Coin pair: VIBEBTC
+2022-02-07-17:07:30 New trade opened:  Test Trade opened
+2022-02-07-17:07:31 Trade closed  Total Profit: -0.001099522308938142 Trade Profit: -0.001099522308938142 Coin pair: BCPTBTC
+2022-02-07-17:07:32 New trade opened:  Test Trade opened
+2022-02-07-17:07:35 Trade closed  Total Profit: -0.0008394764095815115 Trade Profit: 0.0002600458993566304 Coin pair: BCPTBTC
+2022-02-07-17:18:40 New trade opened:  Test Trade opened
+2022-02-07-17:18:40 Trade closed  Total Profit: 0.00025795078245414516 Trade Profit: 0.00025795078245414516 Coin pair: PNTBTC
+2022-02-07-17:22:07 New trade opened:  Test Trade opened
+2022-02-07-17:22:08 Trade closed  Total Profit: -0.0009934971452516834 Trade Profit: -0.0009934971452516834 Coin pair: BCPTBTC

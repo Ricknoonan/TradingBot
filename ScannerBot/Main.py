@@ -162,7 +162,9 @@ def backTestFeed(smallCapCoins):
                     if trade.getProfit() > 0:
                         newCoinList.append(coin)
                         break
-        nextCoin = True
+                    else:
+                        break
+        nextCoin = True #coin getting looped  twice until profitilable
     return newCoinList
 
 
