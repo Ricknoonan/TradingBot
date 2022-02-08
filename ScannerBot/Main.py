@@ -10,6 +10,9 @@ from datetime import date, timedelta
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+
+from typing import Dict
+
 from Utils.botlog import BotLog
 
 import calendar
@@ -149,6 +152,7 @@ def backTestFeed(smallCapCoins):
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
+        coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=backTestStartTS)
         for kline in historicalOutput:
@@ -159,11 +163,13 @@ def backTestFeed(smallCapCoins):
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
-                    if trade.getProfit() > 0:
-                        newCoinList.append(coin)
-                        break
+                    if coinDict.get(pair, default=None) is None:
+                        coinDict[pair] = trade.getProfit()
                     else:
-                        break
+                        profit = coinDict.get(pair)
+                        coinDict[pair] = trade.getProfit() + profit
+        if(coinDict.get(pair)) > 0:
+            newCoinList.append(pair)
         nextCoin = True #coin getting looped  twice until profitilable
     return newCoinList
 
