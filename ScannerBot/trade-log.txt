@@ -1,22 +1,90 @@
-2022-02-01-16:43:28 New trade opened:  Test Trade opened
-2022-02-01-16:43:30 Trade closed  Total Profit: -0.0011559170236523741 Trade Profit: -0.0011559170236523741 Coin pair: POEBTC
-2022-02-01-16:43:31 New trade opened:  Test Trade opened
-2022-02-01-16:43:31 Trade closed  Total Profit: -0.0004914637659589817 Trade Profit: 0.0006644532576933924 Coin pair: POEBTC
-2022-02-01-16:44:00 New trade opened:  Test Trade opened
-2022-02-01-16:44:01 Trade closed  Total Profit: -0.0011140269889143577 Trade Profit: -0.0011140269889143577 Coin pair: SUBBTC
-2022-02-01-16:44:01 New trade opened:  Test Trade opened
-2022-02-01-16:44:02 Trade closed  Total Profit: -0.0007836421466293122 Trade Profit: 0.0003303848422850455 Coin pair: SUBBTC
-2022-02-01-16:45:10 New trade opened:  Test Trade opened
-2022-02-01-16:45:18 Trade closed  Total Profit: 0.0031770743093612877 Trade Profit: 0.0031770743093612877 Coin pair: VIABTC
-2022-02-01-16:46:25 New trade opened:  Test Trade opened
-2022-02-01-16:46:30 Trade closed  Total Profit: 0.0002992544013022129 Trade Profit: 0.0002992544013022129 Coin pair: WPRBTC
-2022-02-01-16:47:32 New trade opened:  Test Trade opened
-2022-02-01-16:47:32 Trade closed  Total Profit: 0.0003484003911864812 Trade Profit: 0.0003484003911864812 Coin pair: VIBEBTC
-2022-02-07-17:07:30 New trade opened:  Test Trade opened
-2022-02-07-17:07:31 Trade closed  Total Profit: -0.001099522308938142 Trade Profit: -0.001099522308938142 Coin pair: BCPTBTC
-2022-02-07-17:07:32 New trade opened:  Test Trade opened
-2022-02-07-17:07:35 Trade closed  Total Profit: -0.0008394764095815115 Trade Profit: 0.0002600458993566304 Coin pair: BCPTBTC
-2022-02-07-17:18:40 New trade opened:  Test Trade opened
-2022-02-07-17:18:40 Trade closed  Total Profit: 0.00025795078245414516 Trade Profit: 0.00025795078245414516 Coin pair: PNTBTC
-2022-02-07-17:22:07 New trade opened:  Test Trade opened
-2022-02-07-17:22:08 Trade closed  Total Profit: -0.0009934971452516834 Trade Profit: -0.0009934971452516834 Coin pair: BCPTBTC
+2022-02-20-09:37:10 New trade opened:  Test Trade opened
+2022-02-20-09:37:10 Trade closed  Total Profit: 0.0003339672661416566 Trade Profit: 0.0003339672661416566 Coin pair: SUPERBTC
+2022-02-20-09:37:26 New trade opened:  Test Trade opened
+2022-02-20-09:37:26 Trade closed  Total Profit: 0.0006460640719740847 Trade Profit: 0.0003120968058324281 Coin pair: SUPERBTC
+2022-02-20-09:37:27 New trade opened:  Test Trade opened
+2022-02-20-09:37:28 Trade closed  Total Profit: 0.0009816394897121748 Trade Profit: 0.00033557541773809006 Coin pair: SUPERBTC
+2022-02-20-09:37:29 New trade opened:  Test Trade opened
+2022-02-20-09:37:29 Trade closed  Total Profit: 0.0012980794580187594 Trade Profit: 0.0003164399683065846 Coin pair: SUPERBTC
+2022-02-20-09:37:31 New trade opened:  Test Trade opened
+2022-02-20-09:37:32 Trade closed  Total Profit: 0.00016461878158375264 Trade Profit: -0.0011334606764350067 Coin pair: SUPERBTC
+2022-02-20-09:37:34 New trade opened:  Test Trade opened
+2022-02-20-09:37:34 Trade closed  Total Profit: 0.00047475156596806997 Trade Profit: 0.00031013278438431734 Coin pair: SUPERBTC
+2022-02-20-09:37:36 New trade opened:  Test Trade opened
+2022-02-20-09:37:36 Trade closed  Total Profit: 0.0007716933360915668 Trade Profit: 0.0002969417701234969 Coin pair: SUPERBTC
+2022-02-20-09:37:38 New trade opened:  Test Trade opened
+2022-02-20-09:37:38 Trade closed  Total Profit: 0.0011609480845323778 Trade Profit: 0.00038925474844081097 Coin pair: SUPERBTC
+2022-02-20-09:37:40 New trade opened:  Test Trade opened
+2022-02-20-09:37:49 Trade closed  Total Profit: -7.600358153408526e-05 Trade Profit: -0.001236951666066463 Coin pair: SUPERBTC
+2022-02-20-09:37:50 New trade opened:  Test Trade opened
+2022-02-20-09:37:51 Trade closed  Total Profit: -0.0012021218070785164 Trade Profit: -0.0011261182255444312 Coin pair: SUPERBTC
+2022-02-20-09:37:53 New trade opened:  Test Trade opened
+2022-02-20-09:37:53 Trade closed  Total Profit: -0.0009037552773915902 Trade Profit: 0.00029836652968692626 Coin pair: SUPERBTC
+2022-02-20-09:37:54 New trade opened:  Test Trade opened
+2022-02-20-09:37:54 Trade closed  Total Profit: -0.0005204205904956538 Trade Profit: 0.00038333468689593633 Coin pair: SUPERBTC
+2022-02-20-09:37:56 New trade opened:  Test Trade opened
+2022-02-20-09:37:56 Trade closed  Total Profit: -0.00018421415264169077 Trade Profit: 0.0003362064378539631 Coin pair: SUPERBTC
+2022-02-20-09:37:58 New trade opened:  Test Trade opened
+2022-02-20-09:37:58 Trade closed  Total Profit: 0.0002072031046220081 Trade Profit: 0.00039141725726369887 Coin pair: SUPERBTC
+2022-02-20-09:37:59 New trade opened:  Test Trade opened
+2022-02-20-09:38:06 Trade closed  Total Profit: -0.0009263769354157412 Trade Profit: -0.0011335800400377493 Coin pair: SUPERBTC
+2022-02-20-09:38:08 New trade opened:  Test Trade opened
+2022-02-20-09:38:10 Trade closed  Total Profit: -0.0004985070256780619 Trade Profit: 0.0004278699097376793 Coin pair: SUPERBTC
+2022-02-20-09:38:11 New trade opened:  Test Trade opened
+2022-02-20-09:38:15 Trade closed  Total Profit: -0.00018733357278241333 Trade Profit: 0.0003111734528956486 Coin pair: SUPERBTC
+2022-02-20-09:38:16 New trade opened:  Test Trade opened
+2022-02-20-09:38:16 Trade closed  Total Profit: 0.00011517383586669518 Trade Profit: 0.0003025074086491085 Coin pair: SUPERBTC
+2022-02-20-09:38:18 New trade opened:  Test Trade opened
+2022-02-20-09:38:18 Trade closed  Total Profit: 0.0004338724933213567 Trade Profit: 0.00031869865745466153 Coin pair: SUPERBTC
+2022-02-20-09:38:19 New trade opened:  Test Trade opened
+2022-02-20-09:38:23 Trade closed  Total Profit: 0.0007577040531332217 Trade Profit: 0.00032383155981186495 Coin pair: SUPERBTC
+2022-02-20-09:38:24 New trade opened:  Test Trade opened
+2022-02-20-09:38:28 Trade closed  Total Profit: 0.0011523312032078452 Trade Profit: 0.00039462715007462356 Coin pair: SUPERBTC
+2022-02-20-09:38:30 New trade opened:  Test Trade opened
+2022-02-20-09:38:30 Trade closed  Total Profit: 0.0014649646238389356 Trade Profit: 0.0003126334206310904 Coin pair: SUPERBTC
+2022-02-20-09:38:31 New trade opened:  Test Trade opened
+2022-02-20-09:38:32 Trade closed  Total Profit: 0.0017655840629206877 Trade Profit: 0.0003006194390817521 Coin pair: SUPERBTC
+2022-02-20-09:38:34 New trade opened:  Test Trade opened
+2022-02-20-09:38:45 Trade closed  Total Profit: 0.0006413447484759237 Trade Profit: -0.001124239314444764 Coin pair: SUPERBTC
+2022-02-20-09:38:46 New trade opened:  Test Trade opened
+2022-02-20-09:38:46 Trade closed  Total Profit: 0.0009654477970919377 Trade Profit: 0.00032410304861601406 Coin pair: SUPERBTC
+2022-02-20-09:38:48 New trade opened:  Test Trade opened
+2022-02-20-09:38:59 Trade closed  Total Profit: 0.0015261461635067911 Trade Profit: 0.0005606983664148534 Coin pair: SUPERBTC
+2022-02-20-09:39:00 New trade opened:  Test Trade opened
+2022-02-20-09:39:01 Trade closed  Total Profit: 0.001936427731842289 Trade Profit: 0.0004102815683354978 Coin pair: SUPERBTC
+2022-02-20-09:39:02 New trade opened:  Test Trade opened
+2022-02-20-09:39:03 Trade closed  Total Profit: 0.002281004925127072 Trade Profit: 0.00034457719328478313 Coin pair: SUPERBTC
+2022-02-20-09:39:04 New trade opened:  Test Trade opened
+2022-02-20-09:39:05 Trade closed  Total Profit: 0.0025736046556336704 Trade Profit: 0.0002925997305065985 Coin pair: SUPERBTC
+2022-02-20-09:39:06 New trade opened:  Test Trade opened
+2022-02-20-09:39:09 Trade closed  Total Profit: 0.0028995875193788437 Trade Profit: 0.0003259828637451733 Coin pair: SUPERBTC
+2022-02-20-09:39:11 New trade opened:  Test Trade opened
+2022-02-20-09:39:11 Trade closed  Total Profit: 0.0033720874390461395 Trade Profit: 0.0004724999196672958 Coin pair: SUPERBTC
+2022-02-20-09:39:13 New trade opened:  Test Trade opened
+2022-02-20-09:39:13 Trade closed  Total Profit: 0.0036847178114018217 Trade Profit: 0.00031263037235568225 Coin pair: SUPERBTC
+2022-02-20-09:39:14 New trade opened:  Test Trade opened
+2022-02-20-09:39:33 Trade closed  Total Profit: 0.0025139528096327184 Trade Profit: -0.0011707650017691031 Coin pair: SUPERBTC
+2022-02-20-09:39:34 New trade opened:  Test Trade opened
+2022-02-20-09:39:39 Trade closed  Total Profit: 0.00285313292118047 Trade Profit: 0.00033918011154775163 Coin pair: SUPERBTC
+2022-02-20-09:39:41 New trade opened:  Test Trade opened
+2022-02-20-09:39:41 Trade closed  Total Profit: 0.0031958680535130427 Trade Profit: 0.0003427351323325727 Coin pair: SUPERBTC
+2022-02-20-09:39:43 New trade opened:  Test Trade opened
+2022-02-20-09:39:43 Trade closed  Total Profit: 0.003498643524785174 Trade Profit: 0.0003027754712721315 Coin pair: SUPERBTC
+2022-02-20-09:39:44 New trade opened:  Test Trade opened
+2022-02-20-09:39:46 Trade closed  Total Profit: 0.003793673388456733 Trade Profit: 0.0002950298636715588 Coin pair: SUPERBTC
+2022-02-20-09:39:47 New trade opened:  Test Trade opened
+2022-02-20-09:40:28 New trade opened:  Test Trade opened
+2022-02-20-09:40:31 Trade closed  Total Profit: -0.0011419125849692151 Trade Profit: -0.0011419125849692151 Coin pair: PLABTC
+2022-02-20-09:40:33 New trade opened:  Test Trade opened
+2022-02-20-09:40:33 Trade closed  Total Profit: -0.0008499930622745942 Trade Profit: 0.00029191952269462095 Coin pair: PLABTC
+2022-02-20-09:40:34 New trade opened:  Test Trade opened
+2022-02-20-09:40:47 Trade closed  Total Profit: -0.001985945768907929 Trade Profit: -0.001135952706633335 Coin pair: PLABTC
+2022-02-20-09:40:49 New trade opened:  Test Trade opened
+2022-02-20-09:40:49 Trade closed  Total Profit: -0.0016404899246585743 Trade Profit: 0.0003454558442493546 Coin pair: PLABTC
+2022-02-20-09:40:50 New trade opened:  Test Trade opened
+2022-02-20-09:40:51 Trade closed  Total Profit: -0.0013445606797488569 Trade Profit: 0.0002959292449097174 Coin pair: PLABTC
+2022-02-20-09:40:52 New trade opened:  Test Trade opened
+2022-02-20-09:40:53 Trade closed  Total Profit: -0.0009972338928026423 Trade Profit: 0.0003473267869462146 Coin pair: PLABTC
+2022-02-20-09:40:54 New trade opened:  Test Trade opened
+2022-02-20-09:40:56 Trade closed  Total Profit: -0.0006826227032238228 Trade Profit: 0.00031461118957881945 Coin pair: PLABTC
+2022-02-20-09:40:58 New trade opened:  Test Trade opened

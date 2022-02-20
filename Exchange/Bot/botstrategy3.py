@@ -20,23 +20,21 @@ class BotStrategy3(object):
         self.closedLivePosCounter = 0
         self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.pair = pair
-        self.liveFeed= liveFeed
+        self.liveFeed = liveFeed
         self.momentumCounter = 0
         self.accumProfit = 0
         self.closedPosCounter = 0
-
 
     def tick(self, price, nextCoin, currentTimeStamp):
         self.currentPrice = float(price)
         if nextCoin:
             self.prices = []
         else:
-            self.prices.append(self.currentPrice * 1000)
+            self.prices.append(self.currentPrice)
         return self.evaluatePositions(currentTimeStamp)
 
     def evaluatePositions(self, currentTimeStamp):
         priceFrame = pd.DataFrame({'price': self.prices})
-        print("Number of prices: " + str(len(priceFrame)))
         if len(priceFrame) > 24:
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
@@ -59,11 +57,11 @@ class BotStrategy3(object):
                 self.accumLiveProfit += trade.profit
                 self.closedLivePosCounter += 1
                 self.output.logClose("Profit: " + str(self.accumLiveProfit))
-                print("Closed trade at this iteration" + str(len(self.prices)) + "This many trades have closed")
             else:
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
-                self.output.logClose("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(trade.profit) + " Coin pair: " + str(self.pair))
+                self.output.logClose("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
+                    trade.profit) + " Coin pair: " + str(self.pair))
 
     # TODO: Find way of getting price quoted in a fiat currency
     def openTrade(self, rsi, macd):
@@ -84,7 +82,6 @@ class BotStrategy3(object):
                 self.trades[self.pair] = (
                     BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0, liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
-                # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
                 self.output.logOpen("Test Trade opened")
 
     def isOpen(self):
@@ -99,7 +96,6 @@ class BotStrategy3(object):
 
     def stopLoss(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
-        print("Diff: " + str(difference))
         percentDiff = (difference / self.currentPrice) * 100
         if percentDiff < -75:
             return True

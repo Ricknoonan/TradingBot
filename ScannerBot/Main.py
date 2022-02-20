@@ -90,7 +90,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 7) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 2) & (quote not in quotes):
                 # diff = getDiff(marketCapValue, price)
                 # if diff < 5:
                 quotes.append(quote)
@@ -120,7 +120,7 @@ def strategyFeed(smallCapCoins):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins)
     print(smallCapCoins)
-
+    #
     # for coin in smallCapCoins:
     #     pair = coin + "BTC"
     #     strategy = BotStrategy3(pair, liveFeed=True)
@@ -148,7 +148,7 @@ def backTestFeed(smallCapCoins):
     client = getClient()
     nextCoin = False
     newCoinList = []
-    backTestStartTS = getHistoricalStart(days=90)
+    backTestStartTS = getHistoricalStart(days=15)
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
@@ -163,14 +163,14 @@ def backTestFeed(smallCapCoins):
             print(pair + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
-                    if coinDict.get(pair, default=None) is None:
+                    if coinDict.get(pair) is None:
                         coinDict[pair] = trade.getProfit()
                     else:
                         profit = coinDict.get(pair)
                         coinDict[pair] = trade.getProfit() + profit
         if(coinDict.get(pair)) > 0:
             newCoinList.append(pair)
-        nextCoin = True #coin getting looped  twice until profitilable
+        nextCoin = True
     return newCoinList
 
 
