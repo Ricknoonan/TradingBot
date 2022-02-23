@@ -70,7 +70,7 @@ class BotStrategy3(object):
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
-            positionSize = 100 / float(priceUSD.get('price'))
+            positionSize = 10 / float(priceUSD.get('price'))
             quantity = positionSize / float(self.currentPrice)
             if self.liveFeed:
                 self.trades[self.pair] = (

@@ -44,7 +44,8 @@ def sortByMarketCap(datum):
     for coin in datum:
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
-        if (marketCapAmn > 100000) & (percentChange24h > 5):
+        percentChange1hr = coin.get('quote').get('USD').get('percent_change_1h')
+        if (marketCapAmn > 100000) & (percentChange24h > 5) & (percentChange1hr > 1 or percentChange1hr < -1):
             marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
@@ -91,8 +92,6 @@ def compare(baseBTC, marketCapDict):
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
             if (quote == key) & (len(quotes) < 2) & (quote not in quotes):
-                # diff = getDiff(marketCapValue, price)
-                # if diff < 5:
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -119,22 +118,26 @@ def getCurrentTS():
 def strategyFeed(smallCapCoins):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins)
+    nextCoins = []
     print(smallCapCoins)
-    #
-    # for coin in smallCapCoins:
-    #     pair = coin + "BTC"
-    #     strategy = BotStrategy3(pair, liveFeed=True)
-    #     nextCoin = False
-    #     while nextCoin is False:
-    #         currentPriceDict = client.get_symbol_ticker(symbol=pair)
-    #         currentPrice = currentPriceDict.get('price')
-    #         currentTS = getCurrentTS()
-    #         trade = strategy.tick(currentPrice, nextCoin, currentTS)
-    #         print(pair + "\n" + currentPrice)
-    #         if trade is not None:
-    #             if trade.status == 'CLOSED':
-    #                 nextCoin = True
-    #         sleep(150)
+
+    for coin in smallCapCoins:
+        pair = coin + "BTC"
+        strategy = BotStrategy3(pair, liveFeed=True)
+        nextCoin = False
+        while nextCoin is False:
+            currentPriceDict = client.get_symbol_ticker(symbol=pair)
+            currentPrice = currentPriceDict.get('price')
+            currentTS = getCurrentTS()
+            trade = strategy.tick(currentPrice, nextCoin, currentTS)
+            print(pair + "\n" + currentPrice)
+            if trade is not None:
+                if trade.status == 'CLOSED':
+                    if trade.getProfit() > 0:
+                        nextCoins.append(coin)
+                        nextCoin = True
+                        sleep(1800)
+    return nextCoins
 
 
 def getHistoricalStart(days):
@@ -148,13 +151,13 @@ def backTestFeed(smallCapCoins):
     client = getClient()
     nextCoin = False
     newCoinList = []
-    backTestStartTS = getHistoricalStart(days=15)
+    backTestStartTS = getHistoricalStart(days=45)
     for coin in smallCapCoins:
         pair = coin + "BTC"
         output = BotLog()
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval="30m", start_str=backTestStartTS)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval="15m", start_str=backTestStartTS)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
@@ -168,21 +171,24 @@ def backTestFeed(smallCapCoins):
                     else:
                         profit = coinDict.get(pair)
                         coinDict[pair] = trade.getProfit() + profit
-        if(coinDict.get(pair)) > 0:
+        if (coinDict.get(pair)) > 0:
             newCoinList.append(pair)
         nextCoin = True
     return newCoinList
 
 
 def Main():
+    smallCapCoins = []
     while True:
         baseBTC = binanceData()
         marketCapDict = marketCapData()
-        smallCapCoins = compare(baseBTC, marketCapDict)
+        newList = compare(baseBTC, marketCapDict)
+        smallCapCoins.append(newList)
         print(smallCapCoins)
         if smallCapCoins is not "No Match":
-            strategyFeed(smallCapCoins)
-            sleep(1800)
+            nextCoins = strategyFeed(smallCapCoins)
+            smallCapCoins = nextCoins
+            sleep(10)
             break
         else:
             sleep(1800)
