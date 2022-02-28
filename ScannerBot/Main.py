@@ -115,28 +115,32 @@ def getCurrentTS():
     return ts
 
 
-def strategyFeed(smallCapCoins):
-    client = getClient()
-    smallCapCoins = backTestFeed(smallCapCoins)
-    nextCoins = []
-    print(smallCapCoins)
+def getSeconds(interval):
+    seconds = interval[:-1]
+    return int(seconds)
 
+
+def strategyFeed(smallCapCoins, backTestDays, interval):
+    client = getClient()
+    smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval)
+    nextCoins = []
+    intervalInSeconds = getSeconds(interval)
+    print(smallCapCoins)
     for coin in smallCapCoins:
-        pair = coin + "BTC"
-        strategy = BotStrategy3(pair, liveFeed=True)
+        strategy = BotStrategy3(coin, liveFeed=True)
         nextCoin = False
         while nextCoin is False:
-            currentPriceDict = client.get_symbol_ticker(symbol=pair)
+            currentPriceDict = client.get_symbol_ticker(symbol=coin)
             currentPrice = currentPriceDict.get('price')
             currentTS = getCurrentTS()
             trade = strategy.tick(currentPrice, nextCoin, currentTS)
-            print(pair + "\n" + currentPrice)
+            print(coin + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
                     if trade.getProfit() > 0:
                         nextCoins.append(coin)
                         nextCoin = True
-                        sleep(1800)
+            sleep(intervalInSeconds)
     return nextCoins
 
 
@@ -147,17 +151,15 @@ def getHistoricalStart(days):
     return ts.__int__()
 
 
-def backTestFeed(smallCapCoins):
+def backTestFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     nextCoin = False
     newCoinList = []
-    backTestStartTS = getHistoricalStart(days=45)
-    for coin in smallCapCoins:
-        pair = coin + "BTC"
-        output = BotLog()
+    backTestStartTS = getHistoricalStart(backTestDays)
+    for pair in smallCapCoins:
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
-        historicalOutput = client.get_historical_klines(symbol=pair, interval="15m", start_str=backTestStartTS)
+        historicalOutput = client.get_historical_klines(symbol=pair, interval=interval, start_str=backTestStartTS)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
@@ -177,16 +179,33 @@ def backTestFeed(smallCapCoins):
     return newCoinList
 
 
+def addToList(newList, smallCapCoins):
+    for coin in newList:
+        smallCapCoins.append(coin)
+    return smallCapCoins
+
+
+def toBTC(smallCapCoins):
+    newList = []
+    for smallCapCoin in smallCapCoins:
+        smallCapCoin = smallCapCoin + "BTC"
+        newList.append(smallCapCoin)
+    return newList
+
+
 def Main():
+    backTestDays = 90
+    interval = "15m"
     smallCapCoins = []
     while True:
         baseBTC = binanceData()
         marketCapDict = marketCapData()
         newList = compare(baseBTC, marketCapDict)
-        smallCapCoins.append(newList)
+        smallCapCoins = addToList(newList, smallCapCoins)
         print(smallCapCoins)
         if smallCapCoins is not "No Match":
-            nextCoins = strategyFeed(smallCapCoins)
+            smallCapCoins = toBTC(smallCapCoins)
+            nextCoins = strategyFeed(smallCapCoins, backTestDays, interval)
             smallCapCoins = nextCoins
             sleep(10)
             break
