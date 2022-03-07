@@ -6,21 +6,35 @@ class BotLog(object):
     def __init__(self):
         pass
 
-    def logOpen(self, message):
+    def logOpenTest(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
-        f = open("trade-log.txt", "a+")
-        s = date + " New trade opened: " + " " + message + "\n"
+        f = open("trade-log-test.txt", "a+")
+        s = date + " New Test trade opened: " + " " + message + "\n"
         f.write(s)
 
-    def logClose(self, message):
+
+    def logOpenLive(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
-        f = open("trade-log.txt", "a+")
+        f = open("trade-log-live.txt", "a+")
+        s = date + " New Live trade opened: " + " " + message + "\n"
+        f.write(s)
+
+    def logCloseTest(self, message):
+        date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+        f = open("trade-log-test.txt", "a+")
         s = date + " Trade closed " + " " + message + "\n"
         f.write(s)
 
+    def logCloseLive(self, message):
+        date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+        f = open("trade-log-live.txt", "a+")
+        s = date + " Trade closed " + " " + message + "\n"
+        f.write(s)
+
+
     def log(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
-        f = open("trade-log.txt", "a+")
+        f = open("trade-log-test.txt", "a+")
         s = date + message + "\n"
         f.write(s)
 

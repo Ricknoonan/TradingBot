@@ -1,0 +1,507 @@
+2022-03-03-05:54:36 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:36 Trade closed  Total Profit: 1.7600539414627e-05 Trade Profit: 1.7600539414627e-05 Coin pair: EVXBTC
+2022-03-03-05:54:37 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:37 Trade closed  Total Profit: 3.1485072802528425e-05 Trade Profit: 1.3884533387901424e-05 Coin pair: EVXBTC
+2022-03-03-05:54:37 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:37 Trade closed  Total Profit: 4.57507378632179e-05 Trade Profit: 1.4265665060689476e-05 Coin pair: EVXBTC
+2022-03-03-05:54:38 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:38 Trade closed  Total Profit: -5.347075275095105e-05 Trade Profit: -9.922149061416895e-05 Coin pair: EVXBTC
+2022-03-03-05:54:39 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:39 Trade closed  Total Profit: -4.0774409733113635e-05 Trade Profit: 1.2696343017837416e-05 Coin pair: EVXBTC
+2022-03-03-05:54:39 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:41 Trade closed  Total Profit: -2.4817876747325405e-05 Trade Profit: 1.595653298578823e-05 Coin pair: EVXBTC
+2022-03-03-05:54:41 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:41 Trade closed  Total Profit: -1.1528002125593825e-05 Trade Profit: 1.328987462173158e-05 Coin pair: EVXBTC
+2022-03-03-05:54:41 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:41 Trade closed  Total Profit: 1.044444727810363e-05 Trade Profit: 2.1972449403697455e-05 Coin pair: EVXBTC
+2022-03-03-05:54:42 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:45 Trade closed  Total Profit: -8.939835202073746e-05 Trade Profit: -9.984279929884109e-05 Coin pair: EVXBTC
+2022-03-03-05:54:45 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:45 Trade closed  Total Profit: -7.499671027966421e-05 Trade Profit: 1.4401641741073245e-05 Coin pair: EVXBTC
+2022-03-03-05:54:46 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:48 Trade closed  Total Profit: -0.00017804402473854005 Trade Profit: -0.00010304731445887584 Coin pair: EVXBTC
+2022-03-03-05:54:48 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:48 Trade closed  Total Profit: -0.00016519872479901356 Trade Profit: 1.2845299939526493e-05 Coin pair: EVXBTC
+2022-03-03-05:54:49 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:49 Trade closed  Total Profit: -0.00026498885590360175 Trade Profit: -9.979013110458817e-05 Coin pair: EVXBTC
+2022-03-03-05:54:49 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:50 Trade closed  Total Profit: -0.0002464622994910113 Trade Profit: 1.8526556412590473e-05 Coin pair: EVXBTC
+2022-03-03-05:54:50 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:50 Trade closed  Total Profit: -0.00022951603879697028 Trade Profit: 1.6946260694041004e-05 Coin pair: EVXBTC
+2022-03-03-05:54:50 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:52 Trade closed  Total Profit: -0.00015491313076957476 Trade Profit: 7.460290802739552e-05 Coin pair: EVXBTC
+2022-03-03-05:54:52 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:52 Trade closed  Total Profit: -0.0001357703481342884 Trade Profit: 1.9142782635286372e-05 Coin pair: EVXBTC
+2022-03-03-05:54:53 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:53 Trade closed  Total Profit: -0.00012277207323933592 Trade Profit: 1.2998274894952463e-05 Coin pair: EVXBTC
+2022-03-03-05:54:53 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:54 Trade closed  Total Profit: -0.00010964589109021871 Trade Profit: 1.312618214911721e-05 Coin pair: EVXBTC
+2022-03-03-05:54:54 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:54 Trade closed  Total Profit: -9.728516052500848e-05 Trade Profit: 1.236073056521024e-05 Coin pair: EVXBTC
+2022-03-03-05:54:55 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:55 Trade closed  Total Profit: -8.209121820458546e-05 Trade Profit: 1.5193942320423015e-05 Coin pair: EVXBTC
+2022-03-03-05:54:55 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:56 Trade closed  Total Profit: -5.415339929330348e-05 Trade Profit: 2.793781891128198e-05 Coin pair: EVXBTC
+2022-03-03-05:54:56 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:57 Trade closed  Total Profit: -4.0984448892578205e-05 Trade Profit: 1.3168950400725275e-05 Coin pair: EVXBTC
+2022-03-03-05:54:57 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:57 Trade closed  Total Profit: -2.4560598618497893e-06 Trade Profit: 3.8528389030728416e-05 Coin pair: EVXBTC
+2022-03-03-05:54:58 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:58 Trade closed  Total Profit: 1.465963096718251e-05 Trade Profit: 1.71156908290323e-05 Coin pair: EVXBTC
+2022-03-03-05:54:58 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:58 Trade closed  Total Profit: 3.0120942659786644e-05 Trade Profit: 1.5461311692604134e-05 Coin pair: EVXBTC
+2022-03-03-05:54:59 New Test trade opened:  Test Trade opened
+2022-03-03-05:54:59 Trade closed  Total Profit: 6.069614237258321e-05 Trade Profit: 3.0575199712796564e-05 Coin pair: EVXBTC
+2022-03-03-05:54:59 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:01 Trade closed  Total Profit: 7.745685296842687e-05 Trade Profit: 1.6760710595843664e-05 Coin pair: EVXBTC
+2022-03-03-05:55:02 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:02 Trade closed  Total Profit: 0.00010249546728670168 Trade Profit: 2.503861431827481e-05 Coin pair: EVXBTC
+2022-03-03-05:55:02 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:02 Trade closed  Total Profit: 0.00012364390257359604 Trade Profit: 2.114843528689436e-05 Coin pair: EVXBTC
+2022-03-03-05:55:03 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:03 Trade closed  Total Profit: 2.0663435395380694e-05 Trade Profit: -0.00010298046717821535 Coin pair: EVXBTC
+2022-03-03-05:55:04 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:04 Trade closed  Total Profit: 3.9022449840468335e-05 Trade Profit: 1.835901444508764e-05 Coin pair: EVXBTC
+2022-03-03-05:55:05 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:05 Trade closed  Total Profit: 5.995811421518929e-05 Trade Profit: 2.0935664374720957e-05 Coin pair: EVXBTC
+2022-03-03-05:55:05 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:05 Trade closed  Total Profit: 8.414087786546109e-05 Trade Profit: 2.4182763650271795e-05 Coin pair: EVXBTC
+2022-03-03-05:55:06 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:06 Trade closed  Total Profit: 0.00011485263734000323 Trade Profit: 3.0711759474542146e-05 Coin pair: EVXBTC
+2022-03-03-05:55:06 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:06 Trade closed  Total Profit: 0.00013943018048843787 Trade Profit: 2.457754314843464e-05 Coin pair: EVXBTC
+2022-03-03-05:55:07 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:07 Trade closed  Total Profit: 0.00016565608258090793 Trade Profit: 2.622590209247006e-05 Coin pair: EVXBTC
+2022-03-03-05:55:07 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:07 Trade closed  Total Profit: 0.00017877392152573988 Trade Profit: 1.3117838944831943e-05 Coin pair: EVXBTC
+2022-03-03-05:55:08 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:09 Trade closed  Total Profit: 0.0002012441505275164 Trade Profit: 2.247022900177652e-05 Coin pair: EVXBTC
+2022-03-03-05:55:09 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:11 Trade closed  Total Profit: 0.0002143433235868247 Trade Profit: 1.3099173059308316e-05 Coin pair: EVXBTC
+2022-03-03-05:55:11 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:16 Trade closed  Total Profit: 0.00011542818060357246 Trade Profit: -9.891514298325226e-05 Coin pair: EVXBTC
+2022-03-03-05:55:16 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:16 Trade closed  Total Profit: 0.00012873263991868274 Trade Profit: 1.3304459315110286e-05 Coin pair: EVXBTC
+2022-03-03-05:55:17 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:17 Trade closed  Total Profit: 0.00014679758354068482 Trade Profit: 1.8064943622002078e-05 Coin pair: EVXBTC
+2022-03-03-05:55:17 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:20 Trade closed  Total Profit: 0.0001639082639896444 Trade Profit: 1.711068044895958e-05 Coin pair: EVXBTC
+2022-03-03-05:55:21 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:28 Trade closed  Total Profit: 6.492056428386992e-05 Trade Profit: -9.898769970577447e-05 Coin pair: EVXBTC
+2022-03-03-05:55:28 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:28 Trade closed  Total Profit: 7.835981838308107e-05 Trade Profit: 1.3439254099211146e-05 Coin pair: EVXBTC
+2022-03-03-05:55:29 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:30 Trade closed  Total Profit: 9.206588511996902e-05 Trade Profit: 1.3706066736887955e-05 Coin pair: EVXBTC
+2022-03-03-05:55:30 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:31 Trade closed  Total Profit: 0.0001052171438579126 Trade Profit: 1.315125873794357e-05 Coin pair: EVXBTC
+2022-03-03-05:55:31 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:39 Trade closed  Total Profit: 0.00012200593153342406 Trade Profit: 1.678878767551146e-05 Coin pair: EVXBTC
+2022-03-03-05:55:39 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:39 Trade closed  Total Profit: 0.0001354095327208119 Trade Profit: 1.3403601187387843e-05 Coin pair: EVXBTC
+2022-03-03-05:55:40 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:40 Trade closed  Total Profit: 0.0001518957338965977 Trade Profit: 1.6486201175785792e-05 Coin pair: EVXBTC
+2022-03-03-05:55:41 New Test trade opened:  Test Trade opened
+2022-03-03-05:55:44 Trade closed  Total Profit: 0.00016485457035362534 Trade Profit: 1.2958836457027645e-05 Coin pair: EVXBTC
+2022-03-03-05:55:45 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:02 Trade closed  Total Profit: 6.599807172159663e-05 Trade Profit: -9.885649863202871e-05 Coin pair: EVXBTC
+2022-03-03-05:56:02 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:05 Trade closed  Total Profit: 7.970740414627733e-05 Trade Profit: 1.3709332424680705e-05 Coin pair: EVXBTC
+2022-03-03-05:56:06 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:16 Trade closed  Total Profit: -1.9333905301068905e-05 Trade Profit: -9.904130944734624e-05 Coin pair: EVXBTC
+2022-03-03-05:56:16 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:17 Trade closed  Total Profit: -4.64928376190082e-06 Trade Profit: 1.4684621539168085e-05 Coin pair: EVXBTC
+2022-03-03-05:56:17 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:20 Trade closed  Total Profit: 1.1906581329871018e-05 Trade Profit: 1.6555865091771838e-05 Coin pair: EVXBTC
+2022-03-03-05:56:20 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:21 Trade closed  Total Profit: 2.7068734965448872e-05 Trade Profit: 1.5162153635577853e-05 Coin pair: EVXBTC
+2022-03-03-05:56:21 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:21 Trade closed  Total Profit: 6.0489675153295816e-05 Trade Profit: 3.3420940187846944e-05 Coin pair: EVXBTC
+2022-03-03-05:56:22 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:45 Trade closed  Total Profit: 7.494539715995546e-05 Trade Profit: 1.4455722006659642e-05 Coin pair: EVXBTC
+2022-03-03-05:56:45 New Test trade opened:  Test Trade opened
+2022-03-03-05:56:47 Trade closed  Total Profit: 8.988381672638275e-05 Trade Profit: 1.4938419566427294e-05 Coin pair: EVXBTC
+2022-03-03-05:56:47 New Test trade opened:  Test Trade opened
+2022-03-03-05:57:42 Trade closed  Total Profit: 0.00010698924388836769 Trade Profit: 1.7105427161984935e-05 Coin pair: EVXBTC
+2022-03-03-05:57:43 New Test trade opened:  Test Trade opened
+2022-03-03-05:57:55 Trade closed  Total Profit: 7.857749340153786e-06 Trade Profit: -9.91314945482139e-05 Coin pair: EVXBTC
+2022-03-03-05:57:56 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:01 Trade closed  Total Profit: 2.889420358969733e-05 Trade Profit: 2.1036454249543545e-05 Coin pair: EVXBTC
+2022-03-03-05:58:01 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:02 Trade closed  Total Profit: 4.6230278125313954e-05 Trade Profit: 1.7336074535616623e-05 Coin pair: EVXBTC
+2022-03-03-05:58:02 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:02 Trade closed  Total Profit: 6.004963228513089e-05 Trade Profit: 1.3819354159816936e-05 Coin pair: EVXBTC
+2022-03-03-05:58:03 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:06 Trade closed  Total Profit: 7.287698011058268e-05 Trade Profit: 1.2827347825451795e-05 Coin pair: EVXBTC
+2022-03-03-05:58:06 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:16 Trade closed  Total Profit: 8.797516562086645e-05 Trade Profit: 1.5098185510283767e-05 Coin pair: EVXBTC
+2022-03-03-05:58:17 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:17 Trade closed  Total Profit: 0.0001022224943212798 Trade Profit: 1.4247328700413352e-05 Coin pair: EVXBTC
+2022-03-03-05:58:17 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:17 Trade closed  Total Profit: 0.0001169357516759464 Trade Profit: 1.4713257354666596e-05 Coin pair: EVXBTC
+2022-03-03-05:58:18 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:22 Trade closed  Total Profit: 1.789715597408316e-05 Trade Profit: -9.903859570186324e-05 Coin pair: EVXBTC
+2022-03-03-05:58:23 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:23 Trade closed  Total Profit: 5.276252866971199e-05 Trade Profit: 3.4865372695628834e-05 Coin pair: EVXBTC
+2022-03-03-05:58:23 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:34 Trade closed  Total Profit: -4.77018509422674e-05 Trade Profit: -0.00010046437961197939 Coin pair: EVXBTC
+2022-03-03-05:58:35 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:36 Trade closed  Total Profit: -3.440875648870473e-05 Trade Profit: 1.329309445356267e-05 Coin pair: EVXBTC
+2022-03-03-05:58:36 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:43 Trade closed  Total Profit: -1.843792395261662e-05 Trade Profit: 1.5970832536088108e-05 Coin pair: EVXBTC
+2022-03-03-05:58:43 New Test trade opened:  Test Trade opened
+2022-03-03-05:58:44 Trade closed  Total Profit: -5.161590044711116e-06 Trade Profit: 1.3276333907905502e-05 Coin pair: EVXBTC
+2022-03-03-05:58:44 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:13 Trade closed  Total Profit: -0.00010448439240821108 Trade Profit: -9.932280236349996e-05 Coin pair: EVXBTC
+2022-03-03-05:59:13 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:13 Trade closed  Total Profit: -9.040176784283642e-05 Trade Profit: 1.4082624565374657e-05 Coin pair: EVXBTC
+2022-03-03-05:59:14 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:14 Trade closed  Total Profit: -7.52012385017853e-05 Trade Profit: 1.5200529341051125e-05 Coin pair: EVXBTC
+2022-03-03-05:59:15 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:25 Trade closed  Total Profit: -0.00017406200725050377 Trade Profit: -9.886076874871848e-05 Coin pair: EVXBTC
+2022-03-03-05:59:26 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:26 Trade closed  Total Profit: -0.00016082290527727017 Trade Profit: 1.3239101973233609e-05 Coin pair: EVXBTC
+2022-03-03-05:59:27 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:28 Trade closed  Total Profit: -0.00014741086961457802 Trade Profit: 1.3412035662692146e-05 Coin pair: EVXBTC
+2022-03-03-05:59:29 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:38 Trade closed  Total Profit: -0.0001320596821511039 Trade Profit: 1.5351187463474115e-05 Coin pair: EVXBTC
+2022-03-03-05:59:39 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:39 Trade closed  Total Profit: -0.00011815565916508585 Trade Profit: 1.3904022986018058e-05 Coin pair: EVXBTC
+2022-03-03-05:59:40 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:42 Trade closed  Total Profit: -0.00021704669502868547 Trade Profit: -9.889103586359962e-05 Coin pair: EVXBTC
+2022-03-03-05:59:43 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:44 Trade closed  Total Profit: -0.0002017635054974018 Trade Profit: 1.5283189531283675e-05 Coin pair: EVXBTC
+2022-03-03-05:59:45 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:57 Trade closed  Total Profit: -0.00012329177019505347 Trade Profit: 7.847173530234832e-05 Coin pair: EVXBTC
+2022-03-03-05:59:58 New Test trade opened:  Test Trade opened
+2022-03-03-05:59:58 Trade closed  Total Profit: -0.00010897769451099579 Trade Profit: 1.431407568405768e-05 Coin pair: EVXBTC
+2022-03-03-05:59:59 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:10 Trade closed  Total Profit: -0.00020993079458068984 Trade Profit: -0.00010095310006969405 Coin pair: EVXBTC
+2022-03-03-06:00:10 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:10 Trade closed  Total Profit: -0.000191073259916615 Trade Profit: 1.885753466407484e-05 Coin pair: EVXBTC
+2022-03-03-06:00:11 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:13 Trade closed  Total Profit: -0.00017777501513495153 Trade Profit: 1.3298244781663465e-05 Coin pair: EVXBTC
+2022-03-03-06:00:13 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:14 Trade closed  Total Profit: -0.00016343500389016211 Trade Profit: 1.4340011244789417e-05 Coin pair: EVXBTC
+2022-03-03-06:00:14 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:14 Trade closed  Total Profit: -0.00013290633319039635 Trade Profit: 3.052867069976576e-05 Coin pair: EVXBTC
+2022-03-03-06:00:15 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:23 Trade closed  Total Profit: -0.00011938878573912427 Trade Profit: 1.3517547451272086e-05 Coin pair: EVXBTC
+2022-03-03-06:00:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:31 Trade closed  Total Profit: -0.00010341424434871335 Trade Profit: 1.5974541390410916e-05 Coin pair: EVXBTC
+2022-03-03-06:00:32 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:32 Trade closed  Total Profit: -8.927214431737808e-05 Trade Profit: 1.4142100031335267e-05 Coin pair: EVXBTC
+2022-03-03-06:00:33 New Test trade opened:  Test Trade opened
+2022-03-03-06:00:37 Trade closed  Total Profit: -7.585896421685419e-05 Trade Profit: 1.3413180100523892e-05 Coin pair: EVXBTC
+2022-03-03-06:00:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:02:36 Trade closed  Total Profit: -0.00017480779085314187 Trade Profit: -9.894882663628768e-05 Coin pair: EVXBTC
+2022-03-03-06:02:36 New Test trade opened:  Test Trade opened
+2022-03-03-06:02:37 Trade closed  Total Profit: -0.00016229760178530726 Trade Profit: 1.2510189067834604e-05 Coin pair: EVXBTC
+2022-03-03-06:02:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:02:38 Trade closed  Total Profit: -0.00014937088219697234 Trade Profit: 1.2926719588334928e-05 Coin pair: EVXBTC
+2022-03-03-06:02:39 New Test trade opened:  Test Trade opened
+2022-03-03-06:02:44 Trade closed  Total Profit: -0.00013698325539676502 Trade Profit: 1.238762680020732e-05 Coin pair: EVXBTC
+2022-03-03-06:02:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:03:45 Trade closed  Total Profit: -0.00023623519631454272 Trade Profit: -9.925194091777771e-05 Coin pair: EVXBTC
+2022-03-03-06:03:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:03:48 Trade closed  Total Profit: -0.00022177415321479965 Trade Profit: 1.4461043099743076e-05 Coin pair: EVXBTC
+2022-03-03-06:03:48 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:00 Trade closed  Total Profit: -0.0002086084537780018 Trade Profit: 1.3165699436797854e-05 Coin pair: EVXBTC
+2022-03-03-06:04:01 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:02 Trade closed  Total Profit: -0.00019590303410799238 Trade Profit: 1.2705419670009418e-05 Coin pair: EVXBTC
+2022-03-03-06:04:03 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:03 Trade closed  Total Profit: -0.00018366966424473443 Trade Profit: 1.2233369863257944e-05 Coin pair: EVXBTC
+2022-03-03-06:04:04 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:04 Trade closed  Total Profit: -0.0001706760259236697 Trade Profit: 1.2993638321064723e-05 Coin pair: EVXBTC
+2022-03-03-06:04:05 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:08 Trade closed  Total Profit: -0.0001539504161697967 Trade Profit: 1.6725609753873004e-05 Coin pair: EVXBTC
+2022-03-03-06:04:08 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:09 Trade closed  Total Profit: -0.0001411251134288192 Trade Profit: 1.2825302740977496e-05 Coin pair: EVXBTC
+2022-03-03-06:04:09 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:10 Trade closed  Total Profit: -0.00011975287229633536 Trade Profit: 2.137224113248385e-05 Coin pair: EVXBTC
+2022-03-03-06:04:11 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:18 Trade closed  Total Profit: -0.00010723956496130413 Trade Profit: 1.2513307335031224e-05 Coin pair: EVXBTC
+2022-03-03-06:04:18 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:26 Trade closed  Total Profit: -9.47479758605354e-05 Trade Profit: 1.2491589100768736e-05 Coin pair: EVXBTC
+2022-03-03-06:04:27 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:37 Trade closed  Total Profit: -8.142118291237598e-05 Trade Profit: 1.3326792948159419e-05 Coin pair: EVXBTC
+2022-03-03-06:04:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:38 Trade closed  Total Profit: -6.341502096870305e-05 Trade Profit: 1.8006161943672926e-05 Coin pair: EVXBTC
+2022-03-03-06:04:38 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:56 Trade closed  Total Profit: -5.07912554954857e-05 Trade Profit: 1.2623765473217355e-05 Coin pair: EVXBTC
+2022-03-03-06:04:57 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:57 Trade closed  Total Profit: -3.485584923528914e-05 Trade Profit: 1.593540626019656e-05 Coin pair: EVXBTC
+2022-03-03-06:04:58 New Test trade opened:  Test Trade opened
+2022-03-03-06:04:58 Trade closed  Total Profit: -1.8151515247491235e-05 Trade Profit: 1.6704333987797903e-05 Coin pair: EVXBTC
+2022-03-03-06:04:59 New Test trade opened:  Test Trade opened
+2022-03-03-06:05:11 Trade closed  Total Profit: 4.2099617800307255e-06 Trade Profit: 2.236147702752196e-05 Coin pair: EVXBTC
+2022-03-03-06:05:12 New Test trade opened:  Test Trade opened
+2022-03-03-06:05:44 Trade closed  Total Profit: 2.2251843785121405e-05 Trade Profit: 1.804188200509068e-05 Coin pair: EVXBTC
+2022-03-03-06:05:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:05:47 Trade closed  Total Profit: 3.996830028885011e-05 Trade Profit: 1.7716456503728703e-05 Coin pair: EVXBTC
+2022-03-03-06:05:47 New Test trade opened:  Test Trade opened
+2022-03-03-06:06:21 Trade closed  Total Profit: -5.973656127768908e-05 Trade Profit: -9.970486156653919e-05 Coin pair: EVXBTC
+2022-03-03-06:06:22 New Test trade opened:  Test Trade opened
+2022-03-03-06:06:23 Trade closed  Total Profit: -4.718693847468661e-05 Trade Profit: 1.2549622803002466e-05 Coin pair: EVXBTC
+2022-03-03-06:06:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:07:33 Trade closed  Total Profit: -0.00014629622900446125 Trade Profit: -9.910929052977464e-05 Coin pair: EVXBTC
+2022-03-03-06:07:33 New Test trade opened:  Test Trade opened
+2022-03-03-06:07:36 Trade closed  Total Profit: -0.0001320409283582011 Trade Profit: 1.4255300646260157e-05 Coin pair: EVXBTC
+2022-03-03-06:07:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:07:38 Trade closed  Total Profit: -0.00011834710370231132 Trade Profit: 1.3693824655889778e-05 Coin pair: EVXBTC
+2022-03-03-06:07:38 New Test trade opened:  Test Trade opened
+2022-03-03-06:07:40 Trade closed  Total Profit: -0.00010561845303530096 Trade Profit: 1.272865066701036e-05 Coin pair: EVXBTC
+2022-03-03-06:07:41 New Test trade opened:  Test Trade opened
+2022-03-03-06:07:42 Trade closed  Total Profit: -9.284742095096274e-05 Trade Profit: 1.2771032084338214e-05 Coin pair: EVXBTC
+2022-03-03-06:07:42 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:13 Trade closed  Total Profit: -7.336100967807383e-05 Trade Profit: 1.948641127288891e-05 Coin pair: EVXBTC
+2022-03-03-06:08:14 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:14 Trade closed  Total Profit: -6.029158905522519e-05 Trade Profit: 1.3069420622848637e-05 Coin pair: EVXBTC
+2022-03-03-06:08:15 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:30 Trade closed  Total Profit: -0.00016078972215747078 Trade Profit: -0.00010049813310224559 Coin pair: EVXBTC
+2022-03-03-06:08:31 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:34 Trade closed  Total Profit: -0.00014727938992983413 Trade Profit: 1.3510332227636648e-05 Coin pair: EVXBTC
+2022-03-03-06:08:35 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:35 Trade closed  Total Profit: -0.00013470686312184644 Trade Profit: 1.2572526807987696e-05 Coin pair: EVXBTC
+2022-03-03-06:08:36 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:38 Trade closed  Total Profit: -0.0001201101652422579 Trade Profit: 1.459669787958853e-05 Coin pair: EVXBTC
+2022-03-03-06:08:38 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:39 Trade closed  Total Profit: -9.346037505015509e-05 Trade Profit: 2.6649790192102813e-05 Coin pair: EVXBTC
+2022-03-03-06:08:40 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:42 Trade closed  Total Profit: -6.924826526010977e-05 Trade Profit: 2.421210979004532e-05 Coin pair: EVXBTC
+2022-03-03-06:08:43 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:43 Trade closed  Total Profit: -5.595338113909958e-05 Trade Profit: 1.3294884121010193e-05 Coin pair: EVXBTC
+2022-03-03-06:08:43 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:43 Trade closed  Total Profit: -4.144498929550274e-05 Trade Profit: 1.450839184359684e-05 Coin pair: EVXBTC
+2022-03-03-06:08:44 New Test trade opened:  Test Trade opened
+2022-03-03-06:08:44 Trade closed  Total Profit: -2.84823589114231e-05 Trade Profit: 1.2962630384079642e-05 Coin pair: EVXBTC
+2022-03-03-06:08:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:00 Trade closed  Total Profit: -1.0539323214584602e-05 Trade Profit: 1.7943035696838498e-05 Coin pair: EVXBTC
+2022-03-03-06:09:01 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:12 Trade closed  Total Profit: 2.74302735683301e-06 Trade Profit: 1.3282350571417611e-05 Coin pair: EVXBTC
+2022-03-03-06:09:12 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:12 Trade closed  Total Profit: 1.531035203952813e-05 Trade Profit: 1.2567324682695121e-05 Coin pair: EVXBTC
+2022-03-03-06:09:13 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:13 Trade closed  Total Profit: 3.894754373949912e-05 Trade Profit: 2.3637191699970992e-05 Coin pair: EVXBTC
+2022-03-03-06:09:14 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:17 Trade closed  Total Profit: 5.541395003974618e-05 Trade Profit: 1.6466406300247056e-05 Coin pair: EVXBTC
+2022-03-03-06:09:18 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:19 Trade closed  Total Profit: 6.863874017334746e-05 Trade Profit: 1.3224790133601282e-05 Coin pair: EVXBTC
+2022-03-03-06:09:20 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:21 Trade closed  Total Profit: 8.661517570435884e-05 Trade Profit: 1.797643553101138e-05 Coin pair: EVXBTC
+2022-03-03-06:09:22 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:23 Trade closed  Total Profit: 0.00010250415353444932 Trade Profit: 1.588897783009048e-05 Coin pair: EVXBTC
+2022-03-03-06:09:23 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:24 Trade closed  Total Profit: 0.0001181134642964936 Trade Profit: 1.5609310762044277e-05 Coin pair: EVXBTC
+2022-03-03-06:09:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:09:36 Trade closed  Total Profit: 0.0001345868337922671 Trade Profit: 1.64733694957735e-05 Coin pair: EVXBTC
+2022-03-03-06:09:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:11 Trade closed  Total Profit: 0.00014701358465927546 Trade Profit: 1.242675086700836e-05 Coin pair: EVXBTC
+2022-03-03-06:10:12 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:12 Trade closed  Total Profit: 0.00015929425642158718 Trade Profit: 1.2280671762311722e-05 Coin pair: EVXBTC
+2022-03-03-06:10:13 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:18 Trade closed  Total Profit: 0.000174261138479544 Trade Profit: 1.4966882057956832e-05 Coin pair: EVXBTC
+2022-03-03-06:10:19 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:19 Trade closed  Total Profit: 0.0001888530762795997 Trade Profit: 1.459193780005568e-05 Coin pair: EVXBTC
+2022-03-03-06:10:19 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:20 Trade closed  Total Profit: 0.00020444614379279842 Trade Profit: 1.5593067513198724e-05 Coin pair: EVXBTC
+2022-03-03-06:10:21 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:21 Trade closed  Total Profit: 0.00021680068981214627 Trade Profit: 1.2354546019347856e-05 Coin pair: EVXBTC
+2022-03-03-06:10:22 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:27 Trade closed  Total Profit: 0.0002355421538684605 Trade Profit: 1.8741464056314225e-05 Coin pair: EVXBTC
+2022-03-03-06:10:28 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:28 Trade closed  Total Profit: 0.0002504467793267143 Trade Profit: 1.4904625458253811e-05 Coin pair: EVXBTC
+2022-03-03-06:10:29 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:32 Trade closed  Total Profit: 0.00026274794509272427 Trade Profit: 1.2301165766009985e-05 Coin pair: EVXBTC
+2022-03-03-06:10:32 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:32 Trade closed  Total Profit: 0.00028095728411248395 Trade Profit: 1.8209339019759654e-05 Coin pair: EVXBTC
+2022-03-03-06:10:33 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:41 Trade closed  Total Profit: 0.0002947855466317671 Trade Profit: 1.3828262519283103e-05 Coin pair: EVXBTC
+2022-03-03-06:10:42 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:46 Trade closed  Total Profit: 0.00031621841906099137 Trade Profit: 2.143287242922429e-05 Coin pair: EVXBTC
+2022-03-03-06:10:46 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:46 Trade closed  Total Profit: 0.0003306726562370847 Trade Profit: 1.4454237176093361e-05 Coin pair: EVXBTC
+2022-03-03-06:10:47 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:49 Trade closed  Total Profit: 0.0003534711252210637 Trade Profit: 2.279846898397902e-05 Coin pair: EVXBTC
+2022-03-03-06:10:49 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:49 Trade closed  Total Profit: 0.00037998478275512486 Trade Profit: 2.6513657534061143e-05 Coin pair: EVXBTC
+2022-03-03-06:10:50 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:51 Trade closed  Total Profit: 0.00039228419167464806 Trade Profit: 1.2299408919523173e-05 Coin pair: EVXBTC
+2022-03-03-06:10:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:57 Trade closed  Total Profit: 0.00040524347877609365 Trade Profit: 1.2959287101445613e-05 Coin pair: EVXBTC
+2022-03-03-06:10:57 New Test trade opened:  Test Trade opened
+2022-03-03-06:10:57 Trade closed  Total Profit: 0.00041796280533857943 Trade Profit: 1.2719326562485778e-05 Coin pair: EVXBTC
+2022-03-03-06:10:58 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:01 Trade closed  Total Profit: 0.000453856368201043 Trade Profit: 3.589356286246359e-05 Coin pair: EVXBTC
+2022-03-03-06:11:02 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:03 Trade closed  Total Profit: 0.0004662006436088799 Trade Profit: 1.2344275407836879e-05 Coin pair: EVXBTC
+2022-03-03-06:11:04 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:29 Trade closed  Total Profit: 0.0003629630120672355 Trade Profit: -0.0001032376315416444 Coin pair: EVXBTC
+2022-03-03-06:11:30 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:30 Trade closed  Total Profit: 0.0003760462468971194 Trade Profit: 1.308323482988386e-05 Coin pair: EVXBTC
+2022-03-03-06:11:30 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:31 Trade closed  Total Profit: 0.0003887563658275749 Trade Profit: 1.2710118930455496e-05 Coin pair: EVXBTC
+2022-03-03-06:11:31 New Test trade opened:  Test Trade opened
+2022-03-03-06:11:35 Trade closed  Total Profit: 0.00040187466419081545 Trade Profit: 1.3118298363240532e-05 Coin pair: EVXBTC
+2022-03-03-06:11:36 New Test trade opened:  Test Trade opened
+2022-03-03-06:12:04 Trade closed  Total Profit: 0.00041933734546908757 Trade Profit: 1.746268127827215e-05 Coin pair: EVXBTC
+2022-03-03-06:12:05 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:00 Trade closed  Total Profit: 0.00031959089653213073 Trade Profit: -9.974644893695684e-05 Coin pair: EVXBTC
+2022-03-03-06:13:00 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:01 Trade closed  Total Profit: 0.0003323130618453525 Trade Profit: 1.2722165313221748e-05 Coin pair: EVXBTC
+2022-03-03-06:13:02 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:02 Trade closed  Total Profit: 0.0003464192857534549 Trade Profit: 1.4106223908102376e-05 Coin pair: EVXBTC
+2022-03-03-06:13:02 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:09 Trade closed  Total Profit: 0.0003596541361597668 Trade Profit: 1.32348504063119e-05 Coin pair: EVXBTC
+2022-03-03-06:13:09 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:10 Trade closed  Total Profit: 0.00038771737818319606 Trade Profit: 2.8063242023429285e-05 Coin pair: EVXBTC
+2022-03-03-06:13:11 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:20 Trade closed  Total Profit: 0.0004043009851884967 Trade Profit: 1.658360700530065e-05 Coin pair: EVXBTC
+2022-03-03-06:13:20 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:21 Trade closed  Total Profit: 0.00041661153721557183 Trade Profit: 1.2310552027075116e-05 Coin pair: EVXBTC
+2022-03-03-06:13:22 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:26 Trade closed  Total Profit: 0.00042896208153482193 Trade Profit: 1.235054431925013e-05 Coin pair: EVXBTC
+2022-03-03-06:13:27 New Test trade opened:  Test Trade opened
+2022-03-03-06:13:29 Trade closed  Total Profit: 0.0004440449191611879 Trade Profit: 1.5082837626365976e-05 Coin pair: EVXBTC
+2022-03-03-06:13:30 New Test trade opened:  Test Trade opened
+2022-03-03-06:14:07 Trade closed  Total Profit: 0.00046001459048375794 Trade Profit: 1.5969671322570053e-05 Coin pair: EVXBTC
+2022-03-03-06:14:08 New Test trade opened:  Test Trade opened
+2022-03-03-06:14:43 Trade closed  Total Profit: 0.0004724833864417228 Trade Profit: 1.2468795957964893e-05 Coin pair: EVXBTC
+2022-03-03-06:14:44 New Test trade opened:  Test Trade opened
+2022-03-03-06:14:45 Trade closed  Total Profit: 0.00048662003956225484 Trade Profit: 1.413665312053201e-05 Coin pair: EVXBTC
+2022-03-03-06:14:46 New Test trade opened:  Test Trade opened
+2022-03-03-06:14:50 Trade closed  Total Profit: 0.0005104363976841948 Trade Profit: 2.381635812193997e-05 Coin pair: EVXBTC
+2022-03-03-06:14:51 New Test trade opened:  Test Trade opened
+2022-03-03-06:14:51 Trade closed  Total Profit: 0.0005234838614747428 Trade Profit: 1.3047463790547985e-05 Coin pair: EVXBTC
+2022-03-03-06:14:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:15:23 Trade closed  Total Profit: 0.0005412323670194382 Trade Profit: 1.7748505544695346e-05 Coin pair: EVXBTC
+2022-03-03-06:15:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:15:26 Trade closed  Total Profit: 0.0005580999087963065 Trade Profit: 1.6867541776868295e-05 Coin pair: EVXBTC
+2022-03-03-06:15:27 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:11 Trade closed  Total Profit: 0.0005729095115926972 Trade Profit: 1.4809602796390616e-05 Coin pair: EVXBTC
+2022-03-03-06:16:12 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:17 Trade closed  Total Profit: 0.0006287758480710292 Trade Profit: 5.5866336478332105e-05 Coin pair: EVXBTC
+2022-03-03-06:16:17 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:50 Trade closed  Total Profit: 0.0005286729605031345 Trade Profit: -0.00010010288756789478 Coin pair: EVXBTC
+2022-03-03-06:16:50 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:50 Trade closed  Total Profit: 0.0005420652573928528 Trade Profit: 1.3392296889718332e-05 Coin pair: EVXBTC
+2022-03-03-06:16:51 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:51 Trade closed  Total Profit: 0.0005548229620705137 Trade Profit: 1.2757704677660936e-05 Coin pair: EVXBTC
+2022-03-03-06:16:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:16:54 Trade closed  Total Profit: 0.0004543080191126112 Trade Profit: -0.00010051494295790255 Coin pair: EVXBTC
+2022-03-03-06:16:55 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:01 Trade closed  Total Profit: 0.0003513718807910402 Trade Profit: -0.000102936138321571 Coin pair: EVXBTC
+2022-03-03-06:17:43 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:43 Trade closed  Total Profit: 2.909831592061421e-05 Trade Profit: 2.909831592061421e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:44 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:44 Trade closed  Total Profit: 4.8389739336451545e-05 Trade Profit: 1.9291423415837333e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:44 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:44 Trade closed  Total Profit: 6.714702034334556e-05 Trade Profit: 1.875728100689402e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:45 Trade closed  Total Profit: 8.635475112661137e-05 Trade Profit: 1.9207730783265804e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:45 Trade closed  Total Profit: 0.00010010354348768553 Trade Profit: 1.3748792361074165e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:45 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:46 Trade closed  Total Profit: 0.00011558075545986613 Trade Profit: 1.54772119721806e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:46 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:46 Trade closed  Total Profit: 0.0001315398112648623 Trade Profit: 1.5959055804996164e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:47 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:47 Trade closed  Total Profit: 0.00014948220490071707 Trade Profit: 1.7942393635854773e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:47 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:51 Trade closed  Total Profit: 4.98042931814911e-05 Trade Profit: -9.967791171922597e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:51 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:51 Trade closed  Total Profit: 6.383080409669807e-05 Trade Profit: 1.402651091520697e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:52 Trade closed  Total Profit: 7.886781805580521e-05 Trade Profit: 1.5037013959107143e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:53 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:53 Trade closed  Total Profit: 0.00010110093001696512 Trade Profit: 2.223311196115991e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:54 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:57 Trade closed  Total Profit: -1.564898305682214e-06 Trade Profit: -0.00010266582832264734 Coin pair: DEGOBTC
+2022-03-03-06:17:58 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:58 Trade closed  Total Profit: 1.6898701771791313e-05 Trade Profit: 1.8463600077473527e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:58 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:58 Trade closed  Total Profit: 2.9729378710746586e-05 Trade Profit: 1.2830676938955273e-05 Coin pair: DEGOBTC
+2022-03-03-06:17:59 New Test trade opened:  Test Trade opened
+2022-03-03-06:17:59 Trade closed  Total Profit: 4.371645054491538e-05 Trade Profit: 1.3987071834168795e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:00 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:00 Trade closed  Total Profit: 5.7517619737908735e-05 Trade Profit: 1.3801169192993355e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:01 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:01 Trade closed  Total Profit: 7.243266873295618e-05 Trade Profit: 1.4915048995047442e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:02 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:02 Trade closed  Total Profit: 8.915433976065847e-05 Trade Profit: 1.6721671027702294e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:03 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:03 Trade closed  Total Profit: 0.00010622704766853817 Trade Profit: 1.7072707907879697e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:04 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:09 Trade closed  Total Profit: 3.2123391192834315e-06 Trade Profit: -0.00010301470854925474 Coin pair: DEGOBTC
+2022-03-03-06:18:09 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:10 Trade closed  Total Profit: 1.7813693191692104e-05 Trade Profit: 1.4601354072408672e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:11 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:11 Trade closed  Total Profit: 3.381700648743435e-05 Trade Profit: 1.6003313295742243e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:12 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:12 Trade closed  Total Profit: 5.641554897424582e-05 Trade Profit: 2.259854248681147e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:13 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:18 Trade closed  Total Profit: -4.3864033916834495e-05 Trade Profit: -0.00010027958289108031 Coin pair: DEGOBTC
+2022-03-03-06:18:19 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:19 Trade closed  Total Profit: -3.0185118116981673e-05 Trade Profit: 1.3678915799852822e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:20 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:20 Trade closed  Total Profit: -1.4790079913035755e-05 Trade Profit: 1.5395038203945918e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:20 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:23 Trade closed  Total Profit: -8.804895560056024e-07 Trade Profit: 1.3909590357030153e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:24 Trade closed  Total Profit: 1.515596826215024e-05 Trade Profit: 1.6036457818155843e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:24 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:25 Trade closed  Total Profit: 3.0282142087745696e-05 Trade Profit: 1.5126173825595455e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:25 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:26 Trade closed  Total Profit: 4.396308552049723e-05 Trade Profit: 1.3680943432751536e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:27 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:28 Trade closed  Total Profit: 5.712575693644941e-05 Trade Profit: 1.316267141595218e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:28 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:28 Trade closed  Total Profit: 7.452755683941698e-05 Trade Profit: 1.740179990296757e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:29 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:29 Trade closed  Total Profit: 8.681451195769737e-05 Trade Profit: 1.2286955118280389e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:29 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:32 Trade closed  Total Profit: 0.00010907643117253482 Trade Profit: 2.226191921483745e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:32 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:32 Trade closed  Total Profit: 0.00013150142318675911 Trade Profit: 2.2424992014224293e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:33 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:34 Trade closed  Total Profit: 0.00014542865602966044 Trade Profit: 1.3927232842901322e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:34 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:36 Trade closed  Total Profit: 0.00015818968980222753 Trade Profit: 1.2761033772567095e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:37 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:50 Trade closed  Total Profit: 5.7591562352779914e-05 Trade Profit: -0.00010059812744944762 Coin pair: DEGOBTC
+2022-03-03-06:18:50 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:51 Trade closed  Total Profit: 7.618244503978112e-05 Trade Profit: 1.8590882687001206e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:51 New Test trade opened:  Test Trade opened
+2022-03-03-06:18:51 Trade closed  Total Profit: 0.00010003783678328538 Trade Profit: 2.385539174350426e-05 Coin pair: DEGOBTC
+2022-03-03-06:18:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:12 Trade closed  Total Profit: 0.00011286640327373056 Trade Profit: 1.2828566490445176e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:13 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:13 Trade closed  Total Profit: 0.00013479143890463355 Trade Profit: 2.192503563090299e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:14 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:14 Trade closed  Total Profit: 0.00015795881577757443 Trade Profit: 2.3167376872940885e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:14 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:14 Trade closed  Total Profit: 0.00017222604759392312 Trade Profit: 1.4267231816348687e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:15 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:15 Trade closed  Total Profit: 0.00018589550304143603 Trade Profit: 1.3669455447512909e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:16 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:16 Trade closed  Total Profit: 0.00019853146940192697 Trade Profit: 1.263596636049094e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:17 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:20 Trade closed  Total Profit: 9.844966994005386e-05 Trade Profit: -0.0001000817994618731 Coin pair: DEGOBTC
+2022-03-03-06:19:21 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:21 Trade closed  Total Profit: 0.00011116787865701926 Trade Profit: 1.2718208716965392e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:22 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:26 Trade closed  Total Profit: 0.00012589022194291059 Trade Profit: 1.472234328589133e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:26 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:29 Trade closed  Total Profit: 0.0001424477666687891 Trade Profit: 1.6557544725878524e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:29 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:52 Trade closed  Total Profit: 4.2638492925342044e-05 Trade Profit: -9.980927374344706e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:52 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:53 Trade closed  Total Profit: 5.5335258503149114e-05 Trade Profit: 1.269676557780707e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:53 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:55 Trade closed  Total Profit: 7.230306366453433e-05 Trade Profit: 1.6967805161385212e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:56 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:59 Trade closed  Total Profit: 9.046669363127046e-05 Trade Profit: 1.8163629966736134e-05 Coin pair: DEGOBTC
+2022-03-03-06:19:59 New Test trade opened:  Test Trade opened
+2022-03-03-06:19:59 Trade closed  Total Profit: 0.00010308213208391206 Trade Profit: 1.2615438452641598e-05 Coin pair: DEGOBTC
+2022-03-03-06:20:00 New Test trade opened:  Test Trade opened
+2022-03-03-06:20:02 Trade closed  Total Profit: 0.00012129517328918543 Trade Profit: 1.8213041205273375e-05 Coin pair: DEGOBTC
+2022-03-03-06:20:02 New Test trade opened:  Test Trade opened

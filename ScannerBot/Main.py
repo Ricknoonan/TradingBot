@@ -1,26 +1,14 @@
-import sys
-import time
-
-from urllib.error import URLError
-import os
 from time import sleep
-from pythonic_binance.client import Client
-from datetime import date, timedelta
-
-from requests import Request, Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import json
-
-from typing import Dict
-
-from Utils.botlog import BotLog
-
 import calendar
+import json
 import time
+from datetime import date, timedelta
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+from time import sleep
 
-# gmt stores current gmtime
+from requests import Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+import talib
 
 # binance
 # 0 get markets from binance -> Done
@@ -30,13 +18,11 @@ from dateutil.relativedelta import relativedelta
 # 2.1. this will involve pulling candlesticks for each small cap coin and running various analysis.
 # 3. Buy and sell short term, or buy and hold.
 # 3.1.
-from Exchange.Bot.botcandlestick import BotCandlestick
-from Exchange.Bot.botchart import BotChart
-from Exchange.Bot.botstrategy import BotStrategy
-from Exchange.Bot.botstrategy1 import BotStrategy1
 from Exchange.Bot.botstrategy3 import BotStrategy3
-from ScannerBot import binanceCredential
 from ScannerBot.BinanceUtil import getClient
+
+
+# gmt stores current gmtime
 
 
 def sortByMarketCap(datum):
@@ -115,16 +101,16 @@ def getCurrentTS():
     return ts
 
 
-def getSeconds(interval):
-    seconds = interval[:-1]
-    return int(seconds)
+def getMiliSeconds(interval):
+    minutes = interval[:-1]
+    return int(minutes) * 60
 
 
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval)
     nextCoins = []
-    intervalInSeconds = getSeconds(interval)
+    intervalInMiliSeconds = getMiliSeconds(interval)
     print(smallCapCoins)
     for coin in smallCapCoins:
         strategy = BotStrategy3(coin, liveFeed=True)
@@ -140,7 +126,7 @@ def strategyFeed(smallCapCoins, backTestDays, interval):
                     if trade.getProfit() > 0:
                         nextCoins.append(coin)
                         nextCoin = True
-            sleep(intervalInSeconds)
+            sleep(intervalInMiliSeconds)
     return nextCoins
 
 
