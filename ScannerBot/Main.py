@@ -8,7 +8,6 @@ from time import sleep
 
 from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
-import talib
 
 # binance
 # 0 get markets from binance -> Done
@@ -19,6 +18,7 @@ import talib
 # 3. Buy and sell short term, or buy and hold.
 # 3.1.
 from Exchange.Bot.botstrategy3 import BotStrategy3
+from Exchange.Bot.liveBotStrategy import liveBotStrategy
 from ScannerBot.BinanceUtil import getClient
 
 
@@ -77,7 +77,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 2) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 3) & (quote not in quotes):
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -106,27 +106,32 @@ def getMiliSeconds(interval):
     return int(minutes) * 60
 
 
+class LiveBotStrategy(object):
+    pass
+
+
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval)
     nextCoins = []
     intervalInMiliSeconds = getMiliSeconds(interval)
     print(smallCapCoins)
-    for coin in smallCapCoins:
-        strategy = BotStrategy3(coin, liveFeed=True)
-        nextCoin = False
-        while nextCoin is False:
+    strategy = liveBotStrategy(liveFeed=True)
+    while True:
+        if len(smallCapCoins) == 0:
+            break
+        for coin in smallCapCoins:
             currentPriceDict = client.get_symbol_ticker(symbol=coin)
             currentPrice = currentPriceDict.get('price')
             currentTS = getCurrentTS()
-            trade = strategy.tick(currentPrice, nextCoin, currentTS)
+            trade = strategy.tick(currentPrice, coin, currentTS)
             print(coin + "\n" + currentPrice)
             if trade is not None:
                 if trade.status == 'CLOSED':
                     if trade.getProfit() > 0:
                         nextCoins.append(coin)
-                        nextCoin = True
-            sleep(intervalInMiliSeconds)
+                    smallCapCoins.remove(coin)
+        sleep(intervalInMiliSeconds)
     return nextCoins
 
 
@@ -180,7 +185,7 @@ def toBTC(smallCapCoins):
 
 
 def Main():
-    backTestDays = 90
+    backTestDays = 10
     interval = "15m"
     smallCapCoins = []
     while True:

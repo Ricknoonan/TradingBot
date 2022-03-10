@@ -1,0 +1,2 @@
+2022-03-09-17:37:31 New Live trade opened:  Live Trade opened
+2022-03-09-17:37:32 Trade closed  Profit: -0.00023202402884063184
