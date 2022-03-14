@@ -5,6 +5,7 @@ import time
 from datetime import date, timedelta
 from datetime import datetime
 from time import sleep
+# import talib
 
 from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -77,7 +78,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 3) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -112,16 +113,22 @@ class LiveBotStrategy(object):
 
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
-    smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval)
+    strategy = liveBotStrategy(liveFeed=True)
+    # smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
     nextCoins = []
     intervalInMiliSeconds = getMiliSeconds(interval)
     print(smallCapCoins)
-    strategy = liveBotStrategy(liveFeed=True)
     while True:
         if len(smallCapCoins) == 0:
             break
+        strategy.backFill(smallCapCoins)
         for coin in smallCapCoins:
-            currentPriceDict = client.get_symbol_ticker(symbol=coin)
+            try:
+                currentPriceDict = client.get_symbol_ticker(symbol=coin)
+            except ConnectionError:
+                sleep(60)
+                print("Retrying connection for: " + coin)
+                currentPriceDict = client.get_symbol_ticker(symbol=coin)
             currentPrice = currentPriceDict.get('price')
             currentTS = getCurrentTS()
             trade = strategy.tick(currentPrice, coin, currentTS)
@@ -142,7 +149,7 @@ def getHistoricalStart(days):
     return ts.__int__()
 
 
-def backTestFeed(smallCapCoins, backTestDays, interval):
+def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
     client = getClient()
     nextCoin = False
     newCoinList = []
@@ -151,6 +158,8 @@ def backTestFeed(smallCapCoins, backTestDays, interval):
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval=interval, start_str=backTestStartTS)
+        indicatorBackFill = historicalOutput[-30]
+        liveStrategy.backFill(pair, indicatorBackFill)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]

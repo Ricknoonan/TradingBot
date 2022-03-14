@@ -24,35 +24,34 @@ class liveBotStrategy(object):
         self.closedPosCounter = 0
         self.coinPriceDict = {}
 
-    def tick(self, price, coin, currentTimeStamp):
+    def tick(self, price, pair, currentTimeStamp):
         self.currentPrice = float(price)
-        prices = self.coinPriceDict.get(coin)
+        prices = self.coinPriceDict.get(pair)
         if prices is None:
-            self.coinPriceDict[coin] = [self.currentPrice]
+            self.coinPriceDict[pair] = [self.currentPrice]
         else:
             prices.append(self.currentPrice)
-            self.coinPriceDict[coin] = prices
-        return self.evaluatePositions(currentTimeStamp, coin)
+            self.coinPriceDict[pair] = prices
+        return self.evaluatePositions(currentTimeStamp, pair)
 
-    def evaluatePositions(self, currentTimeStamp, coin):
-        priceFrame = pd.DataFrame({'price': self.coinPriceDict[coin]})
-        if len(priceFrame) > 24:
-            momentum = self.indicator.momentumROC(self.coinPriceDict[coin])
+    def evaluatePositions(self, currentTimeStamp, pair):
+        priceFrame = pd.DataFrame({'price': self.coinPriceDict[pair]})
+        if len(priceFrame) > 26:
+            momentum = self.indicator.momentumROC(self.coinPriceDict[pair])
             rsi = self.indicator.RSI(priceFrame)
             macd = self.indicator.MACD(priceFrame)
-            # TODO: test the below code so that the correct trade is evaluated
-            trade = self.trades.get(coin)
+            trade = self.trades.get(pair)
             if trade.status == "OPEN":
-                self.closeTrade(trade, currentTimeStamp, coin)
+                self.closeTrade(trade, currentTimeStamp, pair)
                 if trade.isClosed():
                     return trade
             if momentum > 100:
                 self.momentumCounter += 1
             if momentum < 100:
                 self.momentumCounter = 0
-            self.openTrade(rsi, macd, coin)
+            self.openTrade(rsi, macd, pair)
 
-    def closeTrade(self, trade, currentTimeStamp, coin):
+    def closeTrade(self, trade, currentTimeStamp, pair):
         if self.stopLoss(trade) or self.stopProfit(trade):
             trade.close(self.currentPrice, currentTimeStamp)
             if self.liveFeed:
@@ -63,32 +62,32 @@ class liveBotStrategy(object):
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
                 self.output.logCloseTest("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
-                    trade.profit) + " Coin pair: " + str(coin))
+                    trade.profit) + " Coin pair: " + str(pair))
 
-    def openTrade(self, rsi, macd, coin):
-        if ((40 > rsi > 0) or (macd == 1)) and (self.isOpen(coin)):
+    def openTrade(self, rsi, macd, pair):
+        if ((40 > rsi > 0) or (macd == 1)) and (self.isOpen(pair)):
             client = getClient()
-            btc = coin[-3:]
+            btc = pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
             positionSize = 10 / float(priceUSD.get('price'))
             quantity = positionSize / float(self.currentPrice)
             if self.liveFeed:
-                self.trades[coin] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, coin, 0, liveTrade=True))
+                self.trades[pair] = (
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=True))
                 print("Live Trade Opened for this amount: " + str(positionSize))
                 # client.create_order(symbol=coin, type="MARKET", quantity=amount)
                 self.output.logOpenLive("Live Trade opened")
             else:
-                self.trades[coin] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, coin, 0, liveTrade=False))
+                self.trades[pair] = (
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
                 self.output.logOpenTest("Test Trade opened")
 
-    def isOpen(self, coin):
+    def isOpen(self, pair):
         if len(self.trades) > 0:
             for symbol, trade in self.trades.items():
-                if (symbol == coin) & (trade.status == "OPEN"):
+                if (symbol == pair) & (trade.status == "OPEN"):
                     return False
                 else:
                     return True
@@ -110,3 +109,14 @@ class liveBotStrategy(object):
             return True
         else:
             return False
+
+    def backFill(self, pair, indicatorBackFill):
+        backFillPrices = []
+        for kline in indicatorBackFill:
+            currentPrice = kline[4]
+            backFillPrices.append(kline)
+        self.coinPriceDict[pair] = backFillPrices 
+
+
+
+
