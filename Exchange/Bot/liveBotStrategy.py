@@ -28,7 +28,10 @@ class liveBotStrategy(object):
         self.currentPrice = float(price)
         prices = self.coinPriceDict.get(pair)
         if prices is None:
-            self.coinPriceDict[pair] = [self.currentPrice]
+            prices = []
+            while len(prices) < 30:
+                prices.append(self.currentPrice)
+            self.coinPriceDict[pair] = prices
         else:
             prices.append(self.currentPrice)
             self.coinPriceDict[pair] = prices
@@ -111,11 +114,7 @@ class liveBotStrategy(object):
             return False
 
     def backFill(self, pair, indicatorBackFill):
-        backFillPrices = []
-        for kline in indicatorBackFill:
-            currentPrice = kline[4]
-            backFillPrices.append(kline)
-        self.coinPriceDict[pair] = backFillPrices 
+        self.coinPriceDict[pair] = indicatorBackFill
 
 
 

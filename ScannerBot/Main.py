@@ -78,7 +78,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 5) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 1) & (quote not in quotes):
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -114,14 +114,13 @@ class LiveBotStrategy(object):
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     strategy = liveBotStrategy(liveFeed=True)
-    # smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
+    smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
     nextCoins = []
     intervalInMiliSeconds = getMiliSeconds(interval)
     print(smallCapCoins)
     while True:
         if len(smallCapCoins) == 0:
             break
-        strategy.backFill(smallCapCoins)
         for coin in smallCapCoins:
             try:
                 currentPriceDict = client.get_symbol_ticker(symbol=coin)
@@ -158,8 +157,6 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval=interval, start_str=backTestStartTS)
-        indicatorBackFill = historicalOutput[-30]
-        liveStrategy.backFill(pair, indicatorBackFill)
         for kline in historicalOutput:
             currentPrice = kline[4]
             timestamp = kline[0]
