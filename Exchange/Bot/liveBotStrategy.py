@@ -29,7 +29,7 @@ class liveBotStrategy(object):
         prices = self.coinPriceDict.get(pair)
         if prices is None:
             prices = []
-            while len(prices) < 30:
+            while len(prices) < 20:
                 prices.append(self.currentPrice)
             self.coinPriceDict[pair] = prices
         else:

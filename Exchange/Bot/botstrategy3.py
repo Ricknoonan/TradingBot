@@ -3,6 +3,7 @@ from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
+import talib as ta
 
 
 class BotStrategy3(object):
@@ -34,8 +35,10 @@ class BotStrategy3(object):
         return self.evaluatePositions(currentTimeStamp)
 
     def evaluatePositions(self, currentTimeStamp):
+        mySeries = pd.Series(self.prices)
         priceFrame = pd.DataFrame({'price': self.prices})
         if len(priceFrame) > 24:
+            res = ta.RSI(mySeries, 24)
             momentum = self.indicator.momentumROC(self.prices)
             rsi = self.indicator.RSI(priceFrame)
             macd = self.indicator.MACD(priceFrame)
@@ -108,3 +111,7 @@ class BotStrategy3(object):
             return True
         else:
             return False
+#TODO: getVolindex to work with https://tinytrader.io/how-to-calculate-historical-price-volatility-with-python/
+    def getVolIndex(self):
+        volIndex = 0
+        return volIndex

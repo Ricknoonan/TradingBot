@@ -106,11 +106,6 @@ def getMiliSeconds(interval):
     minutes = interval[:-1]
     return int(minutes) * 60
 
-
-class LiveBotStrategy(object):
-    pass
-
-
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     strategy = liveBotStrategy(liveFeed=True)
@@ -148,6 +143,9 @@ def getHistoricalStart(days):
     return ts.__int__()
 
 
+# def volatilityIndex():
+
+
 def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
     client = getClient()
     nextCoin = False
@@ -170,8 +168,10 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
                     else:
                         profit = coinDict.get(pair)
                         coinDict[pair] = trade.getProfit() + profit
+            volIndex = strategy.getVolIndex()
         if (coinDict.get(pair)) > 0:
             newCoinList.append(pair)
+
         nextCoin = True
     return newCoinList
 
@@ -200,7 +200,7 @@ def Main():
         newList = compare(baseBTC, marketCapDict)
         smallCapCoins = addToList(newList, smallCapCoins)
         print(smallCapCoins)
-        if smallCapCoins is not "No Match":
+        if smallCapCoins != "No Match":
             smallCapCoins = toBTC(smallCapCoins)
             nextCoins = strategyFeed(smallCapCoins, backTestDays, interval)
             smallCapCoins = nextCoins
