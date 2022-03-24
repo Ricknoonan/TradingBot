@@ -5,7 +5,9 @@ import time
 from datetime import date, timedelta
 from datetime import datetime
 from time import sleep
+import pandas as pd
 # import talib
+import numpy as np
 
 from requests import Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -106,6 +108,7 @@ def getMiliSeconds(interval):
     minutes = interval[:-1]
     return int(minutes) * 60
 
+
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     strategy = liveBotStrategy(liveFeed=True)
@@ -155,20 +158,26 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval=interval, start_str=backTestStartTS)
+        counter = 0
         for kline in historicalOutput:
-            currentPrice = kline[4]
-            timestamp = kline[0]
-            trade = strategy.tick(currentPrice, nextCoin, timestamp)
-            nextCoin = False
-            print(pair + "\n" + currentPrice)
-            if trade is not None:
-                if trade.status == 'CLOSED':
-                    if coinDict.get(pair) is None:
-                        coinDict[pair] = trade.getProfit()
-                    else:
-                        profit = coinDict.get(pair)
-                        coinDict[pair] = trade.getProfit() + profit
-            volIndex = strategy.getVolIndex()
+            if counter < 1000:
+                currentPrice = kline[4]
+                timestamp = kline[0]
+                trade = strategy.tick(currentPrice, nextCoin, timestamp)
+                nextCoin = False
+                print(pair + "\n" + currentPrice)
+                if trade is not None:
+                    if trade.status == 'CLOSED':
+                        if coinDict.get(pair) is None:
+                            coinDict[pair] = trade.getProfit()
+                        else:
+                            profit = coinDict.get(pair)
+                            coinDict[pair] = trade.getProfit() + profit
+                counter += 1
+        # priceFrame = pd.DataFrame(historicalOutput)
+        # priceFrame['returns'] = (np.log(priceFrame.close /
+        #                                 priceFrame.close.shift(-1)))
+        # volIndex = strategy.getVolIndex()
         if (coinDict.get(pair)) > 0:
             newCoinList.append(pair)
 

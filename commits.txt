@@ -1,0 +1,577 @@
+commit c8bb22c7d1bea3c104eb46adf3bbbdea93694638
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Mar 16 06:47:30 2022 +0000
+
+    ta lib and vol index
+
+commit 9bcc730f63b6dcc01ab1e8ff08394687532926da
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Mar 15 07:20:29 2022 +0000
+
+    backfill with current price
+
+commit db7d6d7337e1023bdad6e104d28f26fff7d3179d
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Mar 14 10:20:04 2022 +0000
+
+    backfill
+
+commit eea0b8a443b40f0e7c86aa2146f3c748edb113db
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Mar 10 06:59:14 2022 +0000
+
+    dict lookup to handle mulitple trades being evaluated
+
+commit c3fa1d862fa86a652881d838344ab52c70018122
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Mar 7 05:39:00 2022 +0000
+
+    talbi
+
+commit da8376a0bdd416403fb6cc04865cb54a1c8923bf
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Feb 28 16:59:56 2022 +0000
+
+    doing soft live test with two coins
+
+commit c15160d944780ba1bf289c15e599bcfb4d123ba9
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Feb 23 18:34:40 2022 +0000
+
+    test ready
+
+commit 3a56e83b6a671786a9a9382da3012475430e3fe1
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Feb 20 09:43:14 2022 +0000
+
+    checking market data and backtester
+
+commit 8da96f5a83a6c7e18c01e6db23dac9657ab442d8
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Feb 8 17:59:56 2022 +0000
+
+    profit over total backtest period checked
+
+commit 81f50dfc963dba55728f61dcb5d1c07a0d5615fe
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Feb 7 17:27:24 2022 +0000
+
+    fixed next coin issue
+
+commit 0bfc932a224101405ed822661c2da9ae085ef3bf
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Feb 1 16:47:40 2022 +0000
+
+    log update
+
+commit 6a789ae98d9a79a12745e38a0085f857d079034d
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Jan 31 18:14:57 2022 +0000
+
+    changed number of coins in feed
+
+commit 7e01c9a424e7271f0f0cca8f8b92fd9f4babdf88
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 30 19:08:00 2022 +0000
+
+    changed stategy
+
+commit 483a3fbfc850711bd0a74608a7df76c427ed62b4
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Jan 27 22:37:48 2022 +0000
+
+    combined test and feed, error on when running final coin
+
+commit 9ca89c9678824e01963f875bb1f775bce6a66ca0
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Jan 26 20:18:42 2022 +0000
+
+    get curr ts
+
+commit 0d9f6f7e49eb565159764588770ebb0d2d07d3b8
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Jan 20 20:31:27 2022 +0000
+
+    added backtesting to strat feed
+
+commit 78136ec69d95a771548bb96bd9719173a6e9448a
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Jan 19 21:13:31 2022 +0000
+
+    ts function added so that backtesting before executing live strat can be dont
+
+commit 5dfe3de2156e0f7aba5a4d6698d46904c615ed4e
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Nov 28 10:37:36 2021 +0000
+
+    backtesting
+
+commit d8c03d35cf5506c14edc1e75534fe712001e3fe0
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Nov 22 17:50:26 2021 +0000
+
+    strategy change
+
+commit 01b9d4294e56879e0137a002bf4965cc2ba9eb91
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Nov 22 17:44:24 2021 +0000
+
+    strategy change
+
+commit 1aa58d3221d0f3b618c1a6cc32b4aea8f831695d
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Nov 21 16:46:20 2021 +0000
+
+    stra
+
+commit b7567b7f45a11c941163a326284f66e127cc0079
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Nov 16 06:10:59 2021 +0000
+
+    bot strategy
+
+commit f3cd723fada31404306ae8dbc13a9f48aeb9d4d4
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Nov 7 10:33:29 2021 +0000
+
+    strategy
+
+commit 669602eb01baca93096e1b9af759282cc18b2225
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Nov 1 10:24:33 2021 +0000
+
+    trade
+
+commit b25c090c38b107ab6cde2314789ce41f2de4192d
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Nov 1 10:19:36 2021 +0000
+
+    trade
+
+commit 01f73f0dee1083775f8fa0668ec3316eabda32c8
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Oct 25 07:37:37 2021 +0100
+
+    added backtest
+
+commit a4945d8cd7a569deaecb1d69eeb22beabc2d4d0d
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 17 18:31:34 2021 +0100
+
+    coin market cap api
+
+commit f0c38e9880a77433951bade5a335d538d0b4a274
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Oct 13 15:51:32 2021 +0100
+
+    workflow improvements, open and close trade
+
+commit 6e8c1f0bfb86a6e247599e53986f35b35195d999
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Oct 13 15:49:14 2021 +0100
+
+    workflow improvements, open and close trade
+
+commit 4c4cddb18e31192466916dc688feed965bb9dcaa
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Oct 13 12:27:29 2021 +0100
+
+    RSI fix
+
+commit 1fb28d575a0933f5f3f595e89e38e83c10b1e64e
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Oct 11 17:35:10 2021 +0100
+
+    strategy
+
+commit 857baf70b25c1e6cc81e5dc152acd1a74a3f6bc4
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Oct 11 17:05:47 2021 +0100
+
+    added order
+
+commit 8c102f63907f2cec35930393bbcc19d8c0207c25
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Oct 11 13:43:31 2021 +0100
+
+    strategy
+
+commit 8f0110826754c06b3f97bad0c93cfff8d9041df0
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 10 18:11:12 2021 +0100
+
+    added to coin flow
+
+commit 1d907c9a8fe26426391af9ca7bcaf5f460d215a3
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 3 17:28:59 2021 +0100
+
+    binace api
+
+commit 234112a94a29b0dead5117aacaa42d0b72749ae3
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 3 16:58:19 2021 +0100
+
+    binace api
+
+commit 41de31ca88fb10b5eb5e7f78eed22a79b19c68ab
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Sep 28 19:09:12 2021 +0100
+
+    linked indicators to main
+
+commit 6b424279e297ee2b09a30d92f24b521e9c272d18
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Aug 25 19:37:15 2021 +0100
+
+    compare method
+
+commit 318ad478236c163a7dac404a1a72a692c9beacc4
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Jul 13 22:29:37 2021 +0100
+
+    Scanner updates
+
+commit 5b5af7fe2484772885fb751d08e5069e67ef29a9
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Fri Jun 11 19:35:04 2021 +0100
+
+    log
+
+commit cb9b5e49e07790e40e28cbba2bf7d996ebc637dd
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Fri Jun 11 18:19:51 2021 +0100
+
+    log
+
+commit 6a1ad77ba1d613cc5a80e9e925177c2eb23bd66f
+Merge: 4dae7fe 9d53bfb
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed May 5 21:07:37 2021 +0100
+
+    Merge branch 'master' of https://github.com/Ricknoonan/TradingBot into master
+
+commit 4dae7fecf8ac08f10cccea154cdd6f58312fc06c
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed May 5 21:07:13 2021 +0100
+
+    and all that jazzzz!
+
+commit 9d53bfbd1f122633d44e0c6b0f08cc409a21e17c
+Author: Ricknoonan <noonanri@tcd.ie>
+Date:   Tue May 4 09:22:02 2021 +0100
+
+    Delete binanceCredential.py
+
+commit af0152ef53a30d54e487607a449f286626e5de07
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon May 3 20:22:31 2021 +0100
+
+    Added scanner for biance
+
+commit d291b10a9bca988af7582a0ed7415dd9cbd2db92
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun May 2 15:32:34 2021 +0100
+
+    add new scanner class
+
+commit 42957f421f99d00925176544b1c019c3920289ac
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Apr 29 22:01:28 2021 +0100
+
+    you like jaaaaz?
+
+commit a36c1ec5a44a7a7c4a3621cbf1d196b248edebe5
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Apr 8 20:38:26 2021 +0100
+
+    and all that jaaazzz
+
+commit b6f97b5b8cffcbe58475f0d4fcf2066b2b1c6752
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Apr 8 20:03:23 2021 +0100
+
+    and all that jaaazzz
+
+commit 908c62a2c9f2825679db5173a4d90c807f8fd428
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Apr 6 21:16:47 2021 +0100
+
+    and all that jaaazzz
+
+commit f1cc0ed86c74ef94520ac76d1dbb8234587becbb
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Apr 5 20:55:07 2021 +0100
+
+    and all that jaaazzz
+
+commit 7fa37334d86489f0b93a97025ff043236d762235
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Apr 4 20:52:35 2021 +0100
+
+    you like jaaazz?
+
+commit ce61660bc691c79fc98bbfa181c1adcc1a8c5e1e
+Author: Ricknoonan <noonanri@tcd.ie>
+Date:   Sun Apr 4 20:51:10 2021 +0100
+
+    Delete coinbaseCredentials.cpython-38.pyc
+
+commit 32b58bb0d1002d0f1f51a1385c025dfe453b2541
+Author: Ricknoonan <noonanri@tcd.ie>
+Date:   Sun Apr 4 20:51:02 2021 +0100
+
+    Delete coinbaseCredentials.cpython-37.pyc
+
+commit b19627cc5122229a00b3b45954e294550e72f86c
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Apr 4 20:48:12 2021 +0100
+
+    you like jaaazz?
+
+commit 82efdc154096428a59738abf452680875be51f1b
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Apr 4 15:59:27 2021 +0100
+
+    fixed bug
+
+commit 50a4a393ad991f7a77a6764291cd9b4a99faf102
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Fri Apr 2 22:58:15 2021 +0100
+
+    update strat
+
+commit b31efa33d7ac78243575f6e5719a0e7d929a8b8a
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Fri Apr 2 22:34:04 2021 +0100
+
+    update strat
+
+commit d731e3b568e278fedef9219abcb6464c7bef37ee
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Mar 27 20:40:45 2021 +0000
+
+    email and all that jaaazzz
+
+commit c5e46e19dca608530fe47159fd5dea41440a6a25
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Mar 27 19:09:58 2021 +0000
+
+    email and all that jaaazzz
+
+commit 554b330a3ae497c63d7f638501db1101b50a176b
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Mar 25 21:05:56 2021 +0000
+
+    added buy function
+
+commit 450d66e08e4668d7e53bf6f2986603b86e4fe130
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Wed Mar 24 21:56:21 2021 +0000
+
+    pro
+
+commit 407a5419c5bbf712a2d162e7fe80bd5c28a89de6
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Mar 20 16:55:34 2021 +0000
+
+    macd and logging
+
+commit 0f773994ecc4f44915e97cb8f30621d50b669d21
+Merge: 9232039 c9badec
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Mar 13 21:40:59 2021 +0000
+
+    Merge branch 'master' of https://github.com/Ricknoonan/TradingBot into master
+
+commit 92320395c07fe2e759d3b7455167dd7f1062b06e
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Mar 13 21:40:19 2021 +0000
+
+    tidy up evaluate funtion
+
+commit c9badec0d04d06956ceb09a11f6bebd17f3fd3b1
+Author: Ricknoonan <noonanri@tcd.ie>
+Date:   Wed Mar 3 19:47:48 2021 +0000
+
+    Delete coinbaseCredentials.cpython-37.pyc
+
+commit 38a75fde5fc5ae5fc0950026774c0321b12f8b80
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Mar 1 20:46:59 2021 +0000
+
+    test with DNT, need to fix buy call
+
+commit 4e3c038eece4705cab5ac1bb1dfb3000a82d9bab
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Feb 22 20:50:38 2021 +0000
+
+    MACD
+
+commit 158892b1eb837ca7915e139e1f5a141610c29580
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Feb 22 20:50:00 2021 +0000
+
+    MACD
+
+commit 8b24165940e3c4164b962f08df1128b94ad8f454
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Feb 21 20:09:44 2021 +0000
+
+    MACD
+
+commit bbe4c1022959c8972cb3d495ab1b5385457f4464
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Feb 20 18:32:32 2021 +0000
+
+    restructure folderm, tidy up macd
+
+commit fb4edd019ded37a0b0a038542aec42e1a500ec32
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 31 19:13:21 2021 +0000
+
+    removed file
+
+commit 184e4351b6b87ce2a6f8bd3684b10e5e1502574a
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 31 19:11:31 2021 +0000
+
+    coinbase
+
+commit 307f39489cd9b8e9434e19a639f6d2b02492b315
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 31 19:09:48 2021 +0000
+
+    coinbase
+
+commit 3636496c456b483049e6fb4378772a639f7cc5bb
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Mon Jan 25 21:12:54 2021 +0000
+
+    coinbase
+
+commit 9eb4830192bb9a8385149d30c0e9763cbe44c785
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 24 20:46:28 2021 +0000
+
+    coinbase api
+
+commit b513aaded843470ce0c4412a381906ae482229bf
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Jan 17 19:28:57 2021 +0000
+
+    tidied up indicators and strategy, fixed macd
+
+commit dfbc7fa1fded1f32ddaf57bf806ffad8bed06e00
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Jan 12 20:53:53 2021 +0000
+
+    added to MACD and EMA
+
+commit 3d39c7ff4751679490ec5b43a7835ae5409a1f56
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Tue Nov 10 22:35:21 2020 +0000
+
+    fixed EMA
+
+commit d82959650b3c430df57220d803d059a8284d2668
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 25 20:00:38 2020 +0000
+
+    Fixed EMA
+
+commit ac94259345bacf390c71fd70bcc1e734ff5d0695
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 25 19:57:03 2020 +0000
+
+    Fixed EMA
+
+commit 290384a7d2e4aef419700a157a4934a9631a09f7
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 23:20:54 2020 +0100
+
+    change MACD, EMA needs work
+
+commit 88388bfe802b0909a2917366b35877af433f4abf
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:44:20 2020 +0100
+
+    update cred
+
+commit d7d73efd769f714fbdccedc5c79d22535697e416
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:43:26 2020 +0100
+
+    update cred
+
+commit 098aa6e2a231e39ba206bbca1959b244b6669433
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:42:46 2020 +0100
+
+    update cred
+
+commit cd9c13fa66ad0cb83a27f26a3571873006dc5477
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:35:51 2020 +0100
+
+    update cred
+
+commit 3b3460c9615284fdf539eb48ade864a7ede641ba
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:34:53 2020 +0100
+
+    update cred
+
+commit a373f28760cf2da033140052eb4e38d0aafcfec8
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:33:57 2020 +0100
+
+    update cred
+
+commit ea9fac11c546fb9ecc00d49af9a2088e85afb935
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:24:43 2020 +0100
+
+    update cred
+
+commit f3a5628a56f684ccc0958d2705a402f0d400c83b
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 20:20:13 2020 +0100
+
+    update cred
+
+commit 9f52fe993e77c0f43d318b6a302fd8bf6fc707fe
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 24 19:34:09 2020 +0100
+
+    update cred
+
+commit 4441ede03311973445f8a65f70c515ff612cc035
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sun Oct 11 23:02:02 2020 +0100
+
+    Indicator weights
+
+commit a001d80eb34c0f6a2d38070a636fe9ccf9df3f05
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 10 20:11:46 2020 +0100
+
+    Clean up
+
+commit ef4b0062537feefcd211ce2c75b87afc0aad0042
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Sat Oct 10 20:04:37 2020 +0100
+
+    Google drive
+
+commit a2267619069c1156c60f9a59138103461a9fd2d7
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Fri Oct 9 23:29:31 2020 +0100
+
+    Goole sheets code updated, rename file
+
+commit 486f2e16d3f6651976f50aa226be2347581fb0fa
+Author: Richard Noonan <noonanri@tcd.ie>
+Date:   Thu Oct 8 18:21:47 2020 +0100
+
+    initial

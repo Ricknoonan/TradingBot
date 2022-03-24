@@ -4,7 +4,7 @@ from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
 import talib as ta
-
+import math
 
 class BotStrategy3(object):
     def __init__(self, pair, liveFeed):
@@ -37,11 +37,14 @@ class BotStrategy3(object):
     def evaluatePositions(self, currentTimeStamp):
         mySeries = pd.Series(self.prices)
         priceFrame = pd.DataFrame({'price': self.prices})
-        if len(priceFrame) > 24:
-            res = ta.RSI(mySeries, 24)
+        if len(priceFrame) > 27:
+            rsi = ta.RSI(mySeries, 24).iloc[-1]
+            macd = ta.MACD(mySeries)[0].iloc[-1]
+            if math.isnan(macd) is False:
+                print(macd)
             momentum = self.indicator.momentumROC(self.prices)
-            rsi = self.indicator.RSI(priceFrame)
-            macd = self.indicator.MACD(priceFrame)
+            # rsi = self.indicator.RSI(priceFrame)
+            # macd = self.indicator.MACD(priceFrame)
             for tradePairKey, trade in self.trades.items():
                 if trade.status == "OPEN":
                     self.closeTrade(trade, currentTimeStamp)

@@ -387,3 +387,109 @@
 2022-03-15-15:26:43 New Test trade opened:  Test Trade opened
 2022-03-15-15:26:44 Trade closed  Total Profit: 0.0008128419707860127 Trade Profit: 1.483279166388505e-05 Coin pair: BCPTBTC
 2022-03-15-15:26:45 New Test trade opened:  Test Trade opened
+2022-03-17-05:46:52 New Test trade opened:  Test Trade opened
+2022-03-17-05:46:52 Trade closed  Total Profit: 1.9139160466039268e-05 Trade Profit: 1.9139160466039268e-05 Coin pair: STXBTC
+2022-03-17-05:46:54 New Test trade opened:  Test Trade opened
+2022-03-17-05:46:55 Trade closed  Total Profit: -8.936415230478102e-05 Trade Profit: -0.00010850331277082028 Coin pair: STXBTC
+2022-03-17-05:46:57 New Test trade opened:  Test Trade opened
+2022-03-17-05:46:57 Trade closed  Total Profit: -7.588068969274455e-05 Trade Profit: 1.3483462612036467e-05 Coin pair: STXBTC
+2022-03-17-05:46:58 New Test trade opened:  Test Trade opened
+2022-03-17-05:46:59 Trade closed  Total Profit: -6.110342757050381e-05 Trade Profit: 1.477726212224074e-05 Coin pair: STXBTC
+2022-03-17-05:47:00 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:05 Trade closed  Total Profit: -4.018155769332888e-05 Trade Profit: 2.092186987717493e-05 Coin pair: STXBTC
+2022-03-17-05:47:06 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:06 Trade closed  Total Profit: -1.869576052944069e-05 Trade Profit: 2.1485797163888192e-05 Coin pair: STXBTC
+2022-03-17-05:47:08 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:26 Trade closed  Total Profit: -0.00012377503310131302 Trade Profit: -0.00010507927257187233 Coin pair: STXBTC
+2022-03-17-05:47:28 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:28 Trade closed  Total Profit: -0.00010962538056751874 Trade Profit: 1.4149652533794281e-05 Coin pair: STXBTC
+2022-03-17-05:47:30 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:48 Trade closed  Total Profit: -9.638862653187257e-05 Trade Profit: 1.3236754035646171e-05 Coin pair: STXBTC
+2022-03-17-05:47:50 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:52 Trade closed  Total Profit: -7.925678437792336e-05 Trade Profit: 1.7131842153949206e-05 Coin pair: STXBTC
+2022-03-17-05:47:53 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:54 Trade closed  Total Profit: -6.466215388842677e-05 Trade Profit: 1.4594630489496592e-05 Coin pair: STXBTC
+2022-03-17-05:47:56 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:56 Trade closed  Total Profit: -5.0458133947310814e-05 Trade Profit: 1.4204019941115953e-05 Coin pair: STXBTC
+2022-03-17-05:47:58 New Test trade opened:  Test Trade opened
+2022-03-17-05:47:58 Trade closed  Total Profit: -3.308356961451145e-05 Trade Profit: 1.7374564332799363e-05 Coin pair: STXBTC
+2022-03-17-05:47:59 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:29 Trade closed  Total Profit: -0.0001376889997786863 Trade Profit: -0.00010460543016417486 Coin pair: STXBTC
+2022-03-17-05:48:31 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:37 Trade closed  Total Profit: -0.00012167586265668926 Trade Profit: 1.601313712199705e-05 Coin pair: STXBTC
+2022-03-17-05:48:38 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:40 Trade closed  Total Profit: -0.00010651647620889111 Trade Profit: 1.5159386447798155e-05 Coin pair: STXBTC
+2022-03-17-05:48:42 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:43 Trade closed  Total Profit: -8.991264143194371e-05 Trade Profit: 1.66038347769474e-05 Coin pair: STXBTC
+2022-03-17-05:48:44 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:46 Trade closed  Total Profit: -7.278606786334434e-05 Trade Profit: 1.7126573568599366e-05 Coin pair: STXBTC
+2022-03-17-05:48:48 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:51 Trade closed  Total Profit: -4.4319890159640166e-05 Trade Profit: 2.8466177703704177e-05 Coin pair: STXBTC
+2022-03-17-05:48:52 New Test trade opened:  Test Trade opened
+2022-03-17-05:48:52 Trade closed  Total Profit: -2.0682073694248352e-05 Trade Profit: 2.3637816465391814e-05 Coin pair: STXBTC
+2022-03-17-05:48:54 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:21 Trade closed  Total Profit: -0.00013177307734702818 Trade Profit: -0.00011109100365277983 Coin pair: STXBTC
+2022-03-17-05:49:22 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:22 Trade closed  Total Profit: -0.00011420741588280949 Trade Profit: 1.7565661464218697e-05 Coin pair: STXBTC
+2022-03-17-05:49:24 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:24 Trade closed  Total Profit: -9.813415249651614e-05 Trade Profit: 1.6073263386293346e-05 Coin pair: STXBTC
+2022-03-17-05:49:26 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:26 Trade closed  Total Profit: -8.18468736357476e-05 Trade Profit: 1.6287278860768544e-05 Coin pair: STXBTC
+2022-03-17-05:49:28 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:28 Trade closed  Total Profit: -6.500315830843692e-05 Trade Profit: 1.684371532731068e-05 Coin pair: STXBTC
+2022-03-17-05:49:30 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:35 Trade closed  Total Profit: -4.381857726812964e-05 Trade Profit: 2.1184581040307278e-05 Coin pair: STXBTC
+2022-03-17-05:49:37 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:38 Trade closed  Total Profit: -1.8739386294539662e-05 Trade Profit: 2.5079190973589978e-05 Coin pair: STXBTC
+2022-03-17-05:49:39 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:39 Trade closed  Total Profit: -5.583616910564493e-07 Trade Profit: 1.8181024603483212e-05 Coin pair: STXBTC
+2022-03-17-05:49:42 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:47 Trade closed  Total Profit: 1.3196487967944874e-05 Trade Profit: 1.3754849659001323e-05 Coin pair: STXBTC
+2022-03-17-05:49:49 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:53 Trade closed  Total Profit: 2.8395634481151227e-05 Trade Profit: 1.5199146513206354e-05 Coin pair: STXBTC
+2022-03-17-05:49:55 New Test trade opened:  Test Trade opened
+2022-03-17-05:49:56 Trade closed  Total Profit: 5.545463947135274e-05 Trade Profit: 2.7059004990201516e-05 Coin pair: STXBTC
+2022-03-17-05:49:58 New Test trade opened:  Test Trade opened
+2022-03-17-05:50:04 Trade closed  Total Profit: 7.366759677676407e-05 Trade Profit: 1.8212957305411328e-05 Coin pair: STXBTC
+2022-03-17-05:50:06 New Test trade opened:  Test Trade opened
+2022-03-17-05:50:22 Trade closed  Total Profit: 8.704622945132238e-05 Trade Profit: 1.3378632674558311e-05 Coin pair: STXBTC
+2022-03-17-05:50:24 New Test trade opened:  Test Trade opened
+2022-03-17-05:50:53 Trade closed  Total Profit: 0.00010139904089157559 Trade Profit: 1.4352811440253207e-05 Coin pair: STXBTC
+2022-03-17-05:50:55 New Test trade opened:  Test Trade opened
+2022-03-17-05:50:57 Trade closed  Total Profit: 0.00012793639243022172 Trade Profit: 2.6537351538646127e-05 Coin pair: STXBTC
+2022-03-17-05:50:58 New Test trade opened:  Test Trade opened
+2022-03-17-05:51:58 Trade closed  Total Profit: 0.00014486171633977163 Trade Profit: 1.6925323909549916e-05 Coin pair: STXBTC
+2022-03-17-05:52:00 New Test trade opened:  Test Trade opened
+2022-03-17-05:52:01 Trade closed  Total Profit: 0.00015865956554701367 Trade Profit: 1.3797849207242033e-05 Coin pair: STXBTC
+2022-03-17-06:08:03 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:03 Trade closed  Total Profit: 1.9168432509578137e-05 Trade Profit: 1.9168432509578137e-05 Coin pair: STXBTC
+2022-03-17-06:08:05 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:06 Trade closed  Total Profit: -8.950080224614913e-05 Trade Profit: -0.00010866923475572727 Coin pair: STXBTC
+2022-03-17-06:08:07 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:07 Trade closed  Total Profit: -7.599723686820483e-05 Trade Profit: 1.35035653779443e-05 Coin pair: STXBTC
+2022-03-17-06:08:09 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:10 Trade closed  Total Profit: -6.120205374546685e-05 Trade Profit: 1.4795183122737985e-05 Coin pair: STXBTC
+2022-03-17-06:08:11 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:15 Trade closed  Total Profit: -4.0256618668347416e-05 Trade Profit: 2.094543507711943e-05 Coin pair: STXBTC
+2022-03-17-06:08:17 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:17 Trade closed  Total Profit: -1.8753457391411897e-05 Trade Profit: 2.150316127693552e-05 Coin pair: STXBTC
+2022-03-17-06:08:19 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:36 Trade closed  Total Profit: -0.0001239063412263138 Trade Profit: -0.0001051528838349019 Coin pair: STXBTC
+2022-03-17-06:08:37 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:38 Trade closed  Total Profit: -0.0001097469856879981 Trade Profit: 1.4159355538315691e-05 Coin pair: STXBTC
+2022-03-17-06:08:39 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:55 Trade closed  Total Profit: -9.650171512747243e-05 Trade Profit: 1.324527056052567e-05 Coin pair: STXBTC
+2022-03-17-06:08:57 New Test trade opened:  Test Trade opened
+2022-03-17-06:08:59 Trade closed  Total Profit: -7.93628650194419e-05 Trade Profit: 1.713885010803053e-05 Coin pair: STXBTC
+2022-03-17-06:09:00 New Test trade opened:  Test Trade opened
+2022-03-17-06:09:01 Trade closed  Total Profit: -6.476285066276115e-05 Trade Profit: 1.460001435668075e-05 Coin pair: STXBTC
+2022-03-17-06:09:02 New Test trade opened:  Test Trade opened
+2022-03-17-06:09:03 Trade closed  Total Profit: -5.05536393543241e-05 Trade Profit: 1.4209211308437056e-05 Coin pair: STXBTC
+2022-03-17-06:09:04 New Test trade opened:  Test Trade opened
+2022-03-17-06:09:05 Trade closed  Total Profit: -3.317349457076596e-05 Trade Profit: 1.7380144783558135e-05 Coin pair: STXBTC
+2022-03-17-06:09:07 New Test trade opened:  Test Trade opened
+2022-03-17-06:09:36 Trade closed  Total Profit: -0.00013781254789892286 Trade Profit: -0.0001046390533281569 Coin pair: STXBTC
+2022-03-17-06:09:37 New Test trade opened:  Test Trade opened
+2022-03-17-06:09:42 Trade closed  Total Profit: -0.00012179032337003695 Trade Profit: 1.602222452888591e-05 Coin pair: STXBTC
+2022-03-17-06:09:44 New Test trade opened:  Test Trade opened
+2022-03-24-06:28:54 New Test trade opened:  Test Trade opened
