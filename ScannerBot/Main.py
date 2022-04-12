@@ -34,7 +34,7 @@ def sortByMarketCap(datum):
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
         percentChange1hr = coin.get('quote').get('USD').get('percent_change_1h')
-        if (marketCapAmn > 100000) & (percentChange24h > 5) & (percentChange1hr > 1 or percentChange1hr < -1):
+        if (marketCapAmn > 100000) & (percentChange24h > 5) & (percentChange1hr > 1):
             marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
@@ -80,7 +80,7 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) & (len(quotes) < 1) & (quote not in quotes):
+            if (quote == key) & (len(quotes) < 2) & (quote not in quotes):
                 quotes.append(quote)
     if len(quotes) > 0:
         return quotes
@@ -136,6 +136,8 @@ def strategyFeed(smallCapCoins, backTestDays, interval):
                         nextCoins.append(coin)
                     smallCapCoins.remove(coin)
         sleep(intervalInMiliSeconds)
+    print("Finished looping through " + str(smallCapCoins) + ". Sleeping for: " + str(intervalInMiliSeconds))
+    sleep(intervalInMiliSeconds)
     return nextCoins
 
 
@@ -178,9 +180,8 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
         # priceFrame['returns'] = (np.log(priceFrame.close /
         #                                 priceFrame.close.shift(-1)))
         # volIndex = strategy.getVolIndex()
-        if (coinDict.get(pair)) > 0:
+        if coinDict.get(pair) is not None and ((coinDict.get(pair)) > 0):
             newCoinList.append(pair)
-
         nextCoin = True
     return newCoinList
 
@@ -214,7 +215,6 @@ def Main():
             nextCoins = strategyFeed(smallCapCoins, backTestDays, interval)
             smallCapCoins = nextCoins
             sleep(10)
-            break
         else:
             sleep(1800)
 

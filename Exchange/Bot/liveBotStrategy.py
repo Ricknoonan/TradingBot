@@ -1,9 +1,11 @@
+
 from ScannerBot.BinanceUtil import getClient
 from Utils.botlog import BotLog
 from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
-
+import math
+import talib as ta
 
 class liveBotStrategy(object):
     def __init__(self, liveFeed):
@@ -38,24 +40,21 @@ class liveBotStrategy(object):
         return self.evaluatePositions(currentTimeStamp, pair)
 
     def evaluatePositions(self, currentTimeStamp, pair):
-        priceFrame = pd.DataFrame({'price': self.coinPriceDict[pair]})
-        if len(priceFrame) > 26:
-            momentum = self.indicator.momentumROC(self.coinPriceDict[pair])
-            rsi = self.indicator.RSI(priceFrame)
-            macd = self.indicator.MACD(priceFrame)
+        priceSeries = pd.Series(self.coinPriceDict[pair])
+        if len(priceSeries) > 26:
+            rsi = ta.RSI(priceSeries, 24).iloc[-1]
+            macd = ta.MACD(priceSeries)[0].iloc[-1]
             trade = self.trades.get(pair)
-            if trade.status == "OPEN":
-                self.closeTrade(trade, currentTimeStamp, pair)
-                if trade.isClosed():
-                    return trade
-            if momentum > 100:
-                self.momentumCounter += 1
-            if momentum < 100:
-                self.momentumCounter = 0
-            self.openTrade(rsi, macd, pair)
+            if math.isnan(macd) is False and math.isnan(rsi) is False:
+                if trade is not None and trade.status == "OPEN":
+                    self.closeTrade(trade, currentTimeStamp, pair, macd, rsi)
+                    if trade.isClosed():
+                        return trade
+                else:
+                    self.openTrade(rsi, macd, pair)
 
-    def closeTrade(self, trade, currentTimeStamp, pair):
-        if self.stopLoss(trade) or self.stopProfit(trade):
+    def closeTrade(self, trade, currentTimeStamp, pair, macd, rsi):
+        if self.stopLoss(trade) or self.stopProfit(trade) or (macd < 0) or (rsi > 75):
             trade.close(self.currentPrice, currentTimeStamp)
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
@@ -68,7 +67,7 @@ class liveBotStrategy(object):
                     trade.profit) + " Coin pair: " + str(pair))
 
     def openTrade(self, rsi, macd, pair):
-        if ((40 > rsi > 0) or (macd == 1)) and (self.isOpen(pair)):
+        if ((40 > rsi > 0) or (macd > 0)) and (self.isOpen(pair)):
             client = getClient()
             btc = pair[-3:]
             btcUSD = btc + "USDT"
@@ -108,7 +107,7 @@ class liveBotStrategy(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 5:
+        if percentDiff > 10:
             return True
         else:
             return False

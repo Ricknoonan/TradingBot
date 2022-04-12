@@ -35,29 +35,21 @@ class BotStrategy3(object):
         return self.evaluatePositions(currentTimeStamp)
 
     def evaluatePositions(self, currentTimeStamp):
-        mySeries = pd.Series(self.prices)
+        priceSeries = pd.Series(self.prices)
         priceFrame = pd.DataFrame({'price': self.prices})
         if len(priceFrame) > 27:
-            rsi = ta.RSI(mySeries, 24).iloc[-1]
-            macd = ta.MACD(mySeries)[0].iloc[-1]
-            if math.isnan(macd) is False:
-                print(macd)
-            momentum = self.indicator.momentumROC(self.prices)
-            # rsi = self.indicator.RSI(priceFrame)
-            # macd = self.indicator.MACD(priceFrame)
-            for tradePairKey, trade in self.trades.items():
-                if trade.status == "OPEN":
-                    self.closeTrade(trade, currentTimeStamp)
-                    if trade.isClosed():
-                        return trade
-            if momentum > 100:
-                self.momentumCounter += 1
-            if momentum < 100:
-                self.momentumCounter = 0
-            self.openTrade(rsi, macd)
+            rsi = ta.RSI(priceSeries, 24).iloc[-1]
+            macd = ta.MACD(priceSeries)[0].iloc[-1]
+            if math.isnan(macd) is False and math.isnan(rsi) is False:
+                for tradePairKey, trade in self.trades.items():
+                    if trade.status == "OPEN":
+                        self.closeTrade(trade, currentTimeStamp, macd, rsi)
+                        if trade.isClosed():
+                            return trade
+                self.openTrade(rsi, macd)
 
-    def closeTrade(self, trade, currentTimeStamp):
-        if self.stopLoss(trade) or self.stopProfit(trade):
+    def closeTrade(self, trade, currentTimeStamp, macd, rsi):
+        if self.stopLoss(trade) or self.stopProfit(trade) or (macd < -5) or (rsi > 75):
             trade.close(self.currentPrice, currentTimeStamp)
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
@@ -70,7 +62,7 @@ class BotStrategy3(object):
                     trade.profit) + " Coin pair: " + str(self.pair))
 
     def openTrade(self, rsi, macd):
-        if ((40 > rsi > 0) or (macd == 1)) and (self.isOpen()):
+        if ((30 > rsi > 0) or (macd > 5)) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
@@ -110,7 +102,7 @@ class BotStrategy3(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 5:
+        if percentDiff > 10:
             return True
         else:
             return False
