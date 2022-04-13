@@ -5,6 +5,13 @@ from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
 import talib as ta
 import math
+import csv
+
+
+def writeCSV(row):
+    with open('backtest.csv', 'a', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        writer.writerow(row)
 
 class BotStrategy3(object):
     def __init__(self, pair, liveFeed):
@@ -40,16 +47,17 @@ class BotStrategy3(object):
         if len(priceFrame) > 27:
             rsi = ta.RSI(priceSeries, 24).iloc[-1]
             macd = ta.MACD(priceSeries)[0].iloc[-1]
+            writeCSV([str(self.pair), str(self.currentPrice), str(macd), str(rsi)])
             if math.isnan(macd) is False and math.isnan(rsi) is False:
                 for tradePairKey, trade in self.trades.items():
                     if trade.status == "OPEN":
                         self.closeTrade(trade, currentTimeStamp, macd, rsi)
                         if trade.isClosed():
                             return trade
-                self.openTrade(rsi, macd)
+                self.openTrade(rsi, macd, currentTimeStamp)
 
     def closeTrade(self, trade, currentTimeStamp, macd, rsi):
-        if self.stopLoss(trade) or self.stopProfit(trade) or (macd < -5) or (rsi > 75):
+        if self.stopLoss(trade) or self.stopProfit(trade) or (rsi > 70):
             trade.close(self.currentPrice, currentTimeStamp)
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
@@ -61,8 +69,8 @@ class BotStrategy3(object):
                 self.output.logCloseTest("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
                     trade.profit) + " Coin pair: " + str(self.pair))
 
-    def openTrade(self, rsi, macd):
-        if ((30 > rsi > 0) or (macd > 5)) and (self.isOpen()):
+    def openTrade(self, rsi, macd, currentTimestamp):
+        if (30 > rsi > 0) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
@@ -71,13 +79,13 @@ class BotStrategy3(object):
             quantity = positionSize / float(self.currentPrice)
             if self.liveFeed:
                 self.trades[self.pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0, liveTrade=True))
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp, liveTrade=True))
                 print("Live Trade Opened for this amount: " + str(positionSize))
                 # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
                 self.output.logOpenLive("Live Trade opened")
             else:
                 self.trades[self.pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, 0, liveTrade=False))
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp, liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
                 self.output.logOpenTest("Test Trade opened")
 
@@ -94,7 +102,7 @@ class BotStrategy3(object):
     def stopLoss(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff < -75:
+        if percentDiff < -80:
             return True
         else:
             return False

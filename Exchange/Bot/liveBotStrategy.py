@@ -54,7 +54,7 @@ class liveBotStrategy(object):
                     self.openTrade(rsi, macd, pair)
 
     def closeTrade(self, trade, currentTimeStamp, pair, macd, rsi):
-        if self.stopLoss(trade) or self.stopProfit(trade) or (macd < 0) or (rsi > 75):
+        if self.stopLoss(trade) or self.stopProfit(trade) or (rsi > 70):
             trade.close(self.currentPrice, currentTimeStamp)
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
@@ -67,7 +67,7 @@ class liveBotStrategy(object):
                     trade.profit) + " Coin pair: " + str(pair))
 
     def openTrade(self, rsi, macd, pair):
-        if ((40 > rsi > 0) or (macd > 0)) and (self.isOpen(pair)):
+        if (30 > rsi > 0) and (self.isOpen(pair)):
             client = getClient()
             btc = pair[-3:]
             btcUSD = btc + "USDT"
@@ -99,7 +99,7 @@ class liveBotStrategy(object):
     def stopLoss(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff < -75:
+        if percentDiff < -80:
             return True
         else:
             return False

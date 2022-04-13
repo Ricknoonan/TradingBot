@@ -1,0 +1,2 @@
+2022-04-13-18:51:59 New Test trade opened:  Test Trade opened
+2022-04-13-19:22:46 Trade closed  Total Profit: 5.285476656727848e-05 Trade Profit: 5.285476656727848e-05 Coin pair: NEBLBTC
