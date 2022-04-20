@@ -34,7 +34,8 @@ def sortByMarketCap(datum):
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
         percentChange1hr = coin.get('quote').get('USD').get('percent_change_1h')
-        if (marketCapAmn > 1000000) & (percentChange24h > 10) & (percentChange1hr > 1):
+        percentChange7d = coin.get('quote').get('USD').get('percent_change_7d')
+        if (marketCapAmn > 1000000) & ((percentChange24h > 2) or (percentChange7d > 4)):
             marketCap[coin.get('symbol')] = marketCapAmn
     sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
     return sortedDict
@@ -80,7 +81,8 @@ def compare(baseBTC, marketCapDict):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) and (len(quotes) < 2) and (quote not in quotes):                quotes.append(quote)
+            if (quote == key) and (len(quotes) < 15) and (quote not in quotes):
+                quotes.append(quote)
     if len(quotes) > 0:
         return quotes
     else:
@@ -201,7 +203,7 @@ def toBTC(smallCapCoins):
 
 def Main():
     backTestDays = 10
-    interval = "30m"
+    interval = "15m"
     smallCapCoins = []
     while True:
         baseBTC = binanceData()

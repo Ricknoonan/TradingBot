@@ -13,6 +13,7 @@ def writeCSV(row):
         writer = csv.writer(f)
         writer.writerow(row)
 
+
 class BotStrategy3(object):
     def __init__(self, pair, liveFeed):
         self.output = BotLog()
@@ -70,7 +71,7 @@ class BotStrategy3(object):
                     trade.profit) + " Coin pair: " + str(self.pair))
 
     def openTrade(self, rsi, macd, currentTimestamp):
-        if (30 > rsi > 0) and (self.isOpen()):
+        if (35 > rsi > 0) and (self.isOpen()):
             client = getClient()
             btc = self.pair[-3:]
             btcUSD = btc + "USDT"
@@ -79,13 +80,15 @@ class BotStrategy3(object):
             quantity = positionSize / float(self.currentPrice)
             if self.liveFeed:
                 self.trades[self.pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp, liveTrade=True))
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp,
+                             liveTrade=True))
                 print("Live Trade Opened for this amount: " + str(positionSize))
                 # client.create_order(symbol=self.pair, type="MARKET", quantity=amount)
                 self.output.logOpenLive("Live Trade opened")
             else:
                 self.trades[self.pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp, liveTrade=False))
+                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, self.pair, currentTimestamp,
+                             liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
                 self.output.logOpenTest("Test Trade opened")
 
@@ -114,7 +117,8 @@ class BotStrategy3(object):
             return True
         else:
             return False
-#TODO: getVolindex to work with https://tinytrader.io/how-to-calculate-historical-price-volatility-with-python/
+
+    # TODO: getVolindex to work with https://tinytrader.io/how-to-calculate-historical-price-volatility-with-python/
     def getVolIndex(self):
         volIndex = 0
         return volIndex
