@@ -1,3 +1,4 @@
+import operator
 from time import sleep
 import calendar
 import json
@@ -10,7 +11,7 @@ import pandas as pd
 import numpy as np
 
 from requests import Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects, ReadTimeout
 
 # binance
 # 0 get markets from binance -> Done
@@ -26,19 +27,23 @@ from ScannerBot.BinanceUtil import getClient
 
 
 # gmt stores current gmtime
+from ScannerBot.TAUtil import runTA
 
 
 def sortByMarketCap(datum):
     marketCap = {}
+    percentChange = {}
     for coin in datum:
         marketCapAmn = coin.get('quote').get('USD').get('market_cap')
         percentChange24h = coin.get('quote').get('USD').get('percent_change_24h')
         percentChange1hr = coin.get('quote').get('USD').get('percent_change_1h')
         percentChange7d = coin.get('quote').get('USD').get('percent_change_7d')
-        if (marketCapAmn > 1000000) & ((percentChange24h > 2) or (percentChange7d > 4)):
+        if (marketCapAmn > 1000000) & ((percentChange24h > 5) and (percentChange7d > 4)):
             marketCap[coin.get('symbol')] = marketCapAmn
-    sortedDict = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
-    return sortedDict
+            percentChange[coin.get('symbol')] = percentChange24h
+    sortedMarketCap = {k: v for k, v in sorted(marketCap.items(), key=lambda item: item[1])}
+    sortedPercentChange = dict(sorted(percentChange.items(), key=operator.itemgetter(1), reverse=True))
+    return sortedPercentChange
 
 
 def marketCapData():
@@ -113,7 +118,8 @@ def getMiliSeconds(interval):
 def strategyFeed(smallCapCoins, backTestDays, interval):
     client = getClient()
     strategy = liveBotStrategy(liveFeed=True)
-    smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
+    smallCapCoins = strategy.addExistingTrades(smallCapCoins)
+    # smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
     nextCoins = []
     intervalInMiliSeconds = getMiliSeconds(interval)
     print(smallCapCoins)
@@ -123,7 +129,7 @@ def strategyFeed(smallCapCoins, backTestDays, interval):
         for coin in smallCapCoins:
             try:
                 currentPriceDict = client.get_symbol_ticker(symbol=coin)
-            except ConnectionError:
+            except (ConnectionError, ReadTimeout):
                 sleep(60)
                 print("Retrying connection for: " + coin)
                 currentPriceDict = client.get_symbol_ticker(symbol=coin)
@@ -136,6 +142,8 @@ def strategyFeed(smallCapCoins, backTestDays, interval):
                     if trade.getProfit() > 0:
                         nextCoins.append(coin)
                     smallCapCoins.remove(coin)
+            if strategy.checkPair(coin):
+                smallCapCoins.remove(coin)
         sleep(intervalInMiliSeconds)
     print("Finished looping through " + str(smallCapCoins) + ". Sleeping for: " + str(intervalInMiliSeconds))
     sleep(intervalInMiliSeconds)
@@ -149,9 +157,6 @@ def getHistoricalStart(days):
     return ts.__int__()
 
 
-# def volatilityIndex():
-
-
 def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
     client = getClient()
     nextCoin = False
@@ -161,22 +166,20 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
         coinDict = {}
         strategy = BotStrategy3(pair, liveFeed=False)
         historicalOutput = client.get_historical_klines(symbol=pair, interval=interval, start_str=backTestStartTS)
-        counter = 0
-        for kline in historicalOutput:
-            if counter < 1000:
-                currentPrice = kline[4]
-                timestamp = kline[0]
-                trade = strategy.tick(currentPrice, nextCoin, timestamp)
-                nextCoin = False
-                print(pair + "\n" + currentPrice)
-                if trade is not None:
-                    if trade.status == 'CLOSED':
-                        if coinDict.get(pair) is None:
-                            coinDict[pair] = trade.getProfit()
-                        else:
-                            profit = coinDict.get(pair)
-                            coinDict[pair] = trade.getProfit() + profit
-                counter += 1
+        mostRecentKLines = historicalOutput[-2500:]
+        for kline in mostRecentKLines:
+            currentPrice = kline[4]
+            timestamp = kline[0]
+            trade = strategy.tick(currentPrice, nextCoin, timestamp)
+            nextCoin = False
+            print(pair + "\n" + currentPrice)
+            if trade is not None:
+                if trade.status == 'CLOSED':
+                    if coinDict.get(pair) is None:
+                        coinDict[pair] = trade.getProfit()
+                    else:
+                        profit = coinDict.get(pair)
+                        coinDict[pair] = trade.getProfit() + profit
         # priceFrame = pd.DataFrame(historicalOutput)
         # priceFrame['returns'] = (np.log(priceFrame.close /
         #                                 priceFrame.close.shift(-1)))
@@ -203,7 +206,7 @@ def toBTC(smallCapCoins):
 
 def Main():
     backTestDays = 10
-    interval = "15m"
+    interval = "2m"
     smallCapCoins = []
     while True:
         baseBTC = binanceData()

@@ -113,7 +113,7 @@ class BotStrategy3(object):
     def stopProfit(self, trade):
         difference = self.currentPrice - trade.getEntryPrice()
         percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 10:
+        if percentDiff > 5:
             return True
         else:
             return False

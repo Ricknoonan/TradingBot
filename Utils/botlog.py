@@ -12,10 +12,9 @@ class BotLog(object):
         s = date + " New Test trade opened: " + " " + message + "\n"
         f.write(s)
 
-
     def logOpenLive(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
-        f = open("trade-log-live.txt", "a+")
+        f = open("trade-log-live-test1.txt", "a+")
         s = date + " New Live trade opened: " + " " + message + "\n"
         f.write(s)
 
@@ -27,10 +26,9 @@ class BotLog(object):
 
     def logCloseLive(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
-        f = open("trade-log-live.txt", "a+")
+        f = open("trade-log-live-test1.txt", "a+")
         s = date + " Trade closed " + " " + message + "\n"
         f.write(s)
-
 
     def log(self, message):
         date = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
@@ -44,4 +42,3 @@ class BotLog(object):
 
             # write the data
             writer.writerow([str(price), str(timestamp)])
-
