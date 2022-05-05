@@ -18,7 +18,6 @@ class BotTrade(object):
         if stopLoss:
             self.stopLossPrice = currentPrice - (stopLoss * currentPrice)
 
-    # TODO: Refactor this output/ combine close and stopLoss
     def close(self, currentPrice, closeTimeStamp):
         self.status = "CLOSED"
         self.exitPrice = currentPrice

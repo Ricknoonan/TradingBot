@@ -1,8 +1,8 @@
 import csv
 
+from Exchange.Bot.PairPrices import PairPrices
 from ScannerBot.BinanceUtil import getClient
 from Utils.botlog import BotLog
-from Exchange.Bot.botindicators import BotIndicators
 from Exchange.Bot.bottrade import BotTrade
 import pandas as pd
 import math
@@ -17,6 +17,24 @@ def writeCSV(row):
         writer.writerow(row)
 
 
+def stopLoss(trade, currentPrice):
+    difference = currentPrice - trade.getEntryPrice()
+    percentDiff = (difference / currentPrice) * 100
+    if percentDiff < -80:
+        return True
+    else:
+        return False
+
+
+def stopProfit(trade, currentPrice):
+    difference = currentPrice - trade.getEntryPrice()
+    percentDiff = (difference / currentPrice) * 100
+    if percentDiff > 5:
+        return True
+    else:
+        return False
+
+
 class liveBotStrategy(object):
     def __init__(self, liveFeed):
         self.output = BotLog()
@@ -25,88 +43,90 @@ class liveBotStrategy(object):
         self.maxTradesPerPair = 10
         self.tradeByPair = 0
         self.openTrades = {}
-        self.currentPrice = ""
         self.currentClose = ""
         self.accumLiveProfit = 0
         self.closedLivePosCounter = 0
-        self.indicator = BotIndicators(long_prd=26, short_prd=12, signal_long_length=9, )
         self.liveFeed = liveFeed
         self.momentumCounter = 0
         self.accumProfit = 0
         self.closedPosCounter = 0
-        self.coinPriceDict = {}
+        self.pairPriceDict = {}
 
     def tick(self, price, pair, currentTimeStamp):
-        self.currentPrice = float(price)
-        prices = self.coinPriceDict.get(pair)
-        if prices is None:
-            prices = []
-        prices.append(self.currentPrice)
-        self.coinPriceDict[pair] = prices
-        return self.evaluatePositions(currentTimeStamp, pair)
+        currentPrice = float(price)
+        pairPrices = self.pairPriceDict.get(pair)  # does the dict get updated with the new object ?
+        if pairPrices is None:
+            pairPrices = PairPrices()
+        pairPrices.pricePairList.append(currentPrice)
+        self.pairPriceDict[pair] = pairPrices
+        return self.evaluatePositions(currentTimeStamp, pair, currentPrice, pairPrices)
 
-    def evaluatePositions(self, currentTimeStamp, pair):
-        pricePairList = self.coinPriceDict[pair]
-        priceSeries = pd.Series(pricePairList)
+    def evaluatePositions(self, currentTimeStamp, pair, currentPrice, pairPrices):
+        pairPriceList = pairPrices.pricePairList
+        priceSeries = pd.Series(pairPriceList)
         if len(priceSeries) > 24:
             if len(priceSeries) > 35:
-                del pricePairList[0]
-                global checkTA
-                checkTA = True
+                del pairPriceList[
+                    0]  # test this logic, does this do the correct deletion and keep the list at 35 per coin once reached?
+                pairPrices.isLimitReached = True
             rsi = ta.RSI(priceSeries, 24).iloc[-1]
             macd = ta.MACD(priceSeries)[0].iloc[-1]
-            writeCSV([str(currentTimeStamp), str(pair), str(self.currentPrice), str(macd), str(rsi)])
             trade = self.trades.get(pair)
             if math.isnan(macd) is False and math.isnan(rsi) is False:
                 if trade is not None and trade.status == "OPEN":
-                    self.closeTrade(trade, currentTimeStamp, pair, macd, rsi)
+                    self.closeTrade(trade, currentTimeStamp, pair, rsi, currentPrice)
                     if trade.isClosed():
                         return trade
                 else:
-                    self.openTrade(rsi, macd, pair, currentTimeStamp)
+                    self.openTrade(rsi, macd, pair, currentTimeStamp, currentPrice)
 
-    def closeTrade(self, trade, currentTimeStamp, pair, macd, rsi):
-        if self.stopLoss(trade) or self.stopProfit(trade) or (rsi > 75):
-            trade.close(self.currentPrice, currentTimeStamp)
+    # TODO: remove print and txt file logging so that there is only csv
+    def closeTrade(self, trade, currentTimeStamp, pair, rsi, currentPrice):
+        if stopLoss(trade, currentPrice) or stopProfit(trade, currentPrice) or (rsi > 75):
+            trade.close(currentPrice, currentTimeStamp)
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
                 self.closedLivePosCounter += 1
                 self.output.logCloseLive("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
                     trade.profit) + " Coin pair: " + str(pair))
-                with open('Trades.csv', 'w', encoding='UTF8') as f:
+                with open('Trades.csv', 'w',
+                          encoding='UTF8') as f:  # check this logic, does the value get overwritten correctly?
                     readerObj = csv.reader(f)
                     writer = csv.writer(f)
                     for line in readerObj:
                         if line[0] == pair & line[5] == 'OPEN':
                             line[5] = 'CLOSED'
                             writer.writerows(readerObj)
+                            line[6] = str(currentPrice)
+                            line[7] = str(trade.profit)
             else:
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
                 self.output.logCloseTest("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
                     trade.profit) + " Coin pair: " + str(pair))
 
-    def openTrade(self, rsi, macd, pair, currentTimeStamp):
+    # TODO: remove print and txt file logging so that there is only csv
+    def openTrade(self, rsi, macd, pair, currentTimeStamp, currentPrice):
         if (35 > rsi > 0) and (self.isOpen(pair)):
             client = getClient()
             btc = pair[-3:]
             btcUSD = btc + "USDT"
             priceUSD = client.get_symbol_ticker(symbol=btcUSD)
             positionSize = 100 / float(priceUSD.get('price'))
-            quantity = positionSize / float(self.currentPrice)
+            quantity = positionSize / float(currentPrice)
             if self.liveFeed:
                 self.trades[pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=True))
+                    BotTrade(currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=True))
                 print("Live Trade Opened for this amount: " + str(positionSize))
                 with open('Trades.csv', 'a', encoding='UTF8') as f:
                     writer = csv.writer(f)
-                    writer.writerow([pair, self.currentPrice, quantity, positionSize, currentTimeStamp, 'OPEN'])
+                    writer.writerow([pair, currentPrice, quantity, positionSize, currentTimeStamp, 'OPEN'])
                 # client.create_order(symbol=coin, type="MARKET", quantity=amount)
                 self.output.logOpenLive(
                     str(currentTimeStamp) + " " + str(pair) + " RSI: " + str(rsi) + " MACD: " + str(macd))
             else:
                 self.trades[pair] = (
-                    BotTrade(self.currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=False))
+                    BotTrade(currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
                 self.output.logOpenTest("Test Trade opened")
 
@@ -120,34 +140,19 @@ class liveBotStrategy(object):
         else:
             return True
 
-    def stopLoss(self, trade):
-        difference = self.currentPrice - trade.getEntryPrice()
-        percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff < -80:
-            return True
-        else:
-            return False
-
-    def stopProfit(self, trade):
-        difference = self.currentPrice - trade.getEntryPrice()
-        percentDiff = (difference / self.currentPrice) * 100
-        if percentDiff > 5:
-            return True
-        else:
-            return False
-
     def backFill(self, pair, indicatorBackFill):
-        self.coinPriceDict[pair] = indicatorBackFill
+        self.pairPriceDict[pair] = indicatorBackFill
 
-    def addExistingTrades(self, smallCapCoins):
+    def addExistingTrades(self, btcPairs):
         with open('Trades.csv') as f:
             readerObj = csv.reader(f)
             for line in readerObj:
-                if line[5] == 'OPEN':
-                    smallCapCoins.append(line[0])
-                    self.trades[line[0]] = (
-                        BotTrade(line[1], 0.1, line[2], line[3], line[0], 0, liveTrade=True))
-        return smallCapCoins
+                if len(line) > 0:
+                    if line[5] == 'OPEN':
+                        btcPairs.append(line[0])
+                        self.trades[line[0]] = (
+                            BotTrade(float(line[1]), 0.1, float(line[2]), float(line[3]), line[0], 0, liveTrade=True))
+        return btcPairs
 
     def getExistingPairs(self, smallCapCoins):
         for k, v in self.trades:
@@ -156,8 +161,9 @@ class liveBotStrategy(object):
     def checkPair(self, pair):
         global checkTA
         if checkTA:
-            priceList = self.coinPriceDict[pair]
+            priceList = self.pairPriceDict[pair]
             priceSeries = pd.Series(priceList)
             rsi = ta.RSI(24, priceSeries).iloc[-1]
-            if (rsi is None) or (rsi == 0):
-                return True
+            return (rsi is None) or (rsi == 0) or math.isnan(rsi)
+        else:
+            return False

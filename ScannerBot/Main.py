@@ -25,7 +25,6 @@ from Exchange.Bot.botstrategy3 import BotStrategy3
 from Exchange.Bot.liveBotStrategy import liveBotStrategy
 from ScannerBot.BinanceUtil import getClient
 
-
 # gmt stores current gmtime
 from ScannerBot.TAUtil import runTA
 
@@ -82,16 +81,13 @@ def binanceData():
     return baseBTC
 
 
-def compare(baseBTC, marketCapDict):
+def compare(baseBTC, marketCapDict, limit):
     quotes = []
     for key, marketCapValue in marketCapDict.items():
         for quote, price in baseBTC.items():
-            if (quote == key) and (len(quotes) < 15) and (quote not in quotes):
+            if (quote == key) and (len(quotes) < limit) and (quote not in quotes):
                 quotes.append(quote)
-    if len(quotes) > 0:
-        return quotes
-    else:
-        return "No Match"
+    return quotes
 
 
 def getDiff(value, price):
@@ -113,48 +109,6 @@ def getCurrentTS():
 def getMiliSeconds(interval):
     minutes = interval[:-1]
     return int(minutes) * 60
-
-
-def strategyFeed(smallCapCoins, backTestDays, interval):
-    client = getClient()
-    strategy = liveBotStrategy(liveFeed=True)
-    smallCapCoins = strategy.addExistingTrades(smallCapCoins)
-    # smallCapCoins = backTestFeed(smallCapCoins, backTestDays, interval, liveBotStrategy)
-    nextCoins = []
-    intervalInMiliSeconds = getMiliSeconds(interval)
-    print(smallCapCoins)
-    while True:
-        if len(smallCapCoins) == 0:
-            break
-        for coin in smallCapCoins:
-            try:
-                currentPriceDict = client.get_symbol_ticker(symbol=coin)
-            except (ConnectionError, ReadTimeout):
-                sleep(60)
-                print("Retrying connection for: " + coin)
-                currentPriceDict = client.get_symbol_ticker(symbol=coin)
-            currentPrice = currentPriceDict.get('price')
-            currentTS = getCurrentTS()
-            trade = strategy.tick(currentPrice, coin, currentTS)
-            print(coin + "\n" + currentPrice)
-            if trade is not None:
-                if trade.status == 'CLOSED':
-                    if trade.getProfit() > 0:
-                        nextCoins.append(coin)
-                    smallCapCoins.remove(coin)
-            if strategy.checkPair(coin):
-                smallCapCoins.remove(coin)
-        sleep(intervalInMiliSeconds)
-    print("Finished looping through " + str(smallCapCoins) + ". Sleeping for: " + str(intervalInMiliSeconds))
-    sleep(intervalInMiliSeconds)
-    return nextCoins
-
-
-def getHistoricalStart(days):
-    historicalDate = date.today() - timedelta(days)
-    dt = datetime.combine(historicalDate, datetime.min.time())
-    ts = datetime.timestamp(dt)
-    return ts.__int__()
 
 
 def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
@@ -180,14 +134,42 @@ def backTestFeed(smallCapCoins, backTestDays, interval, liveStrategy):
                     else:
                         profit = coinDict.get(pair)
                         coinDict[pair] = trade.getProfit() + profit
-        # priceFrame = pd.DataFrame(historicalOutput)
-        # priceFrame['returns'] = (np.log(priceFrame.close /
-        #                                 priceFrame.close.shift(-1)))
-        # volIndex = strategy.getVolIndex()
         if coinDict.get(pair) is not None and ((coinDict.get(pair)) > 0):
             newCoinList.append(pair)
         nextCoin = True
     return newCoinList
+
+
+def strategyFeed(btcPairs, interval):
+    client = getClient()
+    strategy = liveBotStrategy(liveFeed=True)
+    btcPairs = strategy.addExistingTrades(btcPairs)  # adds existing open positions on program restart
+    intervalInMiliSeconds = getMiliSeconds(interval)
+    print(btcPairs)
+    while True:
+        for pair in btcPairs:
+            try:
+                currentPriceDict = client.get_symbol_ticker(symbol=pair)
+            except (ConnectionError, ReadTimeout):
+                sleep(60)
+                print("Retrying connection for: " + pair)
+                currentPriceDict = client.get_symbol_ticker(symbol=pair)
+            currentPrice = currentPriceDict.get('price')
+            currentTS = getCurrentTS()
+            trade = strategy.tick(currentPrice, pair, currentTS)
+            print(pair + "\n" + currentPrice)
+            if (trade is not None and trade.status == 'CLOSED') or strategy.checkPair(
+                    pair):  # if trade is closed out or market is not active, remove it from list so that newer pair can be added
+                btcPairs.remove(pair)
+                btcPairs.append(getBTCSPairs(1))
+        sleep(intervalInMiliSeconds)
+
+
+def getHistoricalStart(days):
+    historicalDate = date.today() - timedelta(days)
+    dt = datetime.combine(historicalDate, datetime.min.time())
+    ts = datetime.timestamp(dt)
+    return ts.__int__()
 
 
 def addToList(newList, smallCapCoins):
@@ -204,23 +186,17 @@ def toBTC(smallCapCoins):
     return newList
 
 
+def getBTCSPairs(limit):
+    baseBTC = binanceData()  # fetch all btc markets
+    marketCapDict = marketCapData()  # fetch all tokens listed on CMC.
+    symbols = compare(baseBTC, marketCapDict, limit)  # compare these lists
+    return toBTC(symbols)
+
+
 def Main():
-    backTestDays = 10
     interval = "2m"
-    smallCapCoins = []
-    while True:
-        baseBTC = binanceData()
-        marketCapDict = marketCapData()
-        newList = compare(baseBTC, marketCapDict)
-        smallCapCoins = addToList(newList, smallCapCoins)
-        print(smallCapCoins)
-        if smallCapCoins != "No Match":
-            smallCapCoins = toBTC(smallCapCoins)
-            nextCoins = strategyFeed(smallCapCoins, backTestDays, interval)
-            smallCapCoins = nextCoins
-            sleep(10)
-        else:
-            sleep(1800)
+    btcPairs = getBTCSPairs(10)
+    strategyFeed(btcPairs, interval)
 
 
 if __name__ == "__main__":
