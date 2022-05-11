@@ -87,18 +87,15 @@ class liveBotStrategy(object):
             if self.liveFeed:
                 self.accumLiveProfit += trade.profit
                 self.closedLivePosCounter += 1
-                self.output.logCloseLive("Total Profit: " + str(self.accumProfit) + " Trade Profit: " + str(
-                    trade.profit) + " Coin pair: " + str(pair))
-                with open('Trades.csv', 'w',
-                          encoding='UTF8') as f:  # check this logic, does the value get overwritten correctly?
-                    readerObj = csv.reader(f)
-                    writer = csv.writer(f)
-                    for line in readerObj:
-                        if line[0] == pair & line[5] == 'OPEN':
-                            line[5] = 'CLOSED'
-                            writer.writerows(readerObj)
-                            line[6] = str(currentPrice)
-                            line[7] = str(trade.profit)
+                rows = []
+                with open('Trades.csv', 'r') as f:
+                    csvReader = csv.reader(f)
+                    for row in csvReader:
+                        if row[0] == pair and row[5] == 'OPEN':
+                            row[5] = 'CLOSED'
+                        rows.append(row)
+                    # csvWriter = csv.writer(f)
+                    # csvWriter.writerows(rows)
             else:
                 self.accumProfit += trade.profit
                 self.closedPosCounter += 1
@@ -118,17 +115,14 @@ class liveBotStrategy(object):
                 self.trades[pair] = (
                     BotTrade(currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=True))
                 print("Live Trade Opened for this amount: " + str(positionSize))
-                with open('Trades.csv', 'a', encoding='UTF8') as f:
+                with open('Trades.csv', 'a+', encoding='UTF8') as f:
                     writer = csv.writer(f)
-                    writer.writerow([pair, currentPrice, quantity, positionSize, currentTimeStamp, 'OPEN'])
+                    writer.writerow([pair, currentPrice, quantity, positionSize, currentTimeStamp, 'OPEN', rsi, macd])
                 # client.create_order(symbol=coin, type="MARKET", quantity=amount)
-                self.output.logOpenLive(
-                    str(currentTimeStamp) + " " + str(pair) + " RSI: " + str(rsi) + " MACD: " + str(macd))
             else:
                 self.trades[pair] = (
                     BotTrade(currentPrice, 0.1, quantity, positionSize, pair, 0, liveTrade=False))
                 print("Test Trade Opened for this amount: " + str(positionSize))
-                self.output.logOpenTest("Test Trade opened")
 
     def isOpen(self, pair):
         if len(self.trades) > 0:
@@ -144,19 +138,16 @@ class liveBotStrategy(object):
         self.pairPriceDict[pair] = indicatorBackFill
 
     def addExistingTrades(self, btcPairs):
-        with open('Trades.csv') as f:
-            readerObj = csv.reader(f)
-            for line in readerObj:
+        with open('Trades.csv', 'a+') as f:
+            csvReader = csv.reader(f)
+            for line in csvReader:
                 if len(line) > 0:
                     if line[5] == 'OPEN':
                         btcPairs.append(line[0])
                         self.trades[line[0]] = (
                             BotTrade(float(line[1]), 0.1, float(line[2]), float(line[3]), line[0], 0, liveTrade=True))
-        return btcPairs
 
-    def getExistingPairs(self, smallCapCoins):
-        for k, v in self.trades:
-            smallCapCoins.append(k)
+        return btcPairs
 
     def checkPair(self, pair):
         global checkTA
@@ -167,3 +158,8 @@ class liveBotStrategy(object):
             return (rsi is None) or (rsi == 0) or math.isnan(rsi)
         else:
             return False
+
+
+def getExistingPairs(self, smallCapCoins):
+    for k, v in self.trades:
+        smallCapCoins.append(k)

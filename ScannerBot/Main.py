@@ -146,7 +146,9 @@ def strategyFeed(btcPairs, interval):
     btcPairs = strategy.addExistingTrades(btcPairs)  # adds existing open positions on program restart
     intervalInMiliSeconds = getMiliSeconds(interval)
     print(btcPairs)
-    while True:
+    counter = 0
+    testPrices = [4.57e-06, 4.57e-06, 4.57e-06, 4.58e-06, 4.56e-06, 4.56e-06, 4.53e-06, 4.51e-06, 4.56e-06, 4.55e-06, 4.51e-06, 4.36e-06, 4.35e-06, 4.41e-06, 4.32e-06, 4.28e-06, 4.3e-06, 4.28e-06, 4.3e-06, 4.27e-06, 4.27e-06, 4.27e-06, 4.29e-06, 4.28e-06, 4.26e-06, 4.27e-06, 4.28e-06, 4.28e-06, 4.27e-06, 4.27e-06, 4.25e-06, 4.25e-06, 4.24e-06, 4.23e-06, 4.26e-06, 4.57e-06, 4.57e-06, 4.57e-06, 4.58e-06, 4.56e-06, 4.56e-06, 4.53e-06, 4.51e-06, 4.56e-06, 4.55e-06, 4.51e-06, 4.36e-06, 4.35e-06, 4.41e-06, 4.32e-06, 4.28e-06, 4.3e-06, 4.28e-06, 4.3e-06, 4.27e-06, 4.27e-06, 4.27e-06, 4.29e-06, 4.28e-06, 4.26e-06, 4.27e-06, 4.28e-06, 4.28e-06, 4.27e-06, 4.27e-06, 4.25e-06, 4.25e-06, 4.24e-06, 4.23e-06, 4.26e-06,4.57e-06, 4.57e-06, 4.57e-06, 4.58e-06, 4.56e-06, 4.56e-06, 4.53e-06, 4.51e-06, 4.56e-06, 4.55e-06, 4.51e-06, 4.36e-06, 4.35e-06, 4.41e-06, 4.32e-06, 4.28e-06, 4.3e-06, 4.28e-06, 4.3e-06, 4.27e-06, 4.27e-06, 4.27e-06, 4.29e-06, 4.28e-06, 4.26e-06, 4.27e-06, 4.28e-06, 4.28e-06, 4.27e-06, 4.27e-06, 4.25e-06, 4.25e-06, 4.24e-06, 4.23e-06, 4.26e-06]
+    while counter < len(testPrices):
         for pair in btcPairs:
             try:
                 currentPriceDict = client.get_symbol_ticker(symbol=pair)
@@ -154,15 +156,16 @@ def strategyFeed(btcPairs, interval):
                 sleep(60)
                 print("Retrying connection for: " + pair)
                 currentPriceDict = client.get_symbol_ticker(symbol=pair)
-            currentPrice = currentPriceDict.get('price')
+            # currentPrice = currentPriceDict.get('price')
+            currentPrice = testPrices[counter]
             currentTS = getCurrentTS()
             trade = strategy.tick(currentPrice, pair, currentTS)
-            print(pair + "\n" + currentPrice)
             if (trade is not None and trade.status == 'CLOSED') or strategy.checkPair(
                     pair):  # if trade is closed out or market is not active, remove it from list so that newer pair can be added
                 btcPairs.remove(pair)
                 btcPairs.append(getBTCSPairs(1))
-        sleep(intervalInMiliSeconds)
+        counter += 1
+        # sleep(intervalInMiliSeconds)
 
 
 def getHistoricalStart(days):
